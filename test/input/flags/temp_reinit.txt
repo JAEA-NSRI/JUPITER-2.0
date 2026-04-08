@@ -1,0 +1,54 @@
+print, ON
+geom_in, ON
+
+fluid_dynamics, OFF
+heat_eq, ON
+phase_change, OFF
+melting, OFF
+solidification, OFF
+vaporization, OFF
+condensation, OFF
+laser, OFF
+surface_tension, OFF
+radiation, OFF
+oxidation, OFF
+LPT_calc, OFF
+solute_diff, OFF
+temperature_dependency, OFF
+vof_adv_fls, OFF
+phasefield, OFF
+wettability, OFF
+
+WENO, OFF
+IBM, ON
+interface_capturing_scheme, THINC
+heat_tvd3, OFF
+visc_tvd3, OFF
+
+bc_xm,    WALL
+bc_xp,    WALL
+bc_ym,    WALL
+bc_yp,    WALL
+bc_zm,    WALL
+bc_zp,    WALL
+bct_xm,   INSULATION
+bct_xp,   INSULATION
+bct_ym,   INSULATION
+bct_yp,   INSULATION
+bct_zm,   INSULATION
+bct_zp,   INSULATION
+
+binary, ON
+gnuplot, OFF
+
+fp, -
+
+output_filename_templates, %c/%04n.dat, %c_%i/%04n.%04r.single.dat, %c/%04n.%04r.single.dat
+
+Reinit_temperature, ON
+output_qgeom, ON
+output_u, ON
+output_v, ON
+output_w, ON
+output_p, ON
+

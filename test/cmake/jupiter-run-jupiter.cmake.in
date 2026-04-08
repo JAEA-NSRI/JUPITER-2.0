@@ -1,0 +1,89 @@
+
+if (POLICY CMP0054)
+  cmake_policy(SET CMP0054 NEW)
+endif()
+
+include("@VARCONFIG@")
+include("@BINCONFIG@")
+
+include("@JUPITER_INPUT_TEST_UTIL_SCRIPT@")
+print_test_conf()
+
+if("${OMP_NT}" STREQUAL "" OR "${OMP_NT}" LESS 1)
+  set(OMP_NT 1)
+endif()
+set(ENV{OMP_NUM_THREADS} "${OMP_NT}")
+# Disable localization
+# (Currently, JUPITER does not call setlocale function. Just make sure)
+set(ENV{LANG} C)
+
+unset(CURRENT_CODEPAGE)
+if(WIN32 AND NOT CYGWIN)
+  execute_process(COMMAND "chcp" OUTPUT_VARIABLE "${CURRENT_CODEPAGE}")
+  # Surprisingly, output text is localized.
+  string(REGEX MATCH " [0-9]* *\n" CURRENT_CODEPAGE "${CURRENT_CODEPAGE}")
+  if (NOT CURRENT_CODEPAGE STREQUAL "")
+    execute_process(COMMAND "chcp" "437" OUTPUT_QUIET ERROR_QUIET)
+  else()
+    unset(CURRENT_CODEPAGE)
+  endif()
+endif()
+
+set(REST "@RESTART@")
+
+# Create directories for message files
+file(MAKE_DIRECTORY "${MSGDIR${REST}}")
+
+# Copy data for restart run
+if("${REST}" EQUAL 1)
+  if(RESTART_N)
+    set(SRC "${BINOUTD0}")
+    set(DST "${BININPD}")
+  else()
+    set(SRC "${RESOUTD0}")
+    set(DST "${BININPD}")
+  endif()
+  get_filename_component(RSRC "${SRC}" REALPATH)
+  get_filename_component(RDST "${DST}" REALPATH)
+  if(NOT "${RSRC}" STREQUAL "${RDST}")
+    execute_process(
+      COMMAND "${CMAKE_COMMAND}" "-E" "copy_directory" "${RSRC}" "${RDST}"
+      RESULT_VARIABLE RETV)
+    if(NOT "${RETV}" EQUAL 0)
+      message(
+        FATAL_ERROR "Failed to copy restart input to ${RDST} from ${RSRC}")
+    endif()
+  endif()
+endif()
+
+if (NOT "${PRE_RUN${REST}}" STREQUAL "")
+  include("${PRE_RUN${REST}}")
+endif()
+
+make_jupiter_args(${REST} TRUE ARGS)
+
+build_mpiexec_args(COMLIST "${JUPITER_EXECUTABLE}" ${ARGS})
+
+string(REPLACE ";" " " COMSTR "${COMLIST}")
+message(STATUS "Executing: ${COMSTR}")
+execute_process(COMMAND ${COMLIST}
+  OUTPUT_FILE "${OUTF${REST}}"
+  ERROR_FILE  "${ERRF${REST}}"
+  RESULT_VARIABLE RETV)
+
+message(STATUS "Return value: ${RETV}")
+
+if (NOT "${POST_RUN${REST}}" STREQUAL "")
+  include("${POST_RUN${REST}}")
+endif()
+
+if(NOT "${EXPECT${REST}}" STREQUAL "")
+  if(NOT "${RETV}" EQUAL "${EXPECT${REST}}")
+    message(SEND_ERROR "Exit code of JUPITER is not ${EXPECT${REST}} (got ${RETV})")
+  endif()
+endif()
+
+# Revert codepage
+if(DEFINED CURRENT_CODEPAGE)
+  execute_process(COMMAND "chcp" ${CURRENT_CODEPAGE} OUTPUT_QUIET ERROR_QUIET)
+endif()

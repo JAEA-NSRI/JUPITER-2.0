@@ -1,0 +1,29 @@
+-- B4C from solute_diff version.
+
+tm_soli, 1500.0,
+tm_liq, 1500.0,
+tb, 2792.0,   -- boiling temperature[K]
+lh, 297000.0, -- latent heat[J/kg]
+molar_mass, 55.255
+porosity, 1.0e-10,
+permeability, 1.0e-10,
+beta, CONST, 23.0,
+sigma, CONST, 0.86,  -- coefficient of surface tension
+-- density[kg m-3]
+rho_s, CONST, 2510.0,
+rho_l, CONST, 2520.0,
+-- viscosity[Pa s]
+mu_s, CONST, 5.44e-3,
+mu_l, CONST, 5.44e-3,
+-- specific heat at constant volume[J kg-1 K-1]
+specht_s, CONST, 590.0,
+specht_l, CONST, 960.0,
+-- thermal conductivity[W m-1 K-1]
+thc_s, CONST, 35.0,
+thc_l, CONST, 20.0,
+-- emissivity
+emi_s, CONST, 1.0,
+emi_l, CONST, 1.0,
+emi_g, CONST, 1.0,
+-- solute diffusion coefficient
+diff, CONST, 1.0e-3

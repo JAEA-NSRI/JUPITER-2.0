@@ -1,0 +1,44 @@
+ =========================================================================================== 
+             x  y  z    (-x) (+x) (-y) (+y) (-z) (+z)
+ Rank =   0( 0, 0, 0) :   -1   -1   -1   -1   -1   -1 : Host_name = localhost
+ ------------------------------------------------------------------------------------------- 
+Set computational domain...
+Set phisical values for three phase...
+Allocate memory of u, v, w, VOFs, level-set func...
+Allocate memory of dens,mu,nu,specht,thc,st,q,rad,emi.
+o
+====[00000000 steps, 00001 outputs]=============
+  dt(cfl = 0.10, diff = 0.10 [substep = 100]) = 1.597e-03
+  dt_cfl  = 1.597e-03
+  dt_diff = 1.000e+00 (/100) = 1.000e-02
+  time    = 0.000e+00
+  u_max  (   1,   0,   0) = 1.000e-05
+  v_max  (   0,   1,   0) = 1.000e-05
+  w_max  (   0,   0,   1) = 1.000e-05
+  t_max  (   0,   0,   0) = 4.7315000000e+02
+  q_max  (   0,   0,   0) = 0.000e+00
+  rad_max(   0,   0,   0) = 0.000e+00
+  flow_rate [kg/s] = 0.000e+00
+  gas_jet_flow_rate [m^3/s] = 0.000e+00
+============================================
+    iter in P    = 15
+dt_control        = <certain> [sec/step]
+vof_advection     = <certain> [sec/step]
+multi_layer       = <certain> [sec/step]
+tvd_runge_kutta_3 = <certain> [sec/step]
+heat_conduction   = <certain> [sec/step]
+radiation         = <certain> [sec/step]
+phase_change      = <certain> [sec/step]
+eutectic          = <certain> [sec/step]
+divergence_free   = <certain> [sec/step]
+solute diff       = <certain> [sec/step]
+oxidation         = <certain> [sec/step]
+materials         = <certain> [sec/step]
+hsource           = <certain> [sec/step]
+particle track    = <certain> [sec/step]
+update fv/stats   = <certain> [sec/step]
+output_data       = <certain> [sec/step]
+----------- total = <certain> [sec/step]
+    < job total > = <certain> [sec/step]
+
+ooooooOutput restart files on icnt = 7

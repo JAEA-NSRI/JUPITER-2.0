@@ -1,0 +1,21 @@
+
+Material_file, -1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.ar.txt
+Material_file,  0, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.SUS.txt
+Material_file,  1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.ctw.txt
+Material_file,  2, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.ctw.txt
+
+-- from gri30
+gas_diffusivity, -1, 1, TABLE, 13, &
+     293.15, 9.75242343e-06, &
+     303.15, 1.05365638e-05, &
+     313.15, 1.14358429e-05, &
+     323.15, 1.25186863e-05, &
+     333.15, 1.39041418e-05, &
+ 333.542135,  1.3967177e-05, &
+     343.15, 1.47665422e-05, &
+     353.15, 1.56184084e-05, &
+     363.15,   1.649029e-05, &
+     373.15, 1.73819344e-05, &
+     383.15, 1.82930977e-05, &
+     393.15,  1.9223544e-05, &
+     403.15, 2.01730452e-05,

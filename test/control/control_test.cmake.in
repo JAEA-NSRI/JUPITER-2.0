@@ -1,0 +1,19 @@
+
+set(USE_MPI "@JUPITER_USE_MPI@")
+set(MPIEXEC_EXECUTABLE "@MPIEXEC_EXECUTABLE@")
+set(MPIEXEC_NUMPROC_FLAG "@MPIEXEC_NUMPROC_FLAG@")
+set(MPIEXEC_FLAGS @MPIEXEC_FLAGS@)
+set(MPIEXEC_POSTFLAGS @MPIEXEC_POSTFLAGS@)
+set(MPIEXEC_PREFLAGS @MPIEXEC_PREFLAGS@)
+set(TEST_EXEC "$<TARGET_FILE:control_test>")
+
+include(@JUPITER_SOURCE_DIR@/test/cmake/test-util.cmake)
+
+build_mpiexec_args(CMD "${TEST_EXEC}" "${CASE}")
+string(REPLACE ";" " " CMDS "${CMD}")
+message(STATUS "Executing: ${CMDS}")
+
+execute_process(COMMAND ${CMD} RESULT_VARIABLE RETV)
+if (NOT RETV EQUAL 0)
+  message(FATAL_ERROR "Test ${CASE} failed")
+endif()

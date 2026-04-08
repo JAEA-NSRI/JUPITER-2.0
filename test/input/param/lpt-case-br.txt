@@ -1,0 +1,61 @@
+
+MPI_processes, 1, 1, 1
+Cell, 4, 4, 4
+Length, 0.001, 0.001, 0.001,
+
+NumberOfComponent, 1
+
+stm, 3
+stp, 4
+
+tw_xm,   273.15
+tw_xp,   273.15
+tw_ym,   273.15
+tw_yp,   273.15
+tw_zm,   273.15
+tw_zp,   673.15
+
+dt, 0.0
+CFL_num, 0.1
+DIFF_num, 0.1
+Time, 0.0, 2.0e-2
+
+View, 10
+Output, 4
+
+nsub_step_t,  100
+nsub_step_mu, 1
+
+a0, 0.0
+DH, 0.0
+
+Gravity, 0.0, 0.0, 0.0
+
+restart_dump_time, NaN
+
+radiation_step_limit, 9999999
+dt_rad, 0.1
+picard_max, 2
+picard_out, 5
+newton_max, 9
+E_cell_err_max, 1e-5
+tmp_cell_err_max, 1e-5
+dtmp_cell_err_max, 1e-7
+division_latitude,  1
+division_longitude, 1
+
+tr, 300.15
+
+LPT_wallref_xm, 0.0,
+LPT_wallref_xp, 0.0,
+LPT_wallref_ym, 0.0,
+LPT_wallref_yp, 0.0,
+LPT_wallref_zm, 0.0,
+LPT_wallref_zp, 0.0,
+
+LPT_particle_set, 1, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, &
+  0.0, 0.0, OFF, 0.1e-6, 997.0, 0.0, 0.0, 0.0
+LPT_particle_set, 10, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, 0.5e-3, &
+  1.e-10, 1.e-10, OFF, 0.1e-6, 997.0, 0.0, 0.0, 0.0
+
+LPT_cunningham_correction, 4.55918

@@ -1,0 +1,627 @@
+-- NOTE: This input is very slow to run on un-optimized executable.
+
+NumberOfGeom, 2
+
+Geom_file, -
+Geom_vof, -1, GAS, SET, CONST, 1.0, 1.0
+Geom_velocity_u,   SET, CONST, 1.0, 1e-5
+Geom_velocity_v,   SET, CONST, 1.0, 1e-5
+Geom_velocity_w,   SET, CONST, 1.0, 1e-5
+Geom_temperature,  SET, CONST, 1.0, 473.15
+Geom_pressure,     SET, CONST, 1.0, 0.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.000, 0.000, 0.000, 0.001, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.000, 0.000, 0.012, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.000, 0.000, 0.023, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.000, 0.000, 0.034, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.000, 0.000, 0.045, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.000, 0.000, 0.056, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.000, 0.000, 0.067, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.000, 0.000, 0.078, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.000, 0.000, 0.089, 0.001, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.000, 0.000, 0.100, 0.001, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.010, 0.000, 0.001, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.010, 0.000, 0.012, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.010, 0.000, 0.023, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.010, 0.000, 0.034, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.010, 0.000, 0.045, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.010, 0.000, 0.056, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.010, 0.000, 0.067, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.010, 0.000, 0.078, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.010, 0.000, 0.089, 0.012, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.010, 0.000, 0.100, 0.012, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.020, 0.000, 0.001, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.020, 0.000, 0.012, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.020, 0.000, 0.023, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.020, 0.000, 0.034, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.020, 0.000, 0.045, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.020, 0.000, 0.056, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.020, 0.000, 0.067, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.020, 0.000, 0.078, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.020, 0.000, 0.089, 0.023, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.020, 0.000, 0.100, 0.023, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.030, 0.000, 0.001, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.030, 0.000, 0.012, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.030, 0.000, 0.023, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.030, 0.000, 0.034, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.030, 0.000, 0.045, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.030, 0.000, 0.056, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.030, 0.000, 0.067, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.030, 0.000, 0.078, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.030, 0.000, 0.089, 0.034, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.030, 0.000, 0.100, 0.034, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.040, 0.000, 0.001, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.040, 0.000, 0.012, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.040, 0.000, 0.023, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.040, 0.000, 0.034, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.040, 0.000, 0.045, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.040, 0.000, 0.056, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.040, 0.000, 0.067, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.040, 0.000, 0.078, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.040, 0.000, 0.089, 0.045, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.040, 0.000, 0.100, 0.045, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.050, 0.000, 0.001, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.050, 0.000, 0.012, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.050, 0.000, 0.023, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.050, 0.000, 0.034, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.050, 0.000, 0.045, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.050, 0.000, 0.056, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.050, 0.000, 0.067, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.050, 0.000, 0.078, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.050, 0.000, 0.089, 0.056, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.050, 0.000, 0.100, 0.056, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.060, 0.000, 0.001, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.060, 0.000, 0.012, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.060, 0.000, 0.023, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.060, 0.000, 0.034, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.060, 0.000, 0.045, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.060, 0.000, 0.056, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.060, 0.000, 0.067, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.060, 0.000, 0.078, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.060, 0.000, 0.089, 0.067, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.060, 0.000, 0.100, 0.067, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.070, 0.000, 0.001, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.070, 0.000, 0.012, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.070, 0.000, 0.023, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.070, 0.000, 0.034, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.070, 0.000, 0.045, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.070, 0.000, 0.056, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.070, 0.000, 0.067, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.070, 0.000, 0.078, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.070, 0.000, 0.089, 0.078, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.070, 0.000, 0.100, 0.078, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.080, 0.000, 0.001, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.080, 0.000, 0.012, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.080, 0.000, 0.023, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.080, 0.000, 0.034, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.080, 0.000, 0.045, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.080, 0.000, 0.056, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.080, 0.000, 0.067, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.080, 0.000, 0.078, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.080, 0.000, 0.089, 0.089, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.080, 0.000, 0.100, 0.089, 0.1
+--
+Geom_shape, ADD, BOX, 0.000, 0.090, 0.000, 0.001, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.010, 0.090, 0.000, 0.012, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.020, 0.090, 0.000, 0.023, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.030, 0.090, 0.000, 0.034, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.040, 0.090, 0.000, 0.045, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.050, 0.090, 0.000, 0.056, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.060, 0.090, 0.000, 0.067, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.070, 0.090, 0.000, 0.078, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.080, 0.090, 0.000, 0.089, 0.100, 0.1
+Geom_shape, ADD, BOX, 0.090, 0.090, 0.000, 0.100, 0.100, 0.1
+--
+Geom_num_subcell, 10
+Geom_dump, data/binary_data/many_boundary.single.dat
+Geom_vof, 0, LIQUID, SET, CONST, NaN, 1.0
+--
+Geom_boundary, TOP, WALL, 0.00
+Geom_boundary, TOP, WALL, 0.01
+Geom_boundary, TOP, WALL, 0.02
+Geom_boundary, TOP, WALL, 0.03
+Geom_boundary, TOP, WALL, 0.04
+Geom_boundary, TOP, WALL, 0.05
+Geom_boundary, TOP, WALL, 0.06
+Geom_boundary, TOP, WALL, 0.07
+Geom_boundary, TOP, WALL, 0.08
+Geom_boundary, TOP, WALL, 0.09
+Geom_boundary, TOP, WALL, 0.10
+Geom_boundary, TOP, WALL, 0.11
+Geom_boundary, TOP, WALL, 0.12
+Geom_boundary, TOP, WALL, 0.13
+Geom_boundary, TOP, WALL, 0.14
+Geom_boundary, TOP, WALL, 0.15
+Geom_boundary, TOP, WALL, 0.16
+Geom_boundary, TOP, WALL, 0.17
+Geom_boundary, TOP, WALL, 0.18
+Geom_boundary, TOP, WALL, 0.19
+Geom_boundary, TOP, WALL, 0.20
+Geom_boundary, TOP, WALL, 0.21
+Geom_boundary, TOP, WALL, 0.22
+Geom_boundary, TOP, WALL, 0.23
+Geom_boundary, TOP, WALL, 0.24
+Geom_boundary, TOP, WALL, 0.25
+Geom_boundary, TOP, WALL, 0.26
+Geom_boundary, TOP, WALL, 0.27
+Geom_boundary, TOP, WALL, 0.28
+Geom_boundary, TOP, WALL, 0.29
+Geom_boundary, TOP, WALL, 0.30
+Geom_boundary, TOP, WALL, 0.31
+Geom_boundary, TOP, WALL, 0.32
+Geom_boundary, TOP, WALL, 0.33
+Geom_boundary, TOP, WALL, 0.34
+Geom_boundary, TOP, WALL, 0.35
+Geom_boundary, TOP, WALL, 0.36
+Geom_boundary, TOP, WALL, 0.37
+Geom_boundary, TOP, WALL, 0.38
+Geom_boundary, TOP, WALL, 0.39
+Geom_boundary, TOP, WALL, 0.40
+Geom_boundary, TOP, WALL, 0.41
+Geom_boundary, TOP, WALL, 0.42
+Geom_boundary, TOP, WALL, 0.43
+Geom_boundary, TOP, WALL, 0.44
+Geom_boundary, TOP, WALL, 0.45
+Geom_boundary, TOP, WALL, 0.46
+Geom_boundary, TOP, WALL, 0.47
+Geom_boundary, TOP, WALL, 0.48
+Geom_boundary, TOP, WALL, 0.49
+Geom_boundary, TOP, WALL, 0.50
+Geom_boundary, TOP, WALL, 0.51
+Geom_boundary, TOP, WALL, 0.52
+Geom_boundary, TOP, WALL, 0.53
+Geom_boundary, TOP, WALL, 0.54
+Geom_boundary, TOP, WALL, 0.55
+Geom_boundary, TOP, WALL, 0.56
+Geom_boundary, TOP, WALL, 0.57
+Geom_boundary, TOP, WALL, 0.58
+Geom_boundary, TOP, WALL, 0.59
+Geom_boundary, TOP, WALL, 0.60
+Geom_boundary, TOP, WALL, 0.61
+Geom_boundary, TOP, WALL, 0.62
+Geom_boundary, TOP, WALL, 0.63
+Geom_boundary, TOP, WALL, 0.64
+Geom_boundary, TOP, WALL, 0.65
+Geom_boundary, TOP, WALL, 0.66
+Geom_boundary, TOP, WALL, 0.67
+Geom_boundary, TOP, WALL, 0.68
+Geom_boundary, TOP, WALL, 0.69
+Geom_boundary, TOP, WALL, 0.70
+Geom_boundary, TOP, WALL, 0.71
+Geom_boundary, TOP, WALL, 0.72
+Geom_boundary, TOP, WALL, 0.73
+Geom_boundary, TOP, WALL, 0.74
+Geom_boundary, TOP, WALL, 0.75
+Geom_boundary, TOP, WALL, 0.76
+Geom_boundary, TOP, WALL, 0.77
+Geom_boundary, TOP, WALL, 0.78
+Geom_boundary, TOP, WALL, 0.79
+Geom_boundary, TOP, WALL, 0.80
+Geom_boundary, TOP, WALL, 0.81
+Geom_boundary, TOP, WALL, 0.82
+Geom_boundary, TOP, WALL, 0.83
+Geom_boundary, TOP, WALL, 0.84
+Geom_boundary, TOP, WALL, 0.85
+Geom_boundary, TOP, WALL, 0.86
+Geom_boundary, TOP, WALL, 0.87
+Geom_boundary, TOP, WALL, 0.88
+Geom_boundary, TOP, WALL, 0.89
+Geom_boundary, TOP, WALL, 0.90
+Geom_boundary, TOP, WALL, 0.91
+Geom_boundary, TOP, WALL, 0.92
+Geom_boundary, TOP, WALL, 0.93
+Geom_boundary, TOP, WALL, 0.94
+Geom_boundary, TOP, WALL, 0.95
+Geom_boundary, TOP, WALL, 0.96
+Geom_boundary, TOP, WALL, 0.97
+Geom_boundary, TOP, WALL, 0.98
+Geom_boundary, TOP, WALL, 0.99
+--
+Geom_boundary, BOTTOM, OUT, 0.00, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.01, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.02, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.03, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.04, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.05, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.06, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.07, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.08, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.09, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.10, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.11, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.12, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.13, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.14, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.15, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.16, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.17, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.18, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.19, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.20, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.21, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.22, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.23, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.24, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.25, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.26, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.27, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.28, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.29, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.30, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.31, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.32, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.33, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.34, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.35, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.36, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.37, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.38, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.39, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.40, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.41, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.42, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.43, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.44, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.45, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.46, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.47, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.48, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.49, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.50, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.51, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.52, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.53, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.54, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.55, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.56, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.57, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.58, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.59, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.60, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.61, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.62, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.63, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.64, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.65, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.66, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.67, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.68, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.69, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.70, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.71, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.72, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.73, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.74, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.75, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.76, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.77, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.78, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.79, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.80, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.81, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.82, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.83, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.84, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.85, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.86, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.87, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.88, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.89, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.90, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.91, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.92, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.93, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.94, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.95, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.96, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.97, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.98, CONST, 0.0
+Geom_boundary, BOTTOM, OUT, 0.99, CONST, 0.0
+--
+Geom_tboundary, TOP, INSULATION, 0.00
+Geom_tboundary, TOP, INSULATION, 0.01
+Geom_tboundary, TOP, INSULATION, 0.02
+Geom_tboundary, TOP, INSULATION, 0.03
+Geom_tboundary, TOP, INSULATION, 0.04
+Geom_tboundary, TOP, INSULATION, 0.05
+Geom_tboundary, TOP, INSULATION, 0.06
+Geom_tboundary, TOP, INSULATION, 0.07
+Geom_tboundary, TOP, INSULATION, 0.08
+Geom_tboundary, TOP, INSULATION, 0.09
+Geom_tboundary, TOP, INSULATION, 0.10
+Geom_tboundary, TOP, INSULATION, 0.11
+Geom_tboundary, TOP, INSULATION, 0.12
+Geom_tboundary, TOP, INSULATION, 0.13
+Geom_tboundary, TOP, INSULATION, 0.14
+Geom_tboundary, TOP, INSULATION, 0.15
+Geom_tboundary, TOP, INSULATION, 0.16
+Geom_tboundary, TOP, INSULATION, 0.17
+Geom_tboundary, TOP, INSULATION, 0.18
+Geom_tboundary, TOP, INSULATION, 0.19
+Geom_tboundary, TOP, INSULATION, 0.20
+Geom_tboundary, TOP, INSULATION, 0.21
+Geom_tboundary, TOP, INSULATION, 0.22
+Geom_tboundary, TOP, INSULATION, 0.23
+Geom_tboundary, TOP, INSULATION, 0.24
+Geom_tboundary, TOP, INSULATION, 0.25
+Geom_tboundary, TOP, INSULATION, 0.26
+Geom_tboundary, TOP, INSULATION, 0.27
+Geom_tboundary, TOP, INSULATION, 0.28
+Geom_tboundary, TOP, INSULATION, 0.29
+Geom_tboundary, TOP, INSULATION, 0.30
+Geom_tboundary, TOP, INSULATION, 0.31
+Geom_tboundary, TOP, INSULATION, 0.32
+Geom_tboundary, TOP, INSULATION, 0.33
+Geom_tboundary, TOP, INSULATION, 0.34
+Geom_tboundary, TOP, INSULATION, 0.35
+Geom_tboundary, TOP, INSULATION, 0.36
+Geom_tboundary, TOP, INSULATION, 0.37
+Geom_tboundary, TOP, INSULATION, 0.38
+Geom_tboundary, TOP, INSULATION, 0.39
+Geom_tboundary, TOP, INSULATION, 0.40
+Geom_tboundary, TOP, INSULATION, 0.41
+Geom_tboundary, TOP, INSULATION, 0.42
+Geom_tboundary, TOP, INSULATION, 0.43
+Geom_tboundary, TOP, INSULATION, 0.44
+Geom_tboundary, TOP, INSULATION, 0.45
+Geom_tboundary, TOP, INSULATION, 0.46
+Geom_tboundary, TOP, INSULATION, 0.47
+Geom_tboundary, TOP, INSULATION, 0.48
+Geom_tboundary, TOP, INSULATION, 0.49
+Geom_tboundary, TOP, INSULATION, 0.50
+Geom_tboundary, TOP, INSULATION, 0.51
+Geom_tboundary, TOP, INSULATION, 0.52
+Geom_tboundary, TOP, INSULATION, 0.53
+Geom_tboundary, TOP, INSULATION, 0.54
+Geom_tboundary, TOP, INSULATION, 0.55
+Geom_tboundary, TOP, INSULATION, 0.56
+Geom_tboundary, TOP, INSULATION, 0.57
+Geom_tboundary, TOP, INSULATION, 0.58
+Geom_tboundary, TOP, INSULATION, 0.59
+Geom_tboundary, TOP, INSULATION, 0.60
+Geom_tboundary, TOP, INSULATION, 0.61
+Geom_tboundary, TOP, INSULATION, 0.62
+Geom_tboundary, TOP, INSULATION, 0.63
+Geom_tboundary, TOP, INSULATION, 0.64
+Geom_tboundary, TOP, INSULATION, 0.65
+Geom_tboundary, TOP, INSULATION, 0.66
+Geom_tboundary, TOP, INSULATION, 0.67
+Geom_tboundary, TOP, INSULATION, 0.68
+Geom_tboundary, TOP, INSULATION, 0.69
+Geom_tboundary, TOP, INSULATION, 0.70
+Geom_tboundary, TOP, INSULATION, 0.71
+Geom_tboundary, TOP, INSULATION, 0.72
+Geom_tboundary, TOP, INSULATION, 0.73
+Geom_tboundary, TOP, INSULATION, 0.74
+Geom_tboundary, TOP, INSULATION, 0.75
+Geom_tboundary, TOP, INSULATION, 0.76
+Geom_tboundary, TOP, INSULATION, 0.77
+Geom_tboundary, TOP, INSULATION, 0.78
+Geom_tboundary, TOP, INSULATION, 0.79
+Geom_tboundary, TOP, INSULATION, 0.80
+Geom_tboundary, TOP, INSULATION, 0.81
+Geom_tboundary, TOP, INSULATION, 0.82
+Geom_tboundary, TOP, INSULATION, 0.83
+Geom_tboundary, TOP, INSULATION, 0.84
+Geom_tboundary, TOP, INSULATION, 0.85
+Geom_tboundary, TOP, INSULATION, 0.86
+Geom_tboundary, TOP, INSULATION, 0.87
+Geom_tboundary, TOP, INSULATION, 0.88
+Geom_tboundary, TOP, INSULATION, 0.89
+Geom_tboundary, TOP, INSULATION, 0.90
+Geom_tboundary, TOP, INSULATION, 0.91
+Geom_tboundary, TOP, INSULATION, 0.92
+Geom_tboundary, TOP, INSULATION, 0.93
+Geom_tboundary, TOP, INSULATION, 0.94
+Geom_tboundary, TOP, INSULATION, 0.95
+Geom_tboundary, TOP, INSULATION, 0.96
+Geom_tboundary, TOP, INSULATION, 0.97
+Geom_tboundary, TOP, INSULATION, 0.98
+Geom_tboundary, TOP, INSULATION, 0.99
+--
+Geom_tboundary, BOTTOM, DIFFUSION, 0.00
+Geom_tboundary, BOTTOM, DIFFUSION, 0.01
+Geom_tboundary, BOTTOM, DIFFUSION, 0.02
+Geom_tboundary, BOTTOM, DIFFUSION, 0.03
+Geom_tboundary, BOTTOM, DIFFUSION, 0.04
+Geom_tboundary, BOTTOM, DIFFUSION, 0.05
+Geom_tboundary, BOTTOM, DIFFUSION, 0.06
+Geom_tboundary, BOTTOM, DIFFUSION, 0.07
+Geom_tboundary, BOTTOM, DIFFUSION, 0.08
+Geom_tboundary, BOTTOM, DIFFUSION, 0.09
+Geom_tboundary, BOTTOM, DIFFUSION, 0.10
+Geom_tboundary, BOTTOM, DIFFUSION, 0.11
+Geom_tboundary, BOTTOM, DIFFUSION, 0.12
+Geom_tboundary, BOTTOM, DIFFUSION, 0.13
+Geom_tboundary, BOTTOM, DIFFUSION, 0.14
+Geom_tboundary, BOTTOM, DIFFUSION, 0.15
+Geom_tboundary, BOTTOM, DIFFUSION, 0.16
+Geom_tboundary, BOTTOM, DIFFUSION, 0.17
+Geom_tboundary, BOTTOM, DIFFUSION, 0.18
+Geom_tboundary, BOTTOM, DIFFUSION, 0.19
+Geom_tboundary, BOTTOM, DIFFUSION, 0.20
+Geom_tboundary, BOTTOM, DIFFUSION, 0.21
+Geom_tboundary, BOTTOM, DIFFUSION, 0.22
+Geom_tboundary, BOTTOM, DIFFUSION, 0.23
+Geom_tboundary, BOTTOM, DIFFUSION, 0.24
+Geom_tboundary, BOTTOM, DIFFUSION, 0.25
+Geom_tboundary, BOTTOM, DIFFUSION, 0.26
+Geom_tboundary, BOTTOM, DIFFUSION, 0.27
+Geom_tboundary, BOTTOM, DIFFUSION, 0.28
+Geom_tboundary, BOTTOM, DIFFUSION, 0.29
+Geom_tboundary, BOTTOM, DIFFUSION, 0.30
+Geom_tboundary, BOTTOM, DIFFUSION, 0.31
+Geom_tboundary, BOTTOM, DIFFUSION, 0.32
+Geom_tboundary, BOTTOM, DIFFUSION, 0.33
+Geom_tboundary, BOTTOM, DIFFUSION, 0.34
+Geom_tboundary, BOTTOM, DIFFUSION, 0.35
+Geom_tboundary, BOTTOM, DIFFUSION, 0.36
+Geom_tboundary, BOTTOM, DIFFUSION, 0.37
+Geom_tboundary, BOTTOM, DIFFUSION, 0.38
+Geom_tboundary, BOTTOM, DIFFUSION, 0.39
+Geom_tboundary, BOTTOM, DIFFUSION, 0.40
+Geom_tboundary, BOTTOM, DIFFUSION, 0.41
+Geom_tboundary, BOTTOM, DIFFUSION, 0.42
+Geom_tboundary, BOTTOM, DIFFUSION, 0.43
+Geom_tboundary, BOTTOM, DIFFUSION, 0.44
+Geom_tboundary, BOTTOM, DIFFUSION, 0.45
+Geom_tboundary, BOTTOM, DIFFUSION, 0.46
+Geom_tboundary, BOTTOM, DIFFUSION, 0.47
+Geom_tboundary, BOTTOM, DIFFUSION, 0.48
+Geom_tboundary, BOTTOM, DIFFUSION, 0.49
+Geom_tboundary, BOTTOM, DIFFUSION, 0.50
+Geom_tboundary, BOTTOM, DIFFUSION, 0.51
+Geom_tboundary, BOTTOM, DIFFUSION, 0.52
+Geom_tboundary, BOTTOM, DIFFUSION, 0.53
+Geom_tboundary, BOTTOM, DIFFUSION, 0.54
+Geom_tboundary, BOTTOM, DIFFUSION, 0.55
+Geom_tboundary, BOTTOM, DIFFUSION, 0.56
+Geom_tboundary, BOTTOM, DIFFUSION, 0.57
+Geom_tboundary, BOTTOM, DIFFUSION, 0.58
+Geom_tboundary, BOTTOM, DIFFUSION, 0.59
+Geom_tboundary, BOTTOM, DIFFUSION, 0.60
+Geom_tboundary, BOTTOM, DIFFUSION, 0.61
+Geom_tboundary, BOTTOM, DIFFUSION, 0.62
+Geom_tboundary, BOTTOM, DIFFUSION, 0.63
+Geom_tboundary, BOTTOM, DIFFUSION, 0.64
+Geom_tboundary, BOTTOM, DIFFUSION, 0.65
+Geom_tboundary, BOTTOM, DIFFUSION, 0.66
+Geom_tboundary, BOTTOM, DIFFUSION, 0.67
+Geom_tboundary, BOTTOM, DIFFUSION, 0.68
+Geom_tboundary, BOTTOM, DIFFUSION, 0.69
+Geom_tboundary, BOTTOM, DIFFUSION, 0.70
+Geom_tboundary, BOTTOM, DIFFUSION, 0.71
+Geom_tboundary, BOTTOM, DIFFUSION, 0.72
+Geom_tboundary, BOTTOM, DIFFUSION, 0.73
+Geom_tboundary, BOTTOM, DIFFUSION, 0.74
+Geom_tboundary, BOTTOM, DIFFUSION, 0.75
+Geom_tboundary, BOTTOM, DIFFUSION, 0.76
+Geom_tboundary, BOTTOM, DIFFUSION, 0.77
+Geom_tboundary, BOTTOM, DIFFUSION, 0.78
+Geom_tboundary, BOTTOM, DIFFUSION, 0.79
+Geom_tboundary, BOTTOM, DIFFUSION, 0.80
+Geom_tboundary, BOTTOM, DIFFUSION, 0.81
+Geom_tboundary, BOTTOM, DIFFUSION, 0.82
+Geom_tboundary, BOTTOM, DIFFUSION, 0.83
+Geom_tboundary, BOTTOM, DIFFUSION, 0.84
+Geom_tboundary, BOTTOM, DIFFUSION, 0.85
+Geom_tboundary, BOTTOM, DIFFUSION, 0.86
+Geom_tboundary, BOTTOM, DIFFUSION, 0.87
+Geom_tboundary, BOTTOM, DIFFUSION, 0.88
+Geom_tboundary, BOTTOM, DIFFUSION, 0.89
+Geom_tboundary, BOTTOM, DIFFUSION, 0.90
+Geom_tboundary, BOTTOM, DIFFUSION, 0.91
+Geom_tboundary, BOTTOM, DIFFUSION, 0.92
+Geom_tboundary, BOTTOM, DIFFUSION, 0.93
+Geom_tboundary, BOTTOM, DIFFUSION, 0.94
+Geom_tboundary, BOTTOM, DIFFUSION, 0.95
+Geom_tboundary, BOTTOM, DIFFUSION, 0.96
+Geom_tboundary, BOTTOM, DIFFUSION, 0.97
+Geom_tboundary, BOTTOM, DIFFUSION, 0.98
+Geom_tboundary, BOTTOM, DIFFUSION, 0.99
+--
+Geom_boundary, WEST, WALL, 0.00
+Geom_boundary, WEST, WALL, 0.01
+Geom_boundary, WEST, WALL, 0.02
+Geom_boundary, WEST, WALL, 0.03
+Geom_boundary, WEST, WALL, 0.04
+Geom_boundary, WEST, WALL, 0.05
+Geom_boundary, WEST, WALL, 0.06
+Geom_boundary, WEST, WALL, 0.07
+Geom_boundary, WEST, WALL, 0.08
+Geom_boundary, WEST, WALL, 0.09
+Geom_boundary, WEST, WALL, 0.10
+--
+Geom_tboundary, WEST, ISOTHERMAL, 0.00, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.01, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.02, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.03, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.04, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.05, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.06, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.07, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.08, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.09, CONST, 444.0
+Geom_tboundary, WEST, ISOTHERMAL, 0.10, CONST, 444.0
+--
+Geom_boundary, SOUTH, WALL, 0.00
+Geom_boundary, SOUTH, WALL, 0.01
+Geom_boundary, SOUTH, WALL, 0.02
+Geom_boundary, SOUTH, WALL, 0.03
+Geom_boundary, SOUTH, WALL, 0.04
+Geom_boundary, SOUTH, WALL, 0.05
+Geom_boundary, SOUTH, WALL, 0.06
+Geom_boundary, SOUTH, WALL, 0.07
+Geom_boundary, SOUTH, WALL, 0.08
+Geom_boundary, SOUTH, WALL, 0.09
+Geom_boundary, SOUTH, WALL, 0.10
+--
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.00, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.01, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.02, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.03, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.04, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.05, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.06, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.07, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.08, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.09, CONST, 444.0
+Geom_tboundary, SOUTH, ISOTHERMAL, 0.10, CONST, 444.0
+--
+Geom_boundary, EAST, SLIP, 0.0
+Geom_boundary, EAST, SLIP, 0.1
+Geom_boundary, EAST, SLIP, 0.2
+Geom_boundary, EAST, SLIP, 0.3
+Geom_boundary, EAST, SLIP, 0.4
+Geom_boundary, EAST, SLIP, 0.5
+Geom_boundary, EAST, SLIP, 0.6
+Geom_boundary, EAST, SLIP, 0.7
+Geom_boundary, EAST, SLIP, 0.8
+Geom_boundary, EAST, SLIP, 0.9
+Geom_boundary, EAST, SLIP, 1.0
+--
+Geom_tboundary, EAST, DIFFUSION, 0.0, 
+Geom_tboundary, EAST, DIFFUSION, 0.1, 
+Geom_tboundary, EAST, DIFFUSION, 0.2, 
+Geom_tboundary, EAST, DIFFUSION, 0.3, 
+Geom_tboundary, EAST, DIFFUSION, 0.4, 
+Geom_tboundary, EAST, DIFFUSION, 0.5, 
+Geom_tboundary, EAST, DIFFUSION, 0.6, 
+Geom_tboundary, EAST, DIFFUSION, 0.7, 
+Geom_tboundary, EAST, DIFFUSION, 0.8, 
+Geom_tboundary, EAST, DIFFUSION, 0.9, 
+Geom_tboundary, EAST, DIFFUSION, 1.0, 
+--
+Geom_boundary, NORTH, SLIP, 0.0
+Geom_boundary, NORTH, SLIP, 0.1
+Geom_boundary, NORTH, SLIP, 0.2
+Geom_boundary, NORTH, SLIP, 0.3
+Geom_boundary, NORTH, SLIP, 0.4
+Geom_boundary, NORTH, SLIP, 0.5
+Geom_boundary, NORTH, SLIP, 0.6
+Geom_boundary, NORTH, SLIP, 0.7
+Geom_boundary, NORTH, SLIP, 0.8
+Geom_boundary, NORTH, SLIP, 0.9
+Geom_boundary, NORTH, SLIP, 1.0
+--
+Geom_tboundary, NORTH, DIFFUSION, 0.0, 
+Geom_tboundary, NORTH, DIFFUSION, 0.1, 
+Geom_tboundary, NORTH, DIFFUSION, 0.2, 
+Geom_tboundary, NORTH, DIFFUSION, 0.3, 
+Geom_tboundary, NORTH, DIFFUSION, 0.4, 
+Geom_tboundary, NORTH, DIFFUSION, 0.5, 
+Geom_tboundary, NORTH, DIFFUSION, 0.6, 
+Geom_tboundary, NORTH, DIFFUSION, 0.7, 
+Geom_tboundary, NORTH, DIFFUSION, 0.8, 
+Geom_tboundary, NORTH, DIFFUSION, 0.9, 
+Geom_tboundary, NORTH, DIFFUSION, 1.0, 
+--

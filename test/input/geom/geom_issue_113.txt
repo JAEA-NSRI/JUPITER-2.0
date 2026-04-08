@@ -1,0 +1,4 @@
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_vof, 99, SOLID, SET, CONST, 1.0, 1.0, -- Invalid ID should not check phase.

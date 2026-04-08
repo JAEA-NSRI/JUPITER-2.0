@@ -1,0 +1,20 @@
+NumberOfGeom, 2
+
+Geom_file, -
+Geom_name, rcc-1
+Geom_dump, data/binary_data/rcc-1.single.dat
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.2, &
+  -1.0, -1.0, -1.0, -1.0, 0.0, 0.0
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.0, 0.3, 0.2, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, 1, -1, 1.0
+
+Geom_file, -
+Geom_name, rcc-2
+Geom_dump, data/binary_data/rcc-2.single.dat
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.2, &
+  -1.0, -1.0, -1.0, -1.0, 0.0, 0.0
+Geom_shape, SET, ROT, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 190.0, 0
+Geom_shape, SET, TRA, 0.5, 0.5, 0.0, 0
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.0, 0.3, 0.2, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, 1, -1, 1.0
+

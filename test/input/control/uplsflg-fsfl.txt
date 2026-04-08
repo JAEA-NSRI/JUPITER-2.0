@@ -1,0 +1,9 @@
+NumberOfGeom, 2
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.07, 0.0, 0.0, 0.1, 0.03, 0.03
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.07, 0.0, 0.07, 0.1, 0.03, 0.1
+Geom_vof, 0, LIQUID, SET, CONST, 1.0, 1.0

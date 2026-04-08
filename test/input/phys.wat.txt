@@ -1,0 +1,41 @@
+-- Physical Property for H2O
+
+rho_g,    CONST, 0.013
+mu_g,     CONST, 1.3e-5
+specht_g, CONST, 1996.0
+thc_g,    CONST, 0.0018
+molar_mass, 18.0
+saturated_pressure, CONST, 101325.0
+condensation_E, CONST, 0.0
+
+tm_soli, 273.0,
+tm_liq, 273.0,
+tb, 373.0,   -- boiling temperature[K]
+lh, 334.0e+3, -- latent heat[J/kg]
+lhv, 2256.4e+3,
+porosity, 1.0e-10,
+permeability, 1.0e-10,
+beta, CONST, 23.0,
+sigma, CONST, 0.86,  -- coefficient of surface tension
+-- density[kg m-3]
+rho_s, CONST,  990.0,
+rho_l, CONST,  997.0,
+-- viscosity[Pa s]
+mu_s, CONST, 1.0e-3,
+mu_l, CONST, 1.0e-3,
+-- specific heat at constant volume[J kg-1 K-1]
+specht_s, CONST, 2108.0,
+specht_l, CONST, 4187.0,
+-- thermal conductivity[W m-1 K-1]
+thc_s, CONST, 1.6,
+thc_l, CONST, 0.6,
+-- emissivity
+emi_s, CONST, 1.0,
+emi_l, CONST, 1.0,
+emi_g, CONST, 1.0,
+-- solute diffusion coefficient
+diff, CONST, 1.0e-2
+
+saturated_pressure, CONST, 0.0
+condensation_E, CONST, 0.0
+sigma,    CONST,   0.07, -- water

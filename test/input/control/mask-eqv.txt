@@ -1,0 +1,21 @@
+add_mask, m1, EXTENT, 0, 6, 0, 6, 0, 6
+add_mask, m2, EXTENT, 3, 9, 3, 9, 3, 9
+add_mask, m3, EXTENT, 3, 9, 0, 6, 3, 9
+add_mask, m4, EXTENT, 3, 9, 3, 9, 0, 6
+
+add_mask, ma, EQV, 2, @m1, @m2
+add_mask, mb, EQV, 4, @m1, @m2, @m3, @m4
+
+add_postprocess, x1, MASK, :all, SET, @ma
+add_postprocess, x2, MASK, :all, SET, @mb
+add_postprocess, xa, VOLUME_INTEGRAL, :x1
+add_postprocess, xb, VOLUME_INTEGRAL, :x2
+
+add_field_variable, v1, GET, :xa, *vint-v
+add_field_variable, v2, GET, :xb, *vint-v
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, $v1, $v2, 0.0, 999.9, 999.9, 999.9
+

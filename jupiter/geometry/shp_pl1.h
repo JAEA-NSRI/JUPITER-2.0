@@ -1,0 +1,14 @@
+
+#ifndef JUPITER_GEOMETRY_SHP_PL1_H
+#define JUPITER_GEOMETRY_SHP_PL1_H
+
+#include "defs.h"
+
+JUPITER_GEOMETRY_DECL_START
+
+JUPITER_GEOMETRY_DECL
+geom_error geom_install_shape_pl1(void);
+
+JUPITER_GEOMETRY_DECL_END
+
+#endif

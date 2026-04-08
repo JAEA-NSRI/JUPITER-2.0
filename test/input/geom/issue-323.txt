@@ -1,0 +1,95 @@
+NumberOfGeom, 3000
+
+Geom_file, -
+Geom_vof, -1, SOLID, SET, CONST, 1.0, 0.0
+Geom_vof, -1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_temperature, SET, CONST, 1.0, 573.0
+Geom_velocity_u, SET, CONST, 1.0, 0.0
+Geom_velocity_v, SET, CONST, 1.0, 0.0
+Geom_velocity_w, SET, CONST, 1.0, 0.0
+Geom_pressure, SET, CONST, 1.0, 0.0
+Geom_boundary, XYB, WALL, 1.0
+Geom_boundary, T, OUT, 1.0, CONST, 0.0
+Geom_tboundary, ALL, INSULATION, 1.0,
+
+Geom_file, -
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 11.25e-3
+Geom_vof, 0, SOLID, SET, CONST, -1.0, 1.0
+Geom_vof, 1, LIQUID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_origin, 0.0, 0.0, 0.0
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, 0.0, 0.0, 0.0, 0.1e-3, 11.25e-3
+Geom_boundary, B, IN, 1.0, CONST, 0.0, 0.0, 1.0, 1, 1, 1.0
+
+Geom_file, -
+Geom_name, orf-000001
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.00200,  0.00240,  0.00040,  0.00000,  0.00000,  0.00040
+                                    
+Geom_file, -
+Geom_name, orf-000002
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.01720,  0.01760,  0.00040,  0.00000,  0.00000,  0.00040
+                                    
+Geom_file, -
+Geom_name, orf-000003
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.01840,  0.01880,  0.00040,  0.00000,  0.00000,  0.00040
+                                    
+Geom_file, -
+Geom_name, orf-000004
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.00960,  0.01000,  0.00400,  0.00000,  0.00000,  0.00400
+                                    
+Geom_file, -
+Geom_name, orf-000005
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.01880,  0.01920,  0.00400,  0.00000,  0.00000,  0.00400
+                                    
+Geom_file, -
+Geom_name, orf-000006
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.00360,  0.00400,  0.00040,  0.00000,  0.00000,  0.00040
+                                    
+Geom_file, -
+Geom_name, orf-000007
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.00200,  0.00240,  0.00040,  0.00000,  0.00000,  0.00040
+                                    
+Geom_file, -
+Geom_name, orf-000008
+Geom_shape, SET, RCC, 11.25e-3, 11.25e-3, -1.0, 0.0, 0.0, 2.0, 4.75e-3, &                                                                                                                               
+  -10.0, -10.0, -10.0, -10.0, 0.0, -1.0                                                                                                                                                                 
+ Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+ Geom_vof, 1, LIQUID, SET, CONST, 1.0, 0.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST,  2.62626, 1, -1, 1.0
+Geom_surface_shape, SET, PARALLELOGRAM,  0.02400,  0.02440,  0.00400,  0.00000,  0.00000,  0.00400

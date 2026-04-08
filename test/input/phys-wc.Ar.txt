@@ -1,0 +1,10 @@
+-- Physical Property for Ar.
+
+rho_g,    POLY_L, -1, -1, 10.0, 5000.0, 486.83015197669, -- Mw * 101325/R
+mu_g,     CONST,   2.125e-5
+specht_g, CONST, 520.3292280374246
+thc_g,    CONST,   0.0158
+diff,     CONST,   1.9365e-4, -- to Air, at 1400 K.
+molar_mass, 39.948
+sigma,    CONST,   0.07, -- water
+

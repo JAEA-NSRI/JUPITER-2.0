@@ -1,0 +1,12 @@
+-- Physical Property for Ar.
+
+rho_g,    CONST,   1.6228
+mu_g,     CONST,   1.0e-5
+specht_g, CONST, 520.64
+thc_g,    CONST,   0.0158
+diff,     CONST,   1.9365e-4, -- to Air, at 1400 K.
+molar_mass, 39.95
+lhv, 161376.7209011264, -- 6.447 kJ/mol
+condensation_E, CONST, 281926.8 -- at 1400 K
+saturated_pressure, CONST, 100.0
+sigma,    CONST,   0.07, -- water

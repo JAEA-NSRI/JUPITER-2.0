@@ -1,0 +1,7 @@
+add_field_variable, t1, GET, :all, *velocity-z, OFF, 0, 1, 0, 1, 0, 1
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, $t1, 0.0, 0.0, 1.0, 1.0
+

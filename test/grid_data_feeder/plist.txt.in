@@ -1,0 +1,7 @@
+Material_file, -1, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.gas.txt
+Material_file,  0, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.0.txt
+Material_file,  1, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.1.txt
+Material_file,  2, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.2.txt
+Material_file,  3, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.3.txt
+Material_file,  4, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.4.txt
+Material_file,  5, @CMAKE_CURRENT_SOURCE_DIR@/../input/phys.5.txt

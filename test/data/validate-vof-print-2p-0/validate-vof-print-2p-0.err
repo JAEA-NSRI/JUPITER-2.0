@@ -1,0 +1,134 @@
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: multi_layer_no_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: multi_layer_less_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: film_drainage: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: oxide_kp_model: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: h2_absorp_eval: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: h2_absorp_eval_p_change: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: print_update_level_set_reason: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: force_update_level_set_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: force_update_level_set_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_vof: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_velocity_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_velocity_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_velocity_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_temperature: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_fixed_heat_source: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_fluid_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_thermal_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_surface_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: Reinit_lpt_pewall_n: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_double: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: restart_output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: restart_input_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: restart_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: restart_filename_templates: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_fs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_fl: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_t: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_bnd_norm_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_bnd_norm_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_bnd_norm_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_uvw: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_q: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_qgeom: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_ll: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_uplsflg: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_fs_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_ls_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_div_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_mass_source_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_mat: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_dens: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_denss: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_thc: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_thcs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_specht: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_spechtf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-a.txt: output_mu: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: variable_delta_x: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: variable_delta_y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: variable_delta_z: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: NumberOfLayer: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: c_delta: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: lambda: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: sigma_pf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: mobility: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: d_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: U_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: L_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: Forch_coef: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: P_const: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: contact_angle: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: CA_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: film_cell: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: rapture_thickness: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: height_threshold: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vin_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: p_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: coef_lsts: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: ls_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: vaporization_liquid_id: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: reference_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_particle_set: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: LPT_wallref_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: laser_power: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: irrad_radius: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: wave_langth: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: reflectivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: absorptivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: nozzle_position: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof-2.txt: sweep_velocity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: radf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: radf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/geom/valvof-s2-0.txt: Geom_print_matrix: Key not found, using default
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/comp_data/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fs_0/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fl_0/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fs_1/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fl_1/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fs_2/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fl_2/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/uvw/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/t/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/p/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/time/0000.dat...
+[    0][ERROR]: Following error(s) found while VOF validation:
+[    0]       | 
+[    0]       |  * Sum of Solid VOFs is greater than 1 found at 1 cells:
+[    0]       |     (2, 2, 2)
+[    0]       | 
+[    0][FATAL]: <Source:<PSD>/jupiter/main.c>: main: Stopping by error(s). Please check.

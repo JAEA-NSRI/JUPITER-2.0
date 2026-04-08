@@ -1,0 +1,6 @@
+write_field_variables, t1.csv, CSV, 1, NSTEP, 1, 6, ON, 1, $time
+write_field_variables, t2.csv, CSV, 1, NSTEP, 2, 6, OFF, 1, $time
+write_field_variables, t3.csv, CSV, 2, TIME, 2.0e-3, 6, ON, 1, $time
+write_field_variables, t4.csv, CSV, 1, TIME, $delta-t, 9, ON, 1, $time
+write_field_variables, t5.csv, CSV, 1, TIME, 0.0, 9, OFF, 2, $time, $delta-t
+

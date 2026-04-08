@@ -1,0 +1,21 @@
+
+set(USE_MPI "@JUPITER_USE_MPI@")
+set(MPIEXEC_EXECUTABLE "@MPIEXEC_EXECUTABLE@")
+set(MPIEXEC_NUMPROC_FLAG "@MPIEXEC_NUMPROC_FLAG@")
+set(MPIEXEC_FLAGS @MPIEXEC_FLAGS@)
+set(MPIEXEC_POSTFLAGS @MPIEXEC_POSTFLAGS@)
+set(MPIEXEC_PREFLAGS @MPIEXEC_PREFLAGS@)
+set(MPI_NP @MPI_NP@)
+set(TEST_EXEC "$<TARGET_FILE:grid_data_feeder_test>")
+set(ARGS @GRID_DATA_FEEDER_TEST_ARGS@)
+
+include(@JUPITER_SOURCE_DIR@/test/cmake/test-util.cmake)
+
+build_mpiexec_args(CMD "${TEST_EXEC}" ${ARGS})
+string(REPLACE ";" " " CMDS "${CMD}")
+message(STATUS "Executing: ${CMDS}")
+
+execute_process(COMMAND ${CMD} RESULT_VARIABLE RETV)
+if (NOT RETV EQUAL 0)
+  message(FATAL_ERROR "Test failed")
+endif()

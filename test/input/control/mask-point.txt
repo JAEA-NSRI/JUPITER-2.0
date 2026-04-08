@@ -1,0 +1,17 @@
+add_field_variable, v1, GET, :all, *velocity-x, OFF, 0, 1, 0, 1, 0, 1
+add_mask, t1, POINT, 0.0, 0.0, $v1
+add_mask, t2, POINT, 0.0, $v1, 0.0
+add_mask, t3, POINT, $v1, 0.0, 0.0
+add_postprocess, m1, MASK, :all, SET, @t1
+add_postprocess, m2, MASK, :all, SET, @t2
+add_postprocess, m3, MASK, :all, SET, @t3
+
+add_field_variable, v2, GET, :m1, *velocity-x, ON
+add_field_variable, v3, GET, :m2, *velocity-x, ON
+add_field_variable, v4, GET, :m3, *velocity-x, ON
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, $v2, $v3, $v4, 999.9, 999.9, 999.9
+

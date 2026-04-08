@@ -1,0 +1,18 @@
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0,
+Geom_vof, 0, LIQUID, SET, CONST, 1.0, 1.0,
+Geom_vof, 0, GAS, SET, CONST, 1.0, 1.0,
+Geom_vof, 1, SOLID, SET, CONST, 1.0, 1.0,
+Geom_vof, 1, LIQUID, SET, CONST, 1.0, 1.0,
+Geom_vof, 1, GAS, SET, CONST, 1.0, 1.0,
+Geom_vof, 2, SOLID, SET, CONST, 1.0, 1.0,
+Geom_vof, 2, LIQUID, SET, CONST, 1.0, 1.0,
+Geom_vof, 2, GAS, SET, CONST, 1.0, 1.0,
+Geom_vof, 3, SOLID, SET, CONST, 1.0, 1.0,
+Geom_vof, 3, LIQUID, SET, CONST, 1.0, 1.0,
+Geom_vof, 3, GAS, SET, CONST, 1.0, 1.0,
+Geom_vof, 4, SOLID, SET, CONST, 1.0, 1.0,
+Geom_vof, 4, LIQUID, SET, CONST, 1.0, 1.0,
+Geom_vof, 4, GAS, SET, CONST, 1.0, 1.0,

@@ -1,0 +1,32 @@
+-- Nickel (liquid property is unknown)
+
+tm_soli, 1728.0,
+tm_liq, 1728.0,
+tb, 3003.0,   -- boiling temperature[K]
+-- lh, 297000.0, -- latent heat[J/kg]
+lh, 2970.0, -- latent heat[J/kg]
+molar_mass, 58.6934
+porosity, 1.0e-10,
+permeability, 1.0e-19,
+beta, CONST, 13.4,
+sigma, CONST, 0.86,  -- coefficient of surface tension
+-- density[kg m-3]
+rho_s, CONST, 8900.0,
+rho_l, CONST, 8900.0,
+-- viscosity[Pa s]
+mu_s, CONST, 5.44e-3,
+mu_l, CONST, 6.0e-3,
+-- specific heat at constant volume[J kg-1 K-1]
+specht_s, CONST, 460.6,
+specht_l, CONST, 460.6,
+-- thermal conductivity[W m-1 K-1]
+thc_s, CONST, 91.74,
+thc_l, CONST, 91.74,
+-- emissivity
+emi_s, CONST, 1.0,
+emi_l, CONST, 1.0,
+emi_g, CONST, 1.0,
+-- solute diffusion coefficient
+diff, CONST, 1.0e-2
+
+solid_form, IBM

@@ -1,0 +1,12 @@
+-- Physical Property for Air.
+
+rho_g,    CONST,    1.2
+mu_g,     CONST, 4.0e-5
+specht_g, CONST, 1000.0
+thc_g,    CONST,  0.026
+diff,     CONST,  0.0
+molar_mass, 28.96
+lhv, 99693.0, --- value for nitrogen
+condensation_E, CONST, 281926.8
+saturated_pressure, CONST, 100.0
+sigma,    CONST,   0.07, -- water

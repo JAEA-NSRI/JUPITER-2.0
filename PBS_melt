@@ -1,0 +1,29 @@
+#!/bin/sh
+#PBS -N Sample
+#PBS -P JUPITER
+#PBS -l select=72:ncpus=48:mpiprocs=4:ompthreads=12:ngpus=4
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -q lg72
+
+cd ${PBS_O_WORKDIR}
+. /etc/profile.d/modules.sh
+module purge
+module load intel/2021.4.0
+module load mpt/2.23-ga
+module load cuda/11.4
+
+#export OMP_NUM_THREADS=12
+export KMP_AFFINITY=disabled
+#export KMP_STACKSIZE=2g
+#export MPI_IB_RAILS=2
+#export MPI_BUFFER_MAX=2000
+export MPI_USE_CUDA=enabled
+
+mpiexec omplace -nt $OMP_NUM_THREADS -vv \
+        run -input param.txt \
+            -flags flags.txt \
+            -geom geom.txt \
+            -plist plist.txt \
+            -control control.txt \
+            > STDOUT_0 2>&1

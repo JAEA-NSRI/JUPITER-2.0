@@ -1,0 +1,13 @@
+add_mask, t1, GEOMETRY, #test, 1.0, LESS
+add_postprocess, e1, MASK, :all, SET, @t1
+add_postprocess, e2, SUM, :e1
+add_field_variable, v1, GET, :e2, *velocity-z
+
+NumberOfGeom, 2
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 1.0
+Geom_name, test
+
+Geom_file, -
+Geom_shape, SET, BOX, $v1, 0.0, 0.0, 999.9, 1.0, 1.0

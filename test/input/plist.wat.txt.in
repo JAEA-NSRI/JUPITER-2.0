@@ -1,0 +1,4 @@
+Material_file, -1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.wat.txt
+Material_file,  0, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.wat.txt
+Material_file,  1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.SUS.txt
+Material_file,  2, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.B4C.txt

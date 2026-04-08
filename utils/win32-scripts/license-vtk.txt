@@ -1,0 +1,485 @@
+* VTK (Visualization Toolkit)
+
+  These files are licensed under 3-clause BSD license.
+
+  * libvtkCommonComputationalGeometry-8.1.dll
+  * libvtkCommonCore-8.1.dll
+  * libvtkCommonDataModel-8.1.dll
+  * libvtkCommonExecutionModel-8.1.dll
+  * libvtkCommonMath-8.1.dll
+  * libvtkCommonMisc-8.1.dll
+  * libvtkCommonSystem-8.1.dll
+  * libvtkCommonTransforms-8.1.dll
+  * libvtkFiltersCore-8.1.dll
+  * libvtkFiltersExtraction-8.1.dll
+  * libvtkFiltersGeneral-8.1.dll
+  * libvtkFiltersStatistics-8.1.dll
+  * libvtkIOCore-8.1.dll
+  * libvtkIOLegacy-8.1.dll
+  * libvtkIOParallelXML-8.1.dll
+  * libvtkIOParallelXdmf3-8.1.dll
+  * libvtkIOXML-8.1.dll
+  * libvtkIOXMLParser-8.1.dll
+  * libvtkIOXdmf3-8.1.dll
+  * libvtkImagingCore-8.1.dll
+  * libvtkImagingFourier-8.1.dll
+  * libvtkParallelCore-8.1.dll
+  * libvtkParallelMPI-8.1.dll
+  * libvtkxdmf3.dll
+  * libvtksys-8.1.dll
+
+* XDMF
+
+  These files are licensed under 3-clause BSD license.
+
+  * libXdmfCore.dll
+
+* ALGLIB
+
+  These files are licensed under 3-clause BSD license.
+
+  * libvtkalglib-8.1.dll
+
+* Expat
+
+  These files are licensed under expat license.
+  
+  * libvtkexpat-8.1.dll
+
+* LibXML2
+
+  These files are licensed under libxml2 license.
+
+  * libvtklibxml2-8.1.dll
+
+* LZ4
+
+  These files are licensed under 2-clause BSD license.
+
+  * libvtklz4-8.1.dll
+
+* Zlib
+
+  These files are licensed under Zlib license.
+
+  * libvtkzlib-8.1.dll
+
+* HDF5 
+
+  These files are licensed under HDF5 license.
+
+  * vtkhdf5-8.1.dll
+
+---8<-------------------------------------------------------------------------
+### VTK
+
+```
+/*=========================================================================
+
+  Program:   Visualization Toolkit
+  Module:    Copyright.txt
+
+Copyright (c) 1993-2015 Ken Martin, Will Schroeder, Bill Lorensen
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+ * Neither name of Ken Martin, Will Schroeder, or Bill Lorensen nor the names
+   of any contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS''
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+=========================================================================*/
+```
+
+### XDMF
+
+```
+Copyright (c) 2011 U.S. Army Research Laboratory 
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+ * Neither the name of the U.S. Army Research Laboratory nor the names
+   of any contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+ * Modified source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS''
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+### ALGLIB
+
+```
+/*************************************************************************
+Copyright (c) 2005-2007, Sergey Bochkanov (ALGLIB project).
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+- Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+
+- Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer listed
+  in this license in the documentation and/or other materials
+  provided with the distribution.
+
+- Neither the name of the copyright holders nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*************************************************************************/
+```
+
+### Expat
+
+```
+Copyright (c) 1998-2000 Thai Open Source Software Center Ltd and Clark Cooper
+Copyright (c) 2001-2017 Expat maintainers
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### LibXML2
+
+```
+Except where otherwise noted in the source code (e.g. the files hash.c,
+list.c and the trio files, which are covered by a similar licence but
+with different Copyright notices) all the files are:
+
+ Copyright (C) 1998-2003 Daniel Veillard.  All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+DANIEL VEILLARD BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CON-
+NECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Except as contained in this notice, the name of Daniel Veillard shall not
+be used in advertising or otherwise to promote the sale, use or other deal-
+ings in this Software without prior written authorization from him.
+
+```
+
+### LZ4
+
+```
+LZ4 Library
+Copyright (c) 2011-2014, Yann Collet
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+### Zlib
+
+```
+ZLIB DATA COMPRESSION LIBRARY
+
+zlib 1.2.8 is a general purpose data compression library.  All the code is
+thread safe.  The data format used by the zlib library is described by RFCs
+(Request for Comments) 1950 to 1952 in the files
+http://tools.ietf.org/html/rfc1950 (zlib format), rfc1951 (deflate format) and
+rfc1952 (gzip format).
+
+All functions of the compression library are documented in the file zlib.h
+(volunteer to write man pages welcome, contact zlib@gzip.org).  A usage example
+of the library is given in the file test/example.c which also tests that
+the library is working correctly.  Another example is given in the file
+test/minigzip.c.  The compression library itself is composed of all source
+files in the root directory.
+
+To compile all files and run the test program, follow the instructions given at
+the top of Makefile.in.  In short "./configure; make test", and if that goes
+well, "make install" should work for most flavors of Unix.  For Windows, use
+one of the special makefiles in win32/ or contrib/vstudio/ .  For VMS, use
+make_vms.com.
+
+Questions about zlib should be sent to <zlib@gzip.org>, or to Gilles Vollant
+<info@winimage.com> for the Windows DLL version.  The zlib home page is
+http://zlib.net/ .  Before reporting a problem, please check this site to
+verify that you have the latest version of zlib; otherwise get the latest
+version and check whether the problem still exists or not.
+
+PLEASE read the zlib FAQ http://zlib.net/zlib_faq.html before asking for help.
+
+Mark Nelson <markn@ieee.org> wrote an article about zlib for the Jan.  1997
+issue of Dr.  Dobb's Journal; a copy of the article is available at
+http://marknelson.us/1997/01/01/zlib-engine/ .
+
+The changes made in version 1.2.8 are documented in the file ChangeLog.
+
+Unsupported third party contributions are provided in directory contrib/ .
+
+zlib is available in Java using the java.util.zip package, documented at
+http://java.sun.com/developer/technicalArticles/Programming/compression/ .
+
+A Perl interface to zlib written by Paul Marquess <pmqs@cpan.org> is available
+at CPAN (Comprehensive Perl Archive Network) sites, including
+http://search.cpan.org/~pmqs/IO-Compress-Zlib/ .
+
+A Python interface to zlib written by A.M. Kuchling <amk@amk.ca> is
+available in Python 1.5 and later versions, see
+http://docs.python.org/library/zlib.html .
+
+zlib is built into tcl: http://wiki.tcl.tk/4610 .
+
+An experimental package to read and write files in .zip format, written on top
+of zlib by Gilles Vollant <info@winimage.com>, is available in the
+contrib/minizip directory of zlib.
+
+
+Notes for some targets:
+
+- For Windows DLL versions, please see win32/DLL_FAQ.txt
+
+- For 64-bit Irix, deflate.c must be compiled without any optimization. With
+  -O, one libpng test fails. The test works in 32 bit mode (with the -n32
+  compiler flag). The compiler bug has been reported to SGI.
+
+- zlib doesn't work with gcc 2.6.3 on a DEC 3000/300LX under OSF/1 2.1 it works
+  when compiled with cc.
+
+- On Digital Unix 4.0D (formely OSF/1) on AlphaServer, the cc option -std1 is
+  necessary to get gzprintf working correctly. This is done by configure.
+
+- zlib doesn't work on HP-UX 9.05 with some versions of /bin/cc. It works with
+  other compilers. Use "make test" to check your compiler.
+
+- gzdopen is not supported on RISCOS or BEOS.
+
+- For PalmOs, see http://palmzlib.sourceforge.net/
+
+
+Acknowledgments:
+
+  The deflate format used by zlib was defined by Phil Katz.  The deflate and
+  zlib specifications were written by L.  Peter Deutsch.  Thanks to all the
+  people who reported problems and suggested various improvements in zlib; they
+  are too numerous to cite here.
+
+Copyright notice:
+
+ (C) 1995-2013 Jean-loup Gailly and Mark Adler
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  Jean-loup Gailly        Mark Adler
+  jloup@gzip.org          madler@alumni.caltech.edu
+
+If you use the zlib library in a product, we would appreciate *not* receiving
+lengthy legal documents to sign.  The sources are provided for free but without
+warranty of any kind.  The library has been entirely written by Jean-loup
+Gailly and Mark Adler; it does not include third-party code.
+
+If you redistribute modified sources, we would appreciate that you include in
+the file ChangeLog history information documenting your changes.  Please read
+the FAQ for more information on the distribution of modified source versions.
+```
+
+### HDF5
+
+```
+Copyright Notice and License Terms for 
+HDF5 (Hierarchical Data Format 5) Software Library and Utilities
+-----------------------------------------------------------------------------
+
+HDF5 (Hierarchical Data Format 5) Software Library and Utilities
+Copyright 2006-2014 by The HDF Group.
+
+NCSA HDF5 (Hierarchical Data Format 5) Software Library and Utilities
+Copyright 1998-2006 by the Board of Trustees of the University of Illinois.
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted for any purpose (including commercial purposes) 
+provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, 
+   this list of conditions, and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, 
+   this list of conditions, and the following disclaimer in the documentation 
+   and/or materials provided with the distribution.
+
+3. In addition, redistributions of modified forms of the source or binary 
+   code must carry prominent notices stating that the original code was 
+   changed and the date of the change.
+
+4. All publications or advertising materials mentioning features or use of 
+   this software are asked, but not required, to acknowledge that it was 
+   developed by The HDF Group and by the National Center for Supercomputing 
+   Applications at the University of Illinois at Urbana-Champaign and 
+   credit the contributors.
+
+5. Neither the name of The HDF Group, the name of the University, nor the 
+   name of any Contributor may be used to endorse or promote products derived 
+   from this software without specific prior written permission from 
+   The HDF Group, the University, or the Contributor, respectively.
+
+DISCLAIMER: 
+THIS SOFTWARE IS PROVIDED BY THE HDF GROUP AND THE CONTRIBUTORS 
+"AS IS" WITH NO WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED.  In no 
+event shall The HDF Group or the Contributors be liable for any damages 
+suffered by the users arising out of the use of this software, even if 
+advised of the possibility of such damage. 
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+Contributors:   National Center for Supercomputing Applications (NCSA) at 
+the University of Illinois, Fortner Software, Unidata Program Center (netCDF), 
+The Independent JPEG Group (JPEG), Jean-loup Gailly and Mark Adler (gzip), 
+and Digital Equipment Corporation (DEC).
+
+-----------------------------------------------------------------------------
+
+Portions of HDF5 were developed with support from the Lawrence Berkeley 
+National Laboratory (LBNL) and the United States Department of Energy 
+under Prime Contract No. DE-AC02-05CH11231.
+
+-----------------------------------------------------------------------------
+
+Portions of HDF5 were developed with support from the University of 
+California, Lawrence Livermore National Laboratory (UC LLNL).  
+The following statement applies to those portions of the product and must 
+be retained in any redistribution of source code, binaries, documentation, 
+and/or accompanying materials:
+
+   This work was partially produced at the University of California, 
+   Lawrence Livermore National Laboratory (UC LLNL) under contract 
+   no. W-7405-ENG-48 (Contract 48) between the U.S. Department of Energy 
+   (DOE) and The Regents of the University of California (University) 
+   for the operation of UC LLNL.
+
+   DISCLAIMER: 
+   This work was prepared as an account of work sponsored by an agency of 
+   the United States Government. Neither the United States Government nor 
+   the University of California nor any of their employees, makes any 
+   warranty, express or implied, or assumes any liability or responsibility 
+   for the accuracy, completeness, or usefulness of any information, 
+   apparatus, product, or process disclosed, or represents that its use 
+   would not infringe privately- owned rights. Reference herein to any 
+   specific commercial products, process, or service by trade name, 
+   trademark, manufacturer, or otherwise, does not necessarily constitute 
+   or imply its endorsement, recommendation, or favoring by the United 
+   States Government or the University of California. The views and 
+   opinions of authors expressed herein do not necessarily state or reflect 
+   those of the United States Government or the University of California, 
+   and shall not be used for advertising or product endorsement purposes.
+-----------------------------------------------------------------------------
+```
+
+

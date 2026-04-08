@@ -1,0 +1,197 @@
+#include "enumutil.h"
+#include "defs.h"
+
+#define ENUM_TEXT_CASE_X(value, str) \
+  case value:                        \
+    return str
+
+#define ENUM_TEXT_CASE(prefix, f) ENUM_TEXT_CASE_X(prefix##f, #f)
+
+const char *geom_variant_type_to_str(geom_variant_type value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE_X(GEOM_VARTYPE_NULL, "NULL");
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, CHAR);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, UCHAR);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, INT);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, LONG_INT);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, SIZE);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, DOUBLE);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, STRING);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, STRING_SHORT);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, INFO_MAP);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, VECTOR2);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, VECTOR3);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, VECTOR4);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, SIZE_VECTOR3);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, MATRIX22);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, MATRIX33);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, MATRIX43);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, QUATERNION);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, PHASE);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, DATA_OPERATOR);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, SHAPE_OPERATOR);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, SHAPE);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, INIT_FUNC);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, ERROR);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, SURFACE_SHAPE);
+    ENUM_TEXT_CASE(GEOM_VARTYPE_, LIST_HEAD);
+
+  case GEOM_VARTYPE_EXTTYPE_MIN:
+  case GEOM_VARTYPE_EXTTYPE_MAX:
+  case GEOM_VARTYPE_ENUMTYPE_MIN:
+  case GEOM_VARTYPE_ENUMTYPE_MAX:
+  case GEOM_VARTYPE_STORABLE_MAX:
+  case GEOM_VARTYPE_INT_OR_SVEC3:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_vof_phase_to_str(geom_vof_phase value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_PHASE_, SOLID);
+    ENUM_TEXT_CASE(GEOM_PHASE_, LIQUID);
+    ENUM_TEXT_CASE(GEOM_PHASE_, GAS);
+
+  case GEOM_PHASE_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_data_operator_to_str(geom_data_operator value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_OP_, NONE);
+    ENUM_TEXT_CASE(GEOM_OP_, SET);
+    ENUM_TEXT_CASE(GEOM_OP_, ADD);
+    ENUM_TEXT_CASE(GEOM_OP_, SUB);
+    ENUM_TEXT_CASE(GEOM_OP_, MUL);
+
+  case GEOM_OP_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_shape_operator_to_str(geom_shape_operator value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_SOP_, SET);
+    ENUM_TEXT_CASE(GEOM_SOP_, PUSH);
+    ENUM_TEXT_CASE(GEOM_SOP_, OR);
+    ENUM_TEXT_CASE(GEOM_SOP_, ADD);
+    ENUM_TEXT_CASE(GEOM_SOP_, AND);
+    ENUM_TEXT_CASE(GEOM_SOP_, MUL);
+    ENUM_TEXT_CASE(GEOM_SOP_, SUB);
+    ENUM_TEXT_CASE(GEOM_SOP_, XOR);
+
+  case GEOM_SOP_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_shape_to_str(geom_shape value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_SHAPE_, COMB);
+
+    ENUM_TEXT_CASE(GEOM_SHAPE_, BOX);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PLA);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, APP);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, WED);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, ARB);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, RPR);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, TRP);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, SPH);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, RCC);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, ELL);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, REC);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, TRC);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, TEC);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, TOR);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, ETO);
+
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PL1);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PL2);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PL3);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PL4);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, PLN);
+
+    ENUM_TEXT_CASE(GEOM_SHAPE_, GST);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, GED);
+
+    ENUM_TEXT_CASE(GEOM_SHAPE_, TRA);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, ROT);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, SCA);
+    ENUM_TEXT_CASE(GEOM_SHAPE_, MAT);
+
+  case GEOM_SHAPE_USER:
+  case GEOM_SHAPE_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_shape_type_to_str(geom_shape_type value)
+{
+  switch(value) {
+    ENUM_TEXT_CASE(GEOM_SHPT_, BODY);
+    ENUM_TEXT_CASE(GEOM_SHPT_, TRANS);
+    ENUM_TEXT_CASE(GEOM_SHPT_, SPECIAL);
+
+  case GEOM_SHPT_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_surface_shape_to_str(geom_surface_shape value)
+{
+  switch(value) {
+    ENUM_TEXT_CASE(GEOM_SURFACE_SHAPE_, COMB);
+    ENUM_TEXT_CASE(GEOM_SURFACE_SHAPE_, PARALLELOGRAM);
+
+  case GEOM_SURFACE_SHAPE_INVALID:
+  case GEOM_SURFACE_SHAPE_USER:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_2d_path_element_type_to_str(geom_2d_path_element_type value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, MOVE);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, LINE);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, CIRC);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, RELMOVE);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, RELLINE);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, RELCIRC);
+    ENUM_TEXT_CASE(GEOM_2D_PATH_, END);
+
+  case GEOM_2D_PATH_INVALID:
+    break;
+  }
+  return NULL;
+}
+
+const char *geom_init_func_to_str(geom_init_func value)
+{
+  switch (value) {
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, NONE);
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, CONST);
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, LINEAR);
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, POLY);
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, POLY_N);
+    ENUM_TEXT_CASE(GEOM_INIT_FUNC_, EXP_POLY);
+
+  case GEOM_INIT_FUNC_INVALID:
+  case GEOM_INIT_FUNC_USER:
+    break;
+  }
+  return NULL;
+}

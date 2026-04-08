@@ -1,0 +1,10 @@
+NumberOfGeom, 2
+
+Geom_file, -
+Geom_vof, -1, GAS, SET, CONST, 1.0, 1.0
+Geom_velocity_u,   SET, CONST, 1.0, 1e-5
+Geom_velocity_v,   SET, CONST, 1.0, 1e-5
+Geom_velocity_w,   SET, CONST, 1.0, 1e-5
+Geom_temperature,  SET, EXP_POLY, 1.0, 100.0, 0.05, 0.05, 0.05, 2, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0
+Geom_temperature,  ADD, CONST, 1.0, 500.0
+

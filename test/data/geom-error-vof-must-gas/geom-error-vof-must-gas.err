@@ -1,0 +1,152 @@
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: multi_layer_no_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: multi_layer_less_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: film_drainage: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: porous: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: two_energy: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: oxide_kp_model: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: h2_absorp_eval: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: h2_absorp_eval_p_change: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: print_update_level_set_reason: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: force_update_level_set_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: force_update_level_set_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_vof: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_velocity_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_velocity_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_velocity_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_temperature: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_fixed_heat_source: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_fluid_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_thermal_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_surface_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: Reinit_lpt_pewall_n: Key not found, using default
+[    0][ WARN]: line 57 of <PSD>/test/input/flags/solute-diff-cavity.txt: validate_VOF_init: Data not found at columns right of "OFF", using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_double: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: restart_output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: restart_input_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: restart_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: restart_filename_templates: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_fs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_fl: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_Y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_Vf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_t: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_bnd_norm_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_bnd_norm_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_bnd_norm_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_uvw: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_q: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_qgeom: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_ll: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_uplsflg: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_fs_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_ls_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_Yt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_flux: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_div_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_mass_source_g: Key not found, using default
+[    0][ WARN]: line 50 of <PSD>/test/input/flags/solute-diff-cavity.txt: output_mat: Data not found at columns right of "ON", using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_dens: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_denss: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_thc: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_thcs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_specht: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_spechtf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_mu: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_t_liq: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_t_soli: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_diff_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/solute-diff-cavity.txt: output_latent: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: variable_delta_x: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: variable_delta_y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: variable_delta_z: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: NumberOfLayer: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: c_delta: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: lambda: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: sigma_pf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: mobility: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: d_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: U_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: L_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: Forch_coef: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: P_const: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: contact_angle: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: CA_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: film_cell: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: rapture_thickness: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: height_threshold: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vin_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: p_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: dt_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: coef_lsts: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: ls_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: radiation_step_limit: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: vaporization_liquid_id: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: reference_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: picard_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: picard_out: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: newton_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: E_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: tmp_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: dtmp_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: division_latitude: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: division_longitude: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_particle_set: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: LPT_wallref_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: solver_block_size: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: solver_block_size_U: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: solver_block_size_V: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: solver_block_size_W: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: laser_power: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: irrad_radius: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: wave_langth: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: reflectivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: absorptivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: nozzle_position: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/cavity.txt: sweep_velocity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.SUS.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.SUS.txt: radf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.B4C.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.B4C.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.B4C.txt: radf: Key not found, using default
+[    0][ INFO]: <PBD>/input-tests/geom-error-vof-must-gas/input/plist/solute-cavity.txt: tm_liq_table/tm_liq_func: No Liquidus Temperature tables/functions are given
+[    0][ INFO]: <PBD>/input-tests/geom-error-vof-must-gas/input/plist/solute-cavity.txt: tm_soli_table/tm_soli_func: No Solidus Temperature tables/functions are given
+[    0][ WARN]: <PBD>/input-tests/geom-error-vof-must-gas/input/plist/solute-cavity.txt: solute_diffusivity: No solute diffusivity defined (will become all 0)!
+[    0][ WARN]: <PSD>/test/input/geom/geom_use_gas.txt: Geom_print_matrix: Key not found, using default
+[    0][ERROR]: line 10, column 14 of <PSD>/test/input/geom/geom_use_gas.txt: SOLID: Phase must be GAS for this ID
+[    0][ERROR]: line 11, column 14 of <PSD>/test/input/geom/geom_use_gas.txt: LIQUID: Phase must be GAS for this ID
+[    0][ERROR]: line 13, column 14 of <PSD>/test/input/geom/geom_use_gas.txt: SOLID: Phase must be GAS for this ID
+[    0][ERROR]: line 14, column 14 of <PSD>/test/input/geom/geom_use_gas.txt: LIQUID: Phase must be GAS for this ID
+[    0][ERROR]: line 16, column 11 of <PSD>/test/input/geom/geom_use_gas.txt: 4: Invalid material ID
+[    0][ERROR]: line 17, column 11 of <PSD>/test/input/geom/geom_use_gas.txt: 4: Invalid material ID
+[    0][ERROR]: line 18, column 11 of <PSD>/test/input/geom/geom_use_gas.txt: 4: Invalid material ID
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][FATAL]: print_param: Some parameters with !! are invalid value. Please check.
+

@@ -1,0 +1,31 @@
+
+CC = icc
+OPENMP = -qopenmp
+MPI_LIBS = -lmpi
+MPI_INCLUDES =
+
+JUPITER = ../../jupiter
+JUPITER_LIB = libjupiter.a
+
+GEOMETRY = ../../jupiter/geometry
+GEOMETRY_LIB = libjupiter-geometry.a
+
+SERIALIZER = ../../jupiter/serializer
+SERIALIZER_LIB = libjupiter-serializer.a
+
+TABLE = ../../jupiter/table
+TABLE_LIB = libjupiter-table.a
+
+JUPITER_LIB_FULL = $(JUPITER)/$(JUPITER_LIB)
+GEOMETRY_LIB_FULL = $(GEOMETRY)/$(GEOMETRY_LIB)
+SERIALIZER_LIB_FULL = $(SERIALIZER)/$(SERIALIZER_LIB)
+TABLE_LIB_FULL = $(TABLE)/$(TABLE_LIB)
+
+JUPITER_LIB_ALL = $(JUPITER_LIB_FULL) $(TABLE_LIB_FULL) $(GEOMETRY_LIB_FULL) $(SERIALIZER_LIB_FULL)
+
+CFLAGS = -std=gnu99 $(OPENMP) -O3 -xCORE-AVX2
+LFLAGS = -lm $(MPI_LIBS)
+
+INCLUDES = -I$(JUPITER) $(MPI_INCLUDES)
+DEFS = -DDOUBLE
+

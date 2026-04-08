@@ -1,0 +1,33 @@
+
+MPI_processes, 1, 1, 1
+Cell, 25, 25, 2
+Length, 0.1, 0.1, 0.008
+
+NumberOfComponent, 4
+
+stm, 3
+stp, 4
+
+tw_xm,  500.0
+tw_xp,  500.0
+tw_ym,  500.0
+tw_yp,  500.0
+tw_zm, 1000.0
+tw_zp,  500.0
+
+dt, 0.0
+CFL_num,  0.4
+DIFF_num, 0.1
+Time, 0.0, 0.1
+
+View, 10
+Output, 1
+
+nsub_step_t,  100
+nsub_step_mu, 100
+
+Gravity, 0.0, 0.0, 0.0
+
+restart_dump_time, NaN
+
+tr, 300.15

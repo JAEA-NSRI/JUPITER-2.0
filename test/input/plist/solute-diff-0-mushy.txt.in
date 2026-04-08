@@ -1,0 +1,9 @@
+
+Material_file, -1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.gas.txt
+Material_file,  0, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.SUS.mushy.txt
+Material_file,  1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.B4C.txt
+
+solute_diffusivity, 0, 1, CONST, 0.0
+solute_diffusivity, 1, 0, CONST, 0.0
+
+tm_liq_func, LIQUIDUS_FE_B, -1, 0

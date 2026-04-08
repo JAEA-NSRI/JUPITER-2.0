@@ -1,0 +1,335 @@
+
+if (POLICY CMP0054)
+  cmake_policy(SET CMP0054 NEW)
+endif()
+if (POLICY CMP0174)
+  cmake_policy(SET CMP0174 OLD)
+endif()
+
+include("@VARCONFIG@")
+include("@BINCONFIG@")
+
+include("@JUPITER_INPUT_TEST_UTIL_SCRIPT@")
+print_test_conf()
+
+# Get size information
+foreach(REST IN LISTS REST_CON)
+  # dumpmesh is expected to be run without MPI, but not guaranteed.
+  set(OUTPUT "${MSHF${REST}}")
+  if(NOT IS_ABSOLUTE "${OUTPUT}")
+    set(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/${OUTPUT}")
+  endif()
+  if(EXISTS "${INPUT${REST}}" AND EXISTS "${FLAGS${REST}}")
+    set(CMD "${DUMPMESH_EXECUTABLE}" -input "${INPUT${REST}}"
+      -flags "${FLAGS${REST}}" -- "${OUTPUT}")
+    string(REPLACE ";" " " CMDSTR "${CMD}")
+    execute_process(
+      COMMAND ${CMD}
+      OUTPUT_FILE "${OUTPUT}.out"
+      ERROR_FILE "${OUTPUT}.err"
+      RESULT_VARIABLE RETV)
+    if(NOT "${RETV}" EQUAL "${EXPMSH${REST}}")
+      message(SEND_ERROR "dumpmesh returned ${RETV} but expected ${EXPMSH${REST}}
+Executed command was:
+ ${CMDSTR}
+Result stored in:
+ - ${OUTPUT}.out
+ - ${OUTPUT}.err
+")
+    elseif(NOT "${RETV}" EQUAL 0 OR NOT EXISTS "${OUTPUT}")
+      message(WARNING "Failed to generate mesh dump file:
+ ${OUTPUT}
+Executed command was:
+ ${CMDSTR}
+Result stored in:
+ - ${OUTPUT}.out
+ - ${OUTPUT}.err
+")
+    endif()
+  endif()
+
+  # Obtain nx, ny and nz from dump mesh
+  set(PEX${REST} 1)
+  set(PEY${REST} 1)
+  set(PEZ${REST} 1)
+  set(GNX${REST} 1)
+  set(GNY${REST} 1)
+  set(GNZ${REST} 1)
+  if(EXISTS "${MSHF${REST}}")
+    file(READ "${MSHF${REST}}" MSHDATA)
+    if("${MSHDATA}" MATCHES "# +gnx +gny +gnz *
++ *([0-9]+) +([0-9]+) +([0-9]+) *
++# *pex *pey *pez
++ *([0-9]+) +([0-9]+) +([0-9]+)")
+      math(EXPR GNX${REST} "${CMAKE_MATCH_1}")
+      math(EXPR GNY${REST} "${CMAKE_MATCH_2}")
+      math(EXPR GNZ${REST} "${CMAKE_MATCH_3}")
+      math(EXPR PEX${REST} "${CMAKE_MATCH_4}")
+      math(EXPR PEY${REST} "${CMAKE_MATCH_5}")
+      math(EXPR PEZ${REST} "${CMAKE_MATCH_6}")
+    else()
+      message(FATAL_ERROR "Could not obtain mesh size info from ${MSHF${REST}}")
+    endif()
+  endif()
+  math(EXPR NX${REST} "${GNX${REST}} / ${PEX${REST}}")
+  math(EXPR NY${REST} "${GNY${REST}} / ${PEY${REST}}")
+  math(EXPR NZ${REST} "${GNZ${REST}} / ${PEZ${REST}}")
+  if(REST EQUAL 1)
+    set(M " for restart run")
+  else()
+    set(M "")
+  endif()
+  message(STATUS "Global size${M}: ${GNX${REST}} * ${GNY${REST}} * ${GNZ${REST}}")
+  message(STATUS "Local size${M}: ${NX${REST}} * ${NY${REST}} * ${NZ${REST}}")
+  message(STATUS "# of PE${M}: ${PEX${REST}} * ${PEY${REST}} * ${PEZ${REST}}")
+endforeach()
+
+# Collect files to compare
+find_compare_files(MSGNAM RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${MSGNAM0}"
+  RESTART_PATTERNS "${MSGNAM1}")
+
+find_compare_files(LPTOF RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${LPTOF0}"
+  RESTART_PATTERNS "${LPTOF1}")
+
+find_compare_files(BINARY_TIME RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${BINOUTD0}/${BTIMEF0}"
+  RESTART_PATTERNS "${BINOUTD1}/${BTIMEF1}")
+
+find_compare_files(BINARY_DATA RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${BINOUTD0}/${BCOMPF0}" "${BINOUTD0}/${BDATAF0}"
+  RESTART_PATTERNS "${BINOUTD1}/${BCOMPF1}" "${BINOUTD1}/${BDATAF1}")
+
+find_compare_files(RESTART_TIME RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${RESOUTD0}/${RTIMEF0}"
+  RESTART_PATTERNS "${RESOUTD1}/${RTIMEF1}")
+
+find_compare_files(RESTART_DATA RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${RESOUTD0}/${RCOMPF0}" "${RESOUTD0}/${RDATAF0}"
+  RESTART_PATTERNS "${RESOUTD1}/${RCOMPF1}" "${RESOUTD1}/${RDATAF1}")
+
+find_compare_files(GEOM_DUMP_BYPROCESS RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS ${GEOMDMP0B}
+  RESTART_PATTERNS ${GEOMDMP1B})
+
+find_compare_files(GEOM_DUMP_UNIFY RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS ${GEOMDMP0U}
+  RESTART_PATTERNS ${GEOMDMP1U})
+
+set(GEOM_DUMP_FILES ${GEOM_DUMP_BYPROCESS_FILES} ${GEOM_DUMP_UNIFY_FILES})
+list(REMOVE_DUPLICATES GEOM_DUMP_FILES)
+
+# LPT number of particles data
+string(REPLACE "%c" "lpt_ctrl" LPTCTRLBPAT0 "${BINOUTD0}/${BDATAF0}")
+string(REPLACE "%c" "lpt_ctrl" LPTCTRLRPAT0 "${RESOUTD0}/${RDATAF0}")
+string(REPLACE "%c" "lpt_ctrl" LPTCTRLBPAT1 "${BINOUTD1}/${BDATAF1}")
+string(REPLACE "%c" "lpt_ctrl" LPTCTRLRPAT1 "${RESOUTD1}/${RDATAF1}")
+
+find_compare_files(BINARY_LPT_CTRL RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${LPTCTRLBPAT0}"
+  RESTART_PATTERNS "${LPTCTRLBPAT1}")
+
+find_compare_files(RESTART_LPT_CTRL RESTART ${RESTART}
+  WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+  REFERENCE_DIRECTORY "${REFDIR}"
+  PATTERNS "${LPTCTRLRPAT0}"
+  RESTART_PATTERNS "${LPTCTRLRPAT1}")
+
+foreach(CATEGORY BINARY RESTART)
+  set(${CATEGORY}_LPT_CTRL_NP)
+  foreach(FILE IN LISTS ${CATEGORY}_LPT_CTRL_FILES)
+    if(EXISTS "${FILE}")
+      execute_process(COMMAND "${GETLPTNP_EXECUTABLE}" "${FILE}"
+        OUTPUT_VARIABLE NP
+        RESULT_VARIABLE RETV
+        OUTPUT_STRIP_TRAILING_WHITESPACE)
+      if(NOT "${RETV}" EQUAL 0)
+        message(SEND_ERROR "Failed to get number of particles from data:
+ ${FILE}
+
+Note: If you believe that file is not lpt_ctrl data, please adjust filename
+pattern not match as lpt_ctrl.
+")
+        set(NP "0")
+      endif()
+    else()
+      set(NP "0")
+    endif()
+    message(STATUS "# of particles in '${FILE}' -- ${NP}")
+    list(APPEND ${CATEGORY}_LPT_CTRL_NP "${NP}")
+  endforeach()
+endforeach()
+
+function(getlptnp RET CATEGORY N)
+  set(NP 0)
+  if("${CATEGORY}" STREQUAL "BINARY")
+    list(FIND BINARY_LPT_CTRL_TIMESTEP_INDICES "${N}" I)
+    if("${I}" GREATER -1)
+      list(GET BINARY_LPT_CTRL_NP "${I}" NP)
+    endif()
+  else()
+    list(LENGTH RESTART_LPT_CTRL_NP N)
+    if("${N}" GREATER 0)
+      list(GET RESTART_LPT_CTRL_NP 0 NP)
+    endif()
+  endif()
+  set("${RET}" "${NP}" PARENT_SCOPE)
+endfunction()
+
+# Start compare
+foreach(REST IN LISTS REST_CON)
+  # stdout
+  compare_datatype_file(INPUT "${OUTF${REST}}" USE_RESTART "${REST}"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    REFERENCE_DIRECTORY "${REFDIR}" NAME _STDOUT CATEGORY OTHERS EXPECTED YES)
+
+  # stderr
+  compare_datatype_file(INPUT "${ERRF${REST}}" USE_RESTART "${REST}"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    REFERENCE_DIRECTORY "${REFDIR}" NAME _STDERR CATEGORY OTHERS
+    EXPECTED_ERRORS ${EXPERR${REST}} EXPECTED YES)
+
+  # mesh dump
+  compare_datatype_file(INPUT "${MSHF${REST}}" USE_RESTART "${REST}"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    REFERENCE_DIRECTORY "${REFDIR}" NAME _MESH_DUMP CATEGORY OTHERS)
+endforeach()
+
+# Message files
+list(LENGTH MSGNAM_FILES N)
+if(N GREATER 0)
+  math(EXPR N "${N}-1")
+  foreach(I RANGE "${N}")
+    list(GET MSGNAM_FILES ${I} MSGNAM)
+    list(GET MSGNAM_USE_RESTART ${I} MSGNAM_R)
+    compare_datatype_file(INPUT "${MSGNAM}" USE_RESTART "${MSGNAM_R}"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      REFERENCE_DIRECTORY "${REFDIR}" NAME _MESSAGES CATEGORY OTHERS
+      EXPECTED YES)
+  endforeach()
+endif()
+
+# ... other expected message files
+set(REST_CON_R "${REST_CON}")
+list(REVERSE REST_CON_R)
+foreach(REST IN LISTS REST_CON_R)
+  foreach(MSGNAM IN LISTS EXPMSG${REST})
+    if(NOT MSGNAM IN_LIST MSGNAM_FILES)
+      compare_datatype_file(INPUT "${MSGNAM}" USE_RESTART "${REST}"
+        WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+        REFERENCE_DIRECTORY "${REFDIR}" NAME _MESSAGES CATEGORY OTHERS
+        EXPECTED YES)
+      list(APPEND MSGNAM_FILES "${MSGNAM}")
+    endif()
+  endforeach()
+endforeach()
+
+# LPT output data files
+list(LENGTH LPTOF_FILES N)
+if(N GREATER 0)
+  math(EXPR N "${N}-1")
+  foreach(ILPTOF RANGE N)
+    list(GET LPTOF_FILES ${ILPTOF} LPTOF)
+    list(GET LPTOF_USE_RESTART ${ILPTOF} LPTOFR)
+    set(EXP)
+    if("${LPTEX${LPTOFR}}" STREQUAL "IGNORE")
+      set(EXP EXPECTED "${LPTEX${LPTOFR}}")
+    endif()
+    compare_datatype_file(INPUT "${LPTOF}" USE_RESTART "${LPTOFR}"
+      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+      REFERENCE_DIRECTORY "${REFDIR}" NAME _LPTOUTF CATEGORY OTHERS ${EXP})
+  endforeach()
+endif()
+
+# Binary files
+foreach(CATEGORY BINARY RESTART)
+  # time files
+  list(LENGTH ${CATEGORY}_TIME_FILES N)
+  if(N GREATER 0)
+    math(EXPR N "${N}-1")
+    foreach(I RANGE ${N})
+      list(GET ${CATEGORY}_TIME_FILES ${I} FILE)
+      list(GET ${CATEGORY}_TIME_USE_RESTART ${I} UR)
+      list(GET ${CATEGORY}_TIME_COMPONENT_NAMES ${I} CN)
+      if("${FILE}" IN_LIST GEOM_DUMP_FILES)
+        continue()
+      endif()
+      if("${CN}" STREQUAL "%c-NOTFOUND" OR "${CN}" STREQUAL "time")
+        compare_datatype_file(INPUT "${FILE}" USE_RESTART "${UR}"
+          WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+          REFERENCE_DIRECTORY "${REFDIR}" NAME time CATEGORY "${CATEGORY}"
+          EXPECTED YES)
+      endif()
+    endforeach()
+  endif()
+
+  # data files
+  list(LENGTH ${CATEGORY}_DATA_FILES N)
+  if(N GREATER 0)
+    math(EXPR N "${N}-1")
+    foreach(I RANGE ${N})
+      list(GET ${CATEGORY}_DATA_FILES ${I} FILE)
+      list(GET ${CATEGORY}_DATA_USE_RESTART ${I} UR)
+      list(GET ${CATEGORY}_DATA_COMPONENT_NAMES ${I} CN)
+      list(GET ${CATEGORY}_DATA_TIMESTEP_INDICES ${I} TI)
+      if("${FILE}" IN_LIST GEOM_DUMP_FILES)
+        continue()
+      endif()
+      getlptnp(NP "${CATEGORY}" "${TI}")
+      if("${CATEGORY}" STREQUAL "BINARY")
+        set(MODE "${BINOUTM${UR}}")
+      else()
+        set(MODE "${RESOUTM${UR}}")
+      endif()
+      if("${MODE}" STREQUAL "BYPROCESS")
+        set(N "")
+      elseif("${MODE}" STREQUAL "UNIFY")
+        set(N "G")
+      endif()
+      if(NOT "${CN}" STREQUAL "%c-NOTFOUND" AND NOT "${CN}" STREQUAL "time")
+        compare_datatype_file(INPUT "${FILE}" USE_RESTART "${UR}"
+          WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+          REFERENCE_DIRECTORY "${REFDIR}" NAME "${CN}" CATEGORY "${CATEGORY}"
+          EXPECTED YES  NP "${NP}"
+          NX "${${N}NX${UR}}" NY "${${N}NY${UR}}" NZ "${${N}NZ${UR}}")
+      endif()
+    endforeach()
+  endif()
+endforeach()
+
+# Geom_dump files
+foreach(FILE IN LISTS GEOM_DUMP_FILES)
+  list(FIND GEOM_DUMP_BYPROCESS_FILES "${FILE}" I)
+  if(I GREATER -1)
+    list(GET GEOM_DUMP_BYPROCESS_USE_RESTART ${I} UR)
+    set(N "")  # BYPROCESS
+  else()
+    list(FIND GEOM_DUMP_UNIFY_FILES "${FILE}" I)
+    list(GET GEOM_DUMP_UNIFY_USE_RESTART ${I} UR)
+    set(N "G") # UNIFY
+  endif()
+  compare_datatype_file(INPUT "${FILE}" USE_RESTART "${UR}"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+    REFERENCE_DIRECTORY "${REFDIR}" NAME _GEOM_DUMP CATEGORY OTHERS
+    EXPECTED YES
+    NX "${${N}NX${UR}}" NY "${${N}NY${UR}}" NZ "${${N}NZ${UR}}")
+endforeach()

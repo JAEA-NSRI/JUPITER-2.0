@@ -1,0 +1,1156 @@
+/* This is -*- c -*- source. */
+/* This is vim: set ft=c: source. */
+
+#include "jupiter/csvutil.h"
+#include "jupiter/geometry/defs.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <stdint.h>
+#include <inttypes.h>
+#include <limits.h>
+
+#ifdef JUPITER_MPI
+#include <mpi.h>
+#endif
+
+#include <jupiter/vtkiobind/bind.h>
+
+#include <jupiter/csv.h>
+#include <jupiter/func.h>
+#include <jupiter/geometry/alloc_list.h>
+#include <jupiter/geometry/list.h>
+#include <jupiter/optparse.h>
+#include <jupiter/os/asprintf.h>
+#include <jupiter/os/os.h>
+
+struct data_array
+{
+  jupiter_bind_data_type type;
+  int number_of_component; ///< data must be AOS (Array-of-Struct).
+                           ///  (ex: "uvw" is AOS. "Y", "fs" and "fl" are SOA)
+  ptrdiff_t length;
+  ptrdiff_t offset;
+  char *name;
+  void *data;
+};
+typedef struct data_array data_array;
+
+struct cell_array
+{
+  struct geom_list list;
+  struct data_array data;
+};
+typedef struct cell_array cell_array;
+#define cell_array_entry(ptr) geom_list_entry(ptr, struct cell_array, list)
+
+struct rectilinear_grid
+{
+  geom_alloc_list *allocs;
+  double time;
+  int extent[6];
+  struct cell_array cell_array_head;
+  struct data_array xcoordinate;
+  struct data_array ycoordinate;
+  struct data_array zcoordinate;
+};
+typedef struct rectilinear_grid rectilinear_grid;
+
+struct jupiter_reader
+{
+  rectilinear_grid *grid;
+};
+typedef struct jupiter_reader jupiter_reader;
+
+struct make_vtk_options
+{
+  const char *input_dir;
+  const char *output_dir;
+  int read_geom_dump;
+  int use_raw_name;
+};
+typedef struct make_vtk_options make_vtk_options;
+
+struct funcs_data
+{
+  rectilinear_grid *grid;
+  int use_raw_name;
+};
+
+static void *allocate_array_impl(size_t len, jupiter_bind_data_type type,
+                                 void *arg);
+static int set_timef_impl(double value, void *arg);
+static int add_attributef_impl(const char *descriptive_name,
+                               const char *unit_name, const char *raw_name,
+                               int soa_icompo, void *val, size_t ntuple,
+                               int unit_size, jupiter_bind_data_type type,
+                               const char **component_names, void *arg);
+static int set_x_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg);
+static int set_y_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg);
+static int set_z_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg);
+
+static convert_fluid_funcs fluid_funcs(struct funcs_data *data)
+{
+  return (convert_fluid_funcs){
+    .allocate_array = allocate_array_impl, .set_time = set_timef_impl,
+    .add_attribute = add_attributef_impl, .set_x_coordinate = set_x_coordinate,
+    .set_y_coordinate = set_y_coordinate, .set_z_coordinate = set_z_coordinate,
+    .arg = data,
+  };
+}
+
+void cell_array_init(struct cell_array *cell);
+void data_array_init(struct data_array *data);
+
+csv_error make_vtk_optparse(make_vtk_options *opts, int *argc, char ***argv);
+int read_at(parameter *prm, jupiter_reader *reader, const char *idir, int iout,
+            int use_raw_name);
+int write_pvtk(jupiter_reader *reader, mpi_param *mpi,
+               const char *odir, int iout);
+void cleanup(jupiter_reader *reader);
+void help(const char *pname);
+
+static void *allocate_array_impl(size_t len, jupiter_bind_data_type type,
+                                 void *arg)
+{
+  switch (type) {
+  case JUPITER_BIND_TYPE_INT:
+    return malloc(sizeof(int) * len);
+  case JUPITER_BIND_TYPE_FLOAT:
+    return malloc(sizeof(float) * len);
+  case JUPITER_BIND_TYPE_DOUBLE:
+    return malloc(sizeof(double) * len);
+  case JUPITER_BIND_TYPE_CHAR:
+    return malloc(sizeof(char) * len);
+  }
+  return NULL;
+}
+
+int make_vtk_main(int *argc, char ***argv)
+{
+  int stat;
+  jupiter_options opts;
+  make_vtk_options vtk_opts;
+  csv_error err;
+  parameter *prm;
+  jupiter_reader reader;
+  int i;
+
+  stat = OFF;
+
+  memset(&reader, 0, sizeof(jupiter_reader));
+
+  jupiter_options_init(&opts, "all:-all,0:+INFO,all:+ERROR+FATAL",
+                       jupiter_print_levels_zero());
+  err = jupiter_optparse(&opts, argc, argv);
+  if (err != CSV_ERR_SUCC) {
+    help((*argv)[0]);
+    return 1;
+  }
+
+  err = make_vtk_optparse(&vtk_opts, argc, argv);
+  if (err != CSV_ERR_SUCC) {
+    help((*argv)[0]);
+    return 1;
+  }
+
+  if (!vtk_opts.output_dir) {
+    vtk_opts.output_dir = ".";
+  }
+
+  if (!opts.param_file || !opts.flags_file) {
+    if (!opts.param_file) {
+      csvperrorf("(command line)", 0, 0, CSV_EL_FATAL, NULL,
+                 "Parameter input (-input) not specified");
+    }
+    if (!opts.flags_file) {
+      csvperrorf("(command line)", 0, 0, CSV_EL_FATAL, NULL,
+                 "Flags input (-flags) not specified");
+    }
+    help((*argv)[0]);
+    return 1;
+  }
+
+  if (vtk_opts.read_geom_dump) {
+    prm = set_parameters_file(opts.param_file, opts.flags_file,
+                              opts.geom_file, opts.control_file, &stat);
+  } else {
+    prm = set_parameters_file(opts.param_file, opts.flags_file,
+                              NULL, NULL, &stat);
+  }
+  if (!prm) {
+    return 1;
+  }
+  if (for_any_rank(prm->mpi, stat != OFF)) {
+    csvperrorf(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+               "Error while reading input file(s). Please check.");
+    free_parameter(prm);
+    return 1;
+  }
+
+  for (i = 1; i < *argc; ++i) {
+    int iout;
+    const char *iouts;
+    char *ie;
+    int r;
+
+    iouts = (*argv)[i];
+    iout = strtol(iouts, &ie, 10);
+    if (*ie != '\0') {
+      csvperrorf(__FILE__, __LINE__, 0, CSV_EL_ERROR, NULL,
+                 "Invalid number '%s'", iouts);
+      continue;
+    }
+
+    r = read_at(prm, &reader, vtk_opts.input_dir, iout, vtk_opts.use_raw_name);
+    if (r) continue;
+
+    r = write_pvtk(&reader, prm->mpi, vtk_opts.output_dir, iout);
+    if (r) continue;
+  }
+
+  free_parameter(prm);
+  cleanup(&reader);
+
+  return 0;
+}
+
+int main(int argc, char **argv)
+{
+  int ret;
+
+#ifdef JUPITER_MPI
+  MPI_Init(&argc, &argv);
+#endif
+
+  ret = make_vtk_main(&argc, &argv);
+
+#ifdef JUPITER_MPI
+  MPI_Finalize();
+#endif
+
+  return ret;
+}
+
+csv_error make_vtk_optparse(make_vtk_options *opts, int *argc, char ***argv)
+{
+  int oargc;
+  int nargc;
+  char **nargv;
+  char *cur;
+  char *mrk;
+  char *ctxmrk;
+  char *tok;
+  const char **target;
+  int iargc;
+
+  /*!re2c
+    re2c:define:YYCTYPE = "unsigned char";
+    re2c:define:YYCURSOR = "cur";
+    re2c:define:YYMARKER = "mrk";
+    re2c:define:YYCTXMARKER = "ctxmrk";
+    re2c:indent:string = "  ";
+    re2c:yyfill:enable = 0;
+  */
+
+  CSVASSERT(argc);
+  CSVASSERT(argv);
+  CSVASSERT(*argv);
+
+  memset(opts, 0, sizeof(make_vtk_options));
+  opts->input_dir = NULL;
+  opts->output_dir = NULL;
+  opts->read_geom_dump = 0;
+  opts->use_raw_name = 0;
+
+  oargc = *argc;
+  nargv = (char **)malloc(sizeof(char *) * oargc);
+  if (!nargv) {
+    csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+              CSV_ERR_NOMEM, 0, 0, NULL);
+    return CSV_ERR_NOMEM;
+  }
+
+  nargc = 1;
+  for (iargc = 1; iargc < oargc; ++iargc) {
+    tok = (*argv)[iargc];
+    cur = tok;
+    /*!re2c
+      re2c:indent:top = 2;
+
+      *    { goto non_argument;  }
+      "--" { goto double_hyphen; }
+      "-"  { goto hyphen; }
+    */
+    CSVUNREACHABLE();
+
+  non_argument:
+    nargv[nargc++] = tok;
+    continue;
+
+  double_hyphen:
+    for (;;) {
+      /*!re2c
+        re2c:indent:top = 3;
+
+        * { goto invalid; }
+        "\x00" { break; }
+        "input-directory"   { target = &opts->input_dir; goto long_str; }
+        "output-directory"  { target = &opts->output_dir; goto long_str; }
+        "read-geom-dump"    { opts->read_geom_dump = 1; goto long_bool; }
+        "no-read-geom-dump" { opts->read_geom_dump = 0; goto long_bool; }
+        "use-data-name"     { opts->use_raw_name = 1; goto long_bool; }
+        "no-use-data-name"  { opts->use_raw_name = 0; goto long_bool; }
+        "help"/"\x00"       { goto help; }
+      */
+      CSVUNREACHABLE();
+    }
+    break;
+
+  long_bool:
+    continue;
+
+  long_str:
+    if (*cur == '=') {
+      *target = cur + 1;
+    } else if (*cur == '\0') {
+      iargc++;
+      if (iargc >= oargc) goto noparam;
+      *target = (*argv)[iargc];
+    } else {
+      goto invalid;
+    }
+    continue;
+
+  hyphen:
+    for (;;) {
+      /*!re2c
+        re2c:indent:top = 3;
+
+        *   { goto invalid; }
+        "\x00" { break; }
+        "i" { target = &opts->input_dir; goto short_str; }
+        "o" { target = &opts->output_dir; goto short_str; }
+        "h" { goto help; }
+      */
+      CSVUNREACHABLE();
+    }
+
+  short_str:
+    if (target) {
+      if (*cur == '\0') {
+        iargc++;
+        if (iargc >= oargc) goto noparam;
+        *target = (*argv)[iargc];
+      } else {
+        *target = cur;
+      }
+    }
+    continue;
+  }
+
+  for (iargc = 1; iargc < nargc; iargc++) {
+    (*argv)[iargc] = nargv[iargc];
+  }
+  *argc = nargc;
+
+  free(nargv);
+  return CSV_ERR_SUCC;
+
+invalid:
+  csvperrorf(tok, 0, 0, CSV_EL_ERROR, NULL, "Invalid argument");
+  goto error;
+
+noparam:
+  csvperrorf(tok, 0, 0, CSV_EL_ERROR, NULL, "Parameter required");
+  goto error;
+
+help:
+error:
+  free(nargv);
+  return CSV_ERR_CMDLINE_INVAL;
+}
+
+int read_at(parameter *prm, jupiter_reader *reader,
+            const char *idir, int iout, int use_raw_name)
+{
+  int r;
+  mpi_param *mpi;
+  domain *cdo;
+  rectilinear_grid *grid;
+
+  CSVASSERT(reader);
+  CSVASSERT(prm);
+  CSVASSERT(prm->mpi);
+  CSVASSERT(prm->cdo);
+
+  mpi = prm->mpi;
+  cdo = prm->cdo;
+
+  if (!reader->grid) {
+    reader->grid = (rectilinear_grid *)calloc(sizeof(rectilinear_grid), 1);
+    if (!reader->grid) {
+      csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+                CSV_ERR_NOMEM, 0, 0, NULL);
+      return 1;
+    }
+    cell_array_init(&reader->grid->cell_array_head);
+  }
+  grid = reader->grid;
+
+  {
+    struct geom_list *lp;
+    struct geom_list *ln;
+    struct geom_list *lh;
+
+    lh = &grid->cell_array_head.list;
+
+    geom_list_foreach_safe(lp, ln, lh) {
+      geom_list_delete(lp);
+    }
+  }
+
+  if (grid->allocs) {
+    geom_alloc_free_all(grid->allocs);
+  }
+
+  grid->allocs = geom_alloc_list_new();
+  if (!grid->allocs) {
+    csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL, CSV_ERR_NOMEM,
+              0, 0, NULL);
+    return 1;
+  }
+
+  cell_array_init(&grid->cell_array_head);
+  data_array_init(&grid->xcoordinate);
+  data_array_init(&grid->ycoordinate);
+  data_array_init(&grid->zcoordinate);
+
+  grid->time = HUGE_VAL;
+
+  {
+    int ldim[4];
+    int lsub[4];
+    int lstt[4];
+    int gdim[4];
+    int gsub[4];
+    int gstt[4];
+
+    r = calculate_dim(mpi, 0, 0, 0, 0, 0, 0, cdo->nx, cdo->ny, cdo->nz,
+                      1, ldim, lsub, lstt, gdim, gsub, gstt, NULL, NULL, NULL);
+    if (r) return 1;
+
+    grid->extent[0] = gstt[1];
+    grid->extent[1] = gstt[1] + gsub[1];
+    grid->extent[2] = gstt[2];
+    grid->extent[3] = gstt[2] + gsub[2];
+    grid->extent[4] = gstt[3];
+    grid->extent[5] = gstt[3] + gsub[3];
+  }
+
+  if (!idir) {
+    idir = get_input_directory(prm, iout < 0);
+  }
+
+  {
+    convert_fluid_funcs funcs;
+    struct funcs_data data = {
+      .grid = grid,
+      .use_raw_name = use_raw_name,
+    };
+    funcs = fluid_funcs(&data);
+    r = convert_fluid(prm, iout, idir, &funcs);
+  }
+  return r;
+}
+
+const char *data_type_name(jupiter_bind_data_type type);
+const char *escape_xml(char *buf, size_t bufsize, const char *cur);
+void write_data_array_tag(FILE *stream, const char *tagname,
+                          struct data_array *data, int indent);
+void write_piece_tag(FILE *stream, const char *tagname,
+                     int extent[6], int iout, int rank, int indent);
+void calculate_appended_offsets(rectilinear_grid *grid, int header_size);
+int write_appended_data(FILE *stream, struct data_array *data,
+                        ptrdiff_t exs, int header_size);
+int is_little_endian(void);
+
+int write_pvtk(jupiter_reader *reader, mpi_param *mpi,
+               const char *odir, int iout)
+{
+  int rank;
+  int nprc;
+  FILE *fp;
+  int eno;
+  const char *order;
+  rectilinear_grid *grid;
+  int extent[6];
+  int hsz;
+  ptrdiff_t sz;
+  int ir;
+  struct geom_list *lp;
+  struct geom_list *lh;
+
+#ifdef JUPITER_MPI
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &nprc);
+#else
+  rank = 0;
+  nprc = 1;
+#endif
+
+  if (is_little_endian()) {
+    order = "LittleEndian";
+  } else {
+    order = "BigEndian";
+  }
+
+  grid = reader->grid;
+
+  extent[0] = grid->extent[0];
+  extent[1] = grid->extent[2];
+  extent[2] = grid->extent[4];
+  extent[3] = grid->extent[1];
+  extent[4] = grid->extent[3];
+  extent[5] = grid->extent[5];
+#ifdef JUPITER_MPI
+  MPI_Allreduce(MPI_IN_PLACE, &extent[0], 3, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
+  MPI_Allreduce(MPI_IN_PLACE, &extent[3], 3, MPI_INT, MPI_MAX, MPI_COMM_WORLD);
+#endif
+
+  hsz = 32;
+  sz  = extent[3] - extent[0];
+  sz *= extent[4] - extent[1];
+  sz *= extent[5] - extent[2];
+#ifdef UINT32_MAX
+  if (sz > UINT32_MAX) {
+    hsz = 64;
+  }
+#else
+#error systems which does not support uint32_t are not supported (for debug purpose).
+#endif
+
+  if (rank == 0) {
+    char *pvtr_name;
+    int r;
+    if (iout >= 0) {
+      r = jupiter_asprintf(&pvtr_name, "%s/time_%d.pvtr", odir, iout);
+    } else {
+      r = jupiter_asprintf(&pvtr_name, "%s/restart_data.pvtr", odir);
+    }
+    if (for_any_rank(mpi, r < 0)) { // (1)
+      return 1;
+    }
+
+    csvperrorf(__FILE__, __LINE__, 0, CSV_EL_INFO, NULL,
+               "Writing %s...", pvtr_name);
+
+    errno = 0;
+    fp = fopen(pvtr_name, "wb");
+    eno = errno;
+    if (for_any_rank(mpi, !fp)) { // (2)
+      if (eno == 0) {
+        csvperror(pvtr_name, 0, 0, CSV_EL_ERROR, NULL, CSV_ERR_FOPEN,
+                  0, 0, NULL);
+      } else {
+        csvperror(pvtr_name, 0, 0, CSV_EL_ERROR, NULL, CSV_ERR_SYS,
+                  eno, 0, NULL);
+      }
+      free(pvtr_name);
+      return 1;
+    }
+
+    fprintf(fp,
+            "<VTKFile type=\"PRectilinearGrid\" version=\"1.0\""
+            " byte_order=\"%s\" header_type=\"UInt%d\">\n"
+            "  <PRectilinearGrid WholeExtent=\"%d %d %d %d %d %d\""
+            "   GhostLevel=\"0\">\n"
+            "    <PCellData>\n",
+            order, hsz,
+            extent[0], extent[3], extent[1], extent[4], extent[2], extent[5]);
+
+    lh = &grid->cell_array_head.list;
+    geom_list_foreach(lp, lh) {
+      struct cell_array *cp;
+
+      cp = cell_array_entry(lp);
+      write_data_array_tag(fp, "PDataArray", &cp->data, 6);
+    }
+    fprintf(fp, "    </PCellData>\n");
+
+    if (isfinite(grid->time)) {
+      fprintf(fp,
+              "    <FieldData>\n"
+              "      <DataArray type=\"Float64\" Name=\"TimeValue\""
+              "       NumberOfTuples=\"1\">%.6f</DataArray>\n"
+              "    </FieldData>\n",
+              grid->time);
+    }
+
+    fprintf(fp, "    <PCoordinates>\n");
+    write_data_array_tag(fp, "PDataArray", &grid->xcoordinate, 6);
+    write_data_array_tag(fp, "PDataArray", &grid->ycoordinate, 6);
+    write_data_array_tag(fp, "PDataArray", &grid->zcoordinate, 6);
+    fprintf(fp, "    </PCoordinates>\n");
+
+    write_piece_tag(fp, "Piece", grid->extent, iout, rank, 4);
+#ifdef JUPITER_MPI
+    for (ir = 1; ir < nprc; ++ir) { /* (3) */
+      MPI_Recv(extent, 6, MPI_INT, ir, ir, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+      write_piece_tag(fp, "Piece", extent, iout, ir, 4);
+    }
+#endif
+
+    fprintf(fp,
+            "  </PRectilinearGrid>\n"
+            "</VTKFile>\n");
+    fclose(fp);
+    free(pvtr_name);
+
+  } else {
+    if (for_any_rank(mpi, 0)) { // response for (1)
+      return 1;
+    }
+    if (for_any_rank(mpi, 0)) { // response for (2)
+      return 1;
+    }
+
+#ifdef JUPITER_MPI // response for (3)
+    MPI_Send(grid->extent, 6, MPI_INT, 0, rank, MPI_COMM_WORLD);
+#endif
+  }
+
+  calculate_appended_offsets(grid, hsz);
+
+  {
+    int r;
+    char *vtr_name;
+
+    if (iout >= 0) {
+      r = jupiter_asprintf(&vtr_name, "%s/time_%d_%d.vtr", odir, iout, rank);
+    } else {
+      r = jupiter_asprintf(&vtr_name, "%s/restart_data_%d.vtr", odir, rank);
+    }
+    if (for_any_rank(mpi, r < 0)) {
+      csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL, CSV_ERR_NOMEM, 0, 0, NULL);
+      if (r >= 0) {
+        free(vtr_name);
+      }
+      return 1;
+    }
+
+    errno = 0;
+    fp = fopen(vtr_name, "wb");
+    eno = errno;
+    if (for_any_rank(mpi, !fp)) {
+      if (eno != 0) {
+        csvperror(__FILE__, __LINE__, 0, CSV_EL_ERROR, NULL, CSV_ERR_SYS, eno, 0, NULL);
+      } else if (!fp) {
+        csvperror(__FILE__, __LINE__, 0, CSV_EL_ERROR, NULL, CSV_ERR_FOPEN, 0, 0, NULL);
+      }
+      if (fp) {
+        fclose(fp);
+        remove(vtr_name);
+      }
+      free(vtr_name);
+      return 1;
+    }
+
+    fprintf(fp,
+            "<VTKFile type=\"RectilinearGrid\" version=\"1.0\""
+            " byte_order=\"%s\" header_type=\"UInt%d\">\n"
+            "  <RectilinearGrid WholeExtent=\"%d %d %d %d %d %d\""
+            "   GhostLevel=\"0\">\n"
+            "    <Piece Extent=\"%d %d %d %d %d %d\">\n"
+            "      <CellData>\n",
+            order, hsz,
+            grid->extent[0], grid->extent[1], grid->extent[2],
+            grid->extent[3], grid->extent[4], grid->extent[5],
+            grid->extent[0], grid->extent[1], grid->extent[2],
+            grid->extent[3], grid->extent[4], grid->extent[5]);
+
+    lh = &grid->cell_array_head.list;
+    geom_list_foreach(lp, lh) {
+      struct cell_array *cp;
+
+      cp = cell_array_entry(lp);
+      write_data_array_tag(fp, "DataArray", &cp->data, 8);
+    }
+    fprintf(fp,
+            "      </CellData>\n");
+
+    if (isfinite(grid->time)) {
+      fprintf(fp,
+              "      <FieldData>\n"
+              "        <DataArray type=\"Float64\" Name=\"TimeValue\""
+              "         NumberOfTuples=\"1\">%.6f</DataArray>\n"
+              "      </FieldData>\n",
+              grid->time);
+    }
+
+    fprintf(fp, "      <Coordinates>\n");
+    write_data_array_tag(fp, "DataArray", &grid->xcoordinate, 8);
+    write_data_array_tag(fp, "DataArray", &grid->ycoordinate, 8);
+    write_data_array_tag(fp, "DataArray", &grid->zcoordinate, 8);
+    fprintf(fp, "      </Coordinates>\n");
+
+    fprintf(fp,
+            "    </Piece>\n"
+            "  </RectilinearGrid>\n");
+
+    /* Write appended data */
+    fprintf(fp,
+            "  <AppendedData encoding=\"raw\">\n"
+            "   _");
+
+    sz  = grid->extent[1] - grid->extent[0];
+    sz *= grid->extent[3] - grid->extent[2];
+    sz *= grid->extent[5] - grid->extent[4];
+
+    lh = &grid->cell_array_head.list;
+    geom_list_foreach(lp, lh) {
+      struct cell_array *cp;
+
+      cp = cell_array_entry(lp);
+      write_appended_data(fp, &cp->data, sz, hsz);
+    }
+
+    write_appended_data(fp, &grid->xcoordinate, sz, hsz);
+    write_appended_data(fp, &grid->ycoordinate, sz, hsz);
+    write_appended_data(fp, &grid->zcoordinate, sz, hsz);
+    fprintf(fp, "\n");
+    fprintf(fp, "  </AppendedData>\n");
+    /* End */
+
+    fprintf(fp, "</VTKFile>\n");
+
+    free(vtr_name);
+    fclose(fp);
+  }
+  return 0;
+}
+
+void cleanup(jupiter_reader *reader)
+{
+  if (!reader) return;
+  if (!reader->grid) return;
+
+  if (reader->grid->allocs) {
+    geom_alloc_free_all(reader->grid->allocs);
+    reader->grid->allocs = NULL;
+  }
+  free(reader->grid);
+}
+
+void help(const char *pname)
+{
+#ifdef JUPITER_MPI
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  if (rank != 0) return;
+#endif
+  fprintf(stderr,
+          "Usage: %s -input param.txt -flags flags.txt -- [options] [NUMBERS...]\n"
+          "\n"
+          "JUPITER options:\n"
+          "  -input FILE            Parameter input file name\n"
+          "  -flags FILE            Flags input file name\n"
+          "  -geom FILE             Geometry input file name (if convert Geom_dump)\n"
+          "  -plist FILE            Ignored\n"
+          "  -control FILE          Control input file name (if convert Geom_dump)\n"
+          "  --                     Separator for JUPITER and Converter options\n"
+          "\n"
+          "Converter options:\n"
+          "  -i --input-directory=DIR   Input directory name\n"
+          "  -o --output-directory=DIR  Output directory name\n"
+          "     --[no-]read-geom-dump   (Don't) read the output of Geom_dump\n"
+          "                             (default: no)\n"
+          "     --[no-]use-data-name    Use data name as-is, or use descriptive name\n"
+          "                             (default: no)\n"
+          "  -h --help                  Show this help\n"
+          "  [NUMBERS...]               Time domain index to be converted\n"
+          "\n"
+          "NOTES:\n"
+          " * JUPITER options starts with single hyphen and long options.\n"
+          "   Converter options starts with single hyphen and short options\n"
+          "   or two hyphens and long options.\n"
+          " * To convert restart data, `--` is required before `-1`\n"
+          "   like `-- -1`, because `-1` is considered to an invalid option.\n"
+          " * This converter does not apply any compressions.\n"
+          " * This converter uses VTK XML version 1.0.\n"
+          " * This converter writes TimeValue data as VTK 8.2 does.\n",
+          pname);
+}
+
+static int set_timef_impl(double value, void *arg)
+{
+  struct funcs_data *data = (struct funcs_data *)arg;
+  data->grid->time = value;
+  return 0;
+}
+
+static int set_data_array(rectilinear_grid *dset, data_array *arry,
+                          const char *descriptive_name, const char *unit_name,
+                          const char *raw_name, int soa_icompo, void *val,
+                          int unit_size, ptrdiff_t length,
+                          jupiter_bind_data_type type, int alloc,
+                          int use_raw_name)
+{
+  geom_error gerr;
+  char *n;
+
+  if (raw_name && use_raw_name) {
+    if (soa_icompo >= 0) {
+      int r = jupiter_asprintf(&n, "%s:%d", raw_name, soa_icompo);
+      if (r < 0)
+        csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL, CSV_ERR_NOMEM, 0,
+                  0, NULL);
+    } else {
+      n = jupiter_strdup(raw_name);
+      if (!n) {
+        csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL, CSV_ERR_NOMEM, 0,
+                  0, NULL);
+        return 1;
+      }
+    }
+  } else {
+    n = jupiter_strdup(descriptive_name);
+    if (!n) {
+      csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+                CSV_ERR_NOMEM, 0, 0, NULL);
+      return 1;
+    }
+  }
+
+  gerr = geom_alloc_add(dset->allocs, n, free);
+  if (gerr != GEOM_SUCCESS) {
+    free(n);
+    goto gerror;
+  }
+
+  if (alloc) {
+    gerr = geom_alloc_add(dset->allocs, val, free);
+    if (gerr != GEOM_SUCCESS) {
+      free(n);
+      goto gerror;
+    }
+  }
+
+  arry->name = n;
+  arry->number_of_component = unit_size;
+  arry->type = type;
+  arry->length = length;
+  arry->data = val;
+
+  return 0;
+
+gerror:
+  csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+            CSV_ERR_GEOMETRY, 0, gerr, NULL);
+  return 1;
+}
+
+static int add_attributef_impl(const char *descriptive_name,
+                               const char *unit_name, const char *raw_name,
+                               int soa_icompo, void *val, size_t ntuple,
+                               int unit_size, jupiter_bind_data_type type,
+                               const char **component_names, void *arg)
+{
+  struct funcs_data *data = (struct funcs_data *)arg;
+  int r;
+  cell_array *cell;
+  geom_error gerr;
+  rectilinear_grid *dset;
+
+  dset = data->grid;
+
+  cell = calloc(sizeof(struct cell_array), 1);
+  if (!cell) {
+    csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+              CSV_ERR_NOMEM, 0, 0, NULL);
+    return 1;
+  }
+  cell_array_init(cell);
+
+  gerr = geom_alloc_add(dset->allocs, cell, free);
+  if (gerr != GEOM_SUCCESS) {
+    free(cell);
+    goto gerror;
+  }
+
+  r = set_data_array(dset, &cell->data, descriptive_name, unit_name, raw_name,
+                     soa_icompo, val, unit_size, ntuple, type, 1,
+                     data->use_raw_name);
+  if (r) {
+    return 1;
+  }
+
+  geom_list_insert_prev(&dset->cell_array_head.list, &cell->list);
+
+  return 0;
+
+gerror:
+  csvperror(__FILE__, __LINE__, 0, CSV_EL_FATAL, NULL,
+            CSV_ERR_GEOMETRY, 0, gerr, NULL);
+  return 1;
+}
+
+static int set_x_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg)
+{
+  rectilinear_grid *dset = ((struct funcs_data *)arg)->grid;
+  return set_data_array(dset, &dset->xcoordinate, "X", NULL, NULL, -1, val, 1,
+                        length, type, alloc, 0);
+}
+
+static int set_y_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg)
+{
+  rectilinear_grid *dset = ((struct funcs_data *)arg)->grid;
+  return set_data_array(dset, &dset->ycoordinate, "Y", NULL, NULL, -1, val, 1,
+                        length, type, alloc, 0);
+}
+
+static int set_z_coordinate(void *val, int length, jupiter_bind_data_type type,
+                            int alloc, void *arg)
+{
+  rectilinear_grid *dset = ((struct funcs_data *)arg)->grid;
+  return set_data_array(dset, &dset->zcoordinate, "Z", NULL, NULL, -1, val, 1,
+                        length, type, alloc, 0);
+}
+
+void write_data_array_tag(FILE *stream, const char *tagname,
+                          struct data_array *data, int indent)
+{
+  const char *stype;
+  const char *cur;
+  char xname[256];
+
+  stype = data_type_name(data->type);
+  cur = escape_xml(xname, 256, data->name);
+  fprintf(stream,
+          "%*s<%s type=\"%s\" Name=\"%s", indent, "", tagname, stype, xname);
+  while (*cur != '\0') {
+    cur = escape_xml(xname, 256, cur);
+    fprintf(stream, "%s", xname);
+  }
+  fprintf(stream, "\"");
+  if (data->number_of_component > 1) {
+    fprintf(stream, " NumberOfComponents=\"%d\"", data->number_of_component);
+  }
+  if (data->offset >= 0) {
+    fprintf(stream, " format=\"appended\" offset=\"%" PRIdMAX "\"",
+            (intmax_t)data->offset);
+  }
+  fprintf(stream, "/>\n");
+}
+
+void write_piece_tag(FILE *stream, const char *tagname,
+                     int extent[6], int iout, int rank, int indent)
+{
+  fprintf(stream,
+          "%*s<%s Extent=\"%d %d %d %d %d %d\" Source=\"",
+          indent, "", tagname, extent[0], extent[1], extent[2],
+          extent[3], extent[4], extent[5]);
+  if (iout < 0) {
+    fprintf(stream, "restart_data_%d.vtr", rank);
+  } else {
+    fprintf(stream, "time_%d_%d.vtr", iout, rank);
+  }
+  fprintf(stream, "\"/>\n");
+}
+
+const char *data_type_name(jupiter_bind_data_type type)
+{
+  switch(type) {
+  case JUPITER_BIND_TYPE_FLOAT:
+    if (sizeof(float) * CHAR_BIT == 32) return "Float32";
+    if (sizeof(float) * CHAR_BIT == 64) return "Float64";
+    break;
+  case JUPITER_BIND_TYPE_DOUBLE:
+    if (sizeof(double) * CHAR_BIT == 32) return "Float32";
+    if (sizeof(double) * CHAR_BIT == 64) return "Float64";
+    break;
+  case JUPITER_BIND_TYPE_INT:
+    switch(sizeof(int) * CHAR_BIT) {
+    case 16:
+      return "Int16";
+    case 32:
+      return "Int32";
+    case 64:
+      return "Int64";
+    }
+    break;
+  case JUPITER_BIND_TYPE_CHAR:
+    return "Int8";
+  }
+  return "Int8";
+}
+
+const char *escape_xml(char *buf, size_t bufsize, const char *cur)
+{
+  const char *mrk;
+  const char *tok;
+  size_t wri;
+  const char *esc;
+  int l;
+
+  if (bufsize == 0) return NULL;
+
+  wri = 0;
+  while (wri < bufsize) {
+    tok = cur;
+    /*!re2c
+      re2c:indent:top = 2;
+
+      *      { buf[wri++] = *tok; continue; }
+      "\x00" { cur = tok; break; }
+      "\""   { esc = "&quot;"; goto write_esc; }
+      "'"    { esc = "&apos;"; goto write_esc; }
+      "&"    { esc = "&amp;"; goto write_esc; }
+      "<"    { esc = "&lt;"; goto write_esc; }
+      ">"    { esc = "&gt;"; goto write_esc; }
+    */
+    CSVUNREACHABLE();
+
+  write_esc:
+    l = strlen(esc);
+    if (wri + l >= bufsize) {
+      cur = tok;
+      break;
+    }
+    memcpy(&buf[wri], esc, l);
+    wri += l;
+    continue;
+  }
+  buf[wri] = '\0';
+  return cur;
+}
+
+int is_little_endian(void)
+{
+  uint_least16_t u16f;
+
+  u16f = 0x1234;
+  if (memcmp(&u16f, (char[]){0x34,0x12}, 2) == 0) return 1;
+  return 0;
+}
+
+void cell_array_init(struct cell_array *cell)
+{
+  geom_list_init(&cell->list);
+  data_array_init(&cell->data);
+}
+
+void data_array_init(struct data_array *data)
+{
+  data->data = NULL;
+  data->name = NULL;
+  data->number_of_component = 0;
+  data->offset = -1;
+  data->length = -1;
+  data->type = JUPITER_BIND_TYPE_INT;
+}
+
+ptrdiff_t
+calc_data_bytes(jupiter_bind_data_type type, ptrdiff_t length, int nc)
+{
+  switch(type) {
+  case JUPITER_BIND_TYPE_INT:
+    return sizeof(int) * length * nc;
+  case JUPITER_BIND_TYPE_FLOAT:
+    return sizeof(float) * length * nc;
+  case JUPITER_BIND_TYPE_DOUBLE:
+    return sizeof(double) * length * nc;
+  case JUPITER_BIND_TYPE_CHAR:
+    return sizeof(char) * length * nc;
+  }
+  return length * nc;
+}
+
+ptrdiff_t
+set_data_offset(struct data_array *data, ptrdiff_t exs, ptrdiff_t off)
+{
+  ptrdiff_t offi;
+
+  data->offset = off;
+  if (data->length < 0) {
+    offi = exs;
+  } else {
+    offi = data->length;
+  }
+  return off + calc_data_bytes(data->type, offi, data->number_of_component);
+}
+
+void calculate_appended_offsets(rectilinear_grid *grid, int header_size)
+{
+  ptrdiff_t exs;
+  ptrdiff_t off;
+  struct geom_list *lp;
+  struct geom_list *lh;
+  struct cell_array *cel;
+
+  CSVASSERT(grid);
+  CSVASSERT(header_size == 32 || header_size == 64);
+
+  header_size /= 8;
+
+  off = 0;
+  exs  = grid->extent[1] - grid->extent[0];
+  exs *= grid->extent[3] - grid->extent[2];
+  exs *= grid->extent[5] - grid->extent[4];
+
+  lh = &grid->cell_array_head.list;
+  geom_list_foreach(lp, lh) {
+    cel = cell_array_entry(lp);
+    off = set_data_offset(&cel->data, exs, off) + header_size;
+  }
+
+  off = set_data_offset(&grid->xcoordinate, exs, off) + header_size;
+  off = set_data_offset(&grid->ycoordinate, exs, off) + header_size;
+  off = set_data_offset(&grid->zcoordinate, exs, off) + header_size;
+}
+
+int write_appended_data(FILE *stream, struct data_array *data, ptrdiff_t exs, int header_size)
+{
+  ptrdiff_t isz;
+
+  if (data->length < 0) {
+    isz = exs;
+  } else {
+    isz = data->length;
+  }
+
+  isz = calc_data_bytes(data->type, isz, data->number_of_component);
+  if (isz < 0) {
+    return 1;
+  }
+
+#if defined(UINT32_MAX) && defined(UINT64_MAX)
+  if (header_size == 32) {
+    uint32_t u32;
+
+    CSVASSERT(isz >= 0 && (uint32_t)isz <= UINT32_MAX);
+
+    u32 = (uint32_t)isz;
+    fwrite(&u32, sizeof(uint32_t), 1, stream);
+
+  } else if (header_size == 64) {
+    uint64_t u64;
+
+    CSVASSERT(isz >= 0 && (uint64_t)isz <= UINT64_MAX);
+
+    u64 = (uint64_t)isz;
+    fwrite(&u64, sizeof(uint64_t), 1, stream);
+  }
+#else
+#error UINT64_MAX must be defined. This system is not supported.
+#endif
+
+  errno = 0;
+  return fwrite(data->data, sizeof(char), isz, stream) == (size_t)isz;
+}

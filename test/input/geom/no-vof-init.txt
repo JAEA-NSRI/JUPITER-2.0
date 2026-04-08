@@ -1,0 +1,9 @@
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_velocity_u, SET, CONST, 1.0, 1.0e-4
+Geom_velocity_v, SET, CONST, 1.0, 1.0e-4
+Geom_velocity_w, SET, CONST, 1.0, 1.0e-4
+Geom_temperature, SET, CONST, 1.0, 100.0
+Geom_pressure, SET, CONST, 1.0, 0.0
+-- No VOF init.

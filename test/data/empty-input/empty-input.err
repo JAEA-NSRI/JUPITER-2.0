@@ -1,0 +1,5 @@
+[    0][ERROR]: <PBD>/bin/jupiter-double: No parameter input file given (-input)
+[    0][ERROR]: <PBD>/bin/jupiter-double: No flags input file given (-flags)
+[    0][ERROR]: <PBD>/bin/jupiter-double: No property list input file given (-plist)
+[    0][FATAL]: <Source:<PSD>/jupiter/main.c>: main: Stopping by a previous error. Please check.
+

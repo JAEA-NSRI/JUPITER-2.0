@@ -1,0 +1,9 @@
+--- # data/binary_data/lpt_ctrl/0000.dat
+- -1
+- -2
+- lpt_ctrl
+- v: 1
+  npt: 602
+  timprn: 0.0
+- 0
+...

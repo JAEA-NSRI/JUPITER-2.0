@@ -1,0 +1,9 @@
+[    0][ERROR]: <PSD>/test/input/param/empty.txt: MPI_processes: Required key not found
+[    0][ERROR]: <PSD>/test/input/param/empty.txt: Cell: Required key not found
+[    0][ERROR]: <PSD>/test/input/param/empty.txt: Length: Required key not found
+[    0][ERROR]: <PSD>/test/input/plist/empty.txt: No file specified for material id -1
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][ERROR]: <Source:<PSD>/jupiter/component_data.c>: Least one component is required
+[    0][ERROR]: <Source:<PSD>/jupiter/component_data.c>: Least one solid-liquid component is required
+[    0][FATAL]: print_param: Some parameters with !! are invalid value. Please check.
+

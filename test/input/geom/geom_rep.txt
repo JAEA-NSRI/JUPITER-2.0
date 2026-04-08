@@ -1,0 +1,16 @@
+NumberOfGeom, 2
+
+Geom_file,  -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_repeat, 2, 3, 4
+Geom_offset, 0.1, 0.1, 0.1
+Geom_origin, 0.0, 0.0, 0.0
+Geom_vof,   0, SOLID, SET, CONST, 1.0, 1.0,
+
+Geom_file,  -
+Geom_shape, ADD, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_repeat, 2, 3, 2
+Geom_offset, 0.15, 0.15, 0.15
+Geom_origin, 0.25, 0.25, 0.0
+Geom_vof,   0, SOLID, ADD, CONST, 1.0, 1.0,
+

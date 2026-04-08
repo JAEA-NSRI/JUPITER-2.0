@@ -1,0 +1,6 @@
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, 2.0, 0.0, 0.0, 3.0, 0.03, 0.03
+Geom_boundary, TOP, IN, 1.0, CONST, 0.0, 0.0, -1.0, 1, 0, 1.0
+-- This condition never be applied, just exists

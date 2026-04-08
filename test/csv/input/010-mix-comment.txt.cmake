@@ -1,0 +1,2 @@
+
+set(RESULT MIX_QUOTE)

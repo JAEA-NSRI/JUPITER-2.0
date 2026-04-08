@@ -1,0 +1,60 @@
+print, OFF
+geom_in, ON
+
+fluid_dynamics, OFF
+heat_eq, OFF
+phase_change, OFF
+vaporization, OFF
+condensation, OFF
+melting, OFF
+solidification, OFF
+surface_tension, ON
+radiation, OFF
+oxidation, OFF
+temperature_dependency, OFF
+vof_adv_fls, ON,
+solute_diff, OFF,
+eutectic, OFF,
+LPT_calc, OFF
+porous, OFF
+laser, OFF
+phasefield, OFF
+wettability, ON
+
+WENO, ON
+IBM, ON
+interface_capturing_scheme, PLIC
+heat_tvd3, OFF
+visc_tvd3, OFF
+
+bc_xm,    SLIP
+bc_xp,    SLIP
+bc_ym,    SLIP
+bc_yp,    SLIP
+bc_zm,    SLIP
+bc_zp,    OUT
+bct_xm,   INSULATION
+bct_xp,   INSULATION
+bct_ym,   INSULATION
+bct_yp,   INSULATION
+bct_zm,   INSULATION
+bct_zp,   INSULATION
+bcrad_xm, INSULATION
+bcrad_xp, INSULATION
+bcrad_ym, INSULATION
+bcrad_yp, INSULATION
+bcrad_zm, INSULATION
+bcrad_zp, INSULATION
+
+binary, ON
+gnuplot, OFF
+
+fp, messages/%04r.lst, 
+
+output_double, OFF
+output_data_directory, data/binary_data, data/binary_data,
+restart_data_directory, data/binary_data, data/binary_data,
+output_filename_templates, time/%04n.dat, %c_%i/%04n.%04r.single.dat, &
+  "%c/%04n.%04r.single.dat"
+restart_filename_templates, time.dat, %c_%i/%04r.dat, %c/%04r.dat, 
+

@@ -1,0 +1,3 @@
+
+set(RESULT DATA_AFTER_CONT)
+set(DATA "")

@@ -1,0 +1,14 @@
+NumberOfGeom, 3
+
+Geom_file, -
+Geom_boundary, B, WALL, 1.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.0, 0.03, 0.0, 0.03, 0.07, 0.1
+Geom_shape, SET, TRA, $xb, 0.0, 0.0, 0
+Geom_boundary, B, IN, 1.0, CONST, 0.0, 0.0, 3.0, 1, -1, 1.0
+
+add_field_variable, xb, TABLE, NEAREST, 1, $time, 2, &
+  0.0, 0.1, &
+  0.0, 0.7
+

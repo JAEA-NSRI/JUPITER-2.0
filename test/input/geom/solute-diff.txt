@@ -1,0 +1,20 @@
+
+NumberOfGeom, 3
+
+Geom_file, -
+-- Geom_vof, GAS, SET, CONST, 1.0, 1.0,
+Geom_velocity_u,  SET, CONST, 1.0, 1e-4,
+Geom_velocity_v,  SET, CONST, 1.0, 1e-4,
+Geom_velocity_w,  SET, CONST, 1.0, 1e-4,
+Geom_temperature, SET, CONST, 1.0, 300.0
+Geom_pressure,    SET, CONST, 1.0, 0.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.036, 0.1, 0.004
+Geom_vof, 1, SOLID, SET, CONST, 1.0, 1.0,
+Geom_temperature, SET, CONST, 1.0, 1460.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.036, 0.0, 0.0, 0.070, 0.1, 0.004
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0,
+Geom_temperature, SET, CONST, 1.0, 1460.0

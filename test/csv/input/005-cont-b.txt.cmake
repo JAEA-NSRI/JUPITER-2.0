@@ -1,0 +1,3 @@
+
+set(RESULT BLOCK_COMMENT_AFTER_CONT)
+set(DATA "")

@@ -1,0 +1,11 @@
+add_mask, t1, EXTENT, 0, 1, 0, 1, 3, 4
+add_postprocess, g1, MASK, :all, SET, @t1
+add_field_variable, f1, GET, :g1, *pressure, ON
+
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, $f1, 0.0, 0.0, 9999.0, 1.0, 1.0,
+Geom_pressure, SET, CONST, 1.0, 0.0
+

@@ -1,0 +1,19 @@
+
+abc, &
+  def
+
+ghi, jhk & -- comment here
+lmn, opq
+
+rst, uvw &-- comment here
+xyz, abc
+
+aaa, "bcd" &
+"efg", hij
+
+zzz, "aaa" /* comment here */ &
+"bbb", ccc
+
+eee, fff /* comment here */ &
+  ggg, fff
+

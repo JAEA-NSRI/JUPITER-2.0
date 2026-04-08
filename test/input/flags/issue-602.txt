@@ -1,0 +1,60 @@
+print, ON
+geom_in, ON
+
+fluid_dynamics, ON
+heat_eq, ON
+phase_change, OFF
+melting, OFF
+solidification, OFF
+vaporization, OFF
+condensation, OFF
+surface_tension, OFF
+wettability, OFF
+radiation, OFF
+oxidation, OFF
+temperature_dependency, OFF
+vof_adv_fls, OFF
+laser, OFF
+porous, OFF
+LPT_calc, OFF
+solute_diff, OFF
+eutectic, OFF,
+two_energy, OFF
+
+WENO, OFF
+IBM, OFF
+interface_capturing_scheme, THINC
+phasefield, OFF
+heat_tvd3, ON
+visc_tvd3, ON
+
+bc_xm,    WALL
+bc_xp,    WALL
+bc_ym,    WALL
+bc_yp,    WALL
+bc_zm,    WALL
+bc_zp,    WALL
+bct_xm,   INSULATION
+bct_xp,   INSULATION
+bct_ym,   INSULATION
+bct_yp,   INSULATION
+bct_zm,   ISOTHERMAL
+bct_zp,   ISOTHERMAL
+bcrad_xm, INSULATION
+bcrad_xp, INSULATION
+bcrad_ym, INSULATION
+bcrad_yp, INSULATION
+bcrad_zm, INSULATION
+bcrad_zp, INSULATION
+
+binary, ON
+gnuplot, OFF
+output_p, ON, -- Some test uses p for comparison.
+
+binary_output_mode, UNIFY_MPI
+restart_output_mode, BYPROCESS
+
+fp, -
+
+output_filename_templates, %c/%04n.dat, %c_%i/%04n.%04r.single.dat, &
+  "%c/%04n.%04r.single.dat"

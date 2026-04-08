@@ -1,0 +1,9 @@
+add_postprocess, g1, SUM, :all,
+add_field_variable, f1, GET, :g1, *temperature, ON
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, $f1, 0.0, 0.0, 9999.0e+10, 1.0, 1.0,
+Geom_pressure, SET, CONST, 1.0, 0.0
+

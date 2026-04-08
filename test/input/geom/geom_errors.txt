@@ -1,0 +1,324 @@
+--- This file contains all errors for building shapes.
+
+NumberOfGeom, 60
+Geom_print_matrix, OFF
+
+Geom_file,  -
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, SET, COMB, -- Invalid op, underflow
+Geom_shape, SET, GED,  -- underflow
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, SET, TRA, 1.0, 1.0, 1.0, 0, -- no shape to tf
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, SET, GST
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (b)
+Geom_shape, ADD, GED, -- should SET
+Geom_shape, ADD, TRA, 1.0, 1.0, 1.0, 1, -- invalid struct
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (b)
+Geom_shape, SET, GST
+Geom_shape, ADD, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (c)
+Geom_shape, ADD, COMB, -- COMB without PUSH
+Geom_shape, SET, GED
+Geom_shape, SET, TRA, 1.0, 1.0, 1.0, 0
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (b)
+Geom_shape, SET, GST
+            -- Unclosed (b)
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, SET, GST
+Geom_shape, SET, GED
+Geom_shape, SET, TRA, 1.0, 1.0, 1.0, 0, -- no shapes to tf
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.05, 0.0, 0.0, 0.0, 0.05, 0.05, -- Swap min/max
+Geom_shape, ADD, BOX, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,    -- Empty box
+Geom_shape, ADD, PLA, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,    -- Zero vector
+Geom_shape, SET, SCA, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, -- Zero scale factor
+Geom_shape, SET, ROT, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, -- Zero axis vector
+Geom_shape, ADD, APP, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, -- Zero vector
+Geom_shape, ADD, APP, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, -2.0, -2.0, 0.0, 0.0, 0.0, 1.0, -- Parallel vector
+Geom_shape, ADD, RPR, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 3, -- Zero vector
+Geom_shape, ADD, RPR, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 1.0, 0.0, 0.0, 2, -- Invalid N-gon
+Geom_shape, ADD, RPR, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 1.0, 0.0, 0.0, 5, -- Parallel vector
+Geom_shape, ADD, SPH, 0.0, 0.0, 0.0, 0.0,              -- 0 radius
+Geom_shape, ADD, ELL, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1e-300, -- 0 vector.
+Geom_shape, ADD, ELL, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 3.0, -- vectors parallel
+Geom_shape, ADD, ELL, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, -- vectors parallel
+Geom_shape, ADD, TRC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -- Zero vector
+Geom_shape, ADD, TRC, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, -- Zero radius
+Geom_shape, ADD, TRC, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,-1.0, 0.0, -- Negative radius
+Geom_shape, ADD, REC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, -- Zero vector
+Geom_shape, ADD, REC, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, -- Zero B vector
+Geom_shape, ADD, TEC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, -- Zero vector
+Geom_shape, ADD, TEC, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -- Zero B vector
+Geom_shape, ADD, TOR, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.0, 1.0, -- Zero Normal vector
+Geom_shape, ADD, TOR, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, -- Zero radius
+Geom_shape, ADD, TOR, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, -4.0, -1.0, -- Negative radius
+Geom_shape, ADD, ETO, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, -- Zero vectors
+Geom_shape, ADD, ETO, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, -- Zero radius
+Geom_shape, ADD, ETO, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 2.0, -1.0, -2.0, -- Parallel vectors
+Geom_shape, ADD, PL4, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 0.0, --- Zero factor
+Geom_shape, ADD, PL4, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 2.0, --- Non unit factor
+Geom_shape, ADD, PLN, 1, 1.0, 0, 0, -1, 1.0, -1, -- Negative power
+Geom_shape, ADD, PLN, 1, 1.0, 0, 0, 0, 1.0, 0, 0, -1, 1.0, -1, -- Negative power
+Geom_shape, ADD, PLN, -1, 1.0, 0, 0, 0, 1.0, -1, -- Negative power
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, SET, MAT, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0, -- Singular matrix
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, SET, GST, -- 1
+Geom_shape, SET, GST, -- 2
+Geom_shape, SET, GST, -- 3
+Geom_shape, SET, GST, -- 4
+Geom_shape, SET, GST, -- 5
+Geom_shape, SET, GST, -- 6
+Geom_shape, SET, GST, -- 7
+Geom_shape, SET, GST, -- 8
+Geom_shape, SET, GST, -- 9
+Geom_shape, SET, GST, -- 10
+Geom_shape, SET, GST, -- 11 (overflow here)
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, SET,  BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 1
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 2
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 3
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 4
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 5
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 6
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 7
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 8
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 9
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 10
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05, -- 11 (overflow here)
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+Geom_dump, -, -- Can not write to stdout
+
+Geom_file, %r.dat, UNIFY_MPI
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, %r.dat, UNIFY_GATHER
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, no_rank.dat, BYPROCESS
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+Geom_dump, %r.dat, UNIFY_MPI
+
+Geom_file, -
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+Geom_dump, %r.dat, UNIFY_GATHER
+
+Geom_file, -
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+Geom_dump, no_rank.dat, BYPROCESS
+
+Geom_file, -
+Geom_shape, SET, GST,
+Geom_shape, SET, GED, -- no body
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, SET, TRA, 1.0, 1.0, 1.0, 1, -- invalid op
+Geom_shape, SET, GST
+Geom_shape, PUSH, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_shape, ADD, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (b)
+Geom_shape, SET, GED,
+Geom_shape, SET, TRA, 1.0, 1.0, 1.0, 1, -- invalid op
+Geom_shape, ADD, COMB
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_name, n1
+Geom_name, n10
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_name, n2
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_name, n3
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, -
+Geom_name, n2
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, x.dat
+Geom_size, 1, 1, 1
+Geom_size, 2, 2, 2
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, x.dat
+Geom_origin, 1, 1, 1
+Geom_origin, 2, 2, 2
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, x.dat
+Geom_size, 1, 1, 1
+Geom_repeat, 2, 2, 2
+Geom_repeat, 3, 3, 3
+Geom_offset, 1, 1, 1
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file, x.dat
+Geom_size, 1, 1, 1
+Geom_repeat, 2, 2, 2
+Geom_offset, 1, 1, 1
+Geom_offset, 2, 2, 2
+Geom_vof, 0, SOLID, SET, CONST, 1.0, 1.0
+
+Geom_file,  -
+-- No initialization
+
+Geom_file,  -
+Geom_shape, SET, BOX, 0.0, -inf, 0.0, inf, 0.0, 0.0
+Geom_shape, ADD, RCC, 0.0, 0.0, nan, inf, 0.0, 0.0, inf
+Geom_temperature, SET, CONST, 1.0, inf
+Geom_temperature, SET, POLY, 1.0, 0.0, 0.0, 0.0, -1, 0.0, -- Negative power
+Geom_temperature, SET, POLY_N, 1.0, 0.0, 0.0, 0.0, &
+  1, 0.0, 0, -1, 0, 1.0, -1
+Geom_temperature, SET, POLY_N, 1.0, 0.0, 0.0, 0.0, &
+  1, 0.0, 0, 0, 0, 1.0, 0, -1, 0, 1.0, -1
+Geom_temperature, SET, EXP_POLY, 1.0, 0.0, 0.0, 0.0, 0.0, -1, 0.0, -- Neagtive power
+Geom_temperature, SET, BINARY, 1.0, x.dat, 3, UNIFY_MPI, &
+  1.0, 10, 10, 10, 0, 0, 0, 1, 1, 1, 0, 0, 0, -- invalid precision
+Geom_temperature, SET, BINARY, 1.0, x.dat, 4, BYPROCESS, &
+  1.0, 10, 10, 10, 0, 0, 0, 1, 1, 1, 0, 0, 0, -- invalid method
+Geom_temperature, SET, BINARY, 1.0, %r.dat, 4, UNIFY_MPI, &
+  1.0, 10, 10, 10, 0, 0, 0, 1, 1, 1, 0, 0, 0, -- invalid method
+Geom_temperature, SET, BINARY, 1.0, %r.dat, 4, UNIFY_GATHER, &
+  1.0, 10, 10, 10, 0, 0, 0, 1, 1, 1, 0, 0, 0, -- invalid method
+Geom_temperature, SET, BINARY, 1.0, x.dat, 4, UNIFY_MPI, &
+  1.0, 10, 10, 10, 0, 0, 0, 1, 1, 0, 0, 0, 0, -- zero copy
+Geom_temperature, SET, BINARY, 1.0, x.dat, 4, UNIFY_MPI, &
+  1.0, 10,  0, 10, 0, 0, 0, 1, 1, 1, 0, 0, 0, -- zero size
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.1, 0.3, 0.3
+Geom_surface_shape, ADD, PARALLELOGRAM, nan, 0.0, 0.1, 0.3, inf, 0.1
+Geom_surface_shape, ADD, PARALLELOGRAM, 0.0, nan, inf, 0.3, 0.3, 0.1
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- Uncombind
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, ADD, COMB, -- No shapes to combine
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, SET, COMB, -- Invalid op
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, ADD, COMB, -- Stack underflow
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_shape, PUSH, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- overflow
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, ADD, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- should be set
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.1, 0.1, 0.1, 0.3
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- no surfaces
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, GST
+Geom_shape, SET, GED
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- no body
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- whole region but surface set
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, no.dat
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1, -- file but surface set
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, no.dat
+Geom_shape, SET, BOX, 0.0, 0.0, 0.0, 0.05, 0.05, 0.05,  -- (a)
+Geom_temperature, SET, CONST, 1.0, 373.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, -1, -1, 1.0
+
+Geom_file, -
+Geom_shape, SET, RCC, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.3, &
+  0.0, -0.15, 0.0, 0.0, 0.0, 0.115
+Geom_surface_shape, SET, PARALLELOGRAM, 0.0, 0.0, 0.1, 0.3, 0.3, 0.1
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, 1, -1, 1.0
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, 1, -1, 1.0
+
+Geom_file, -
+Geom_surface_boundary, IN, 1.0, NORMAL, CONST, 1.0, 1, -1, 1.0
+
+Geom_file, -
+Geom_boundary, ALL, IN, 1.0, CONST, 1.0, 1.0, 0.0, -1, -1, 1.0

@@ -1,0 +1,58 @@
+print, ON
+geom_in, ON
+
+fluid_dynamics, OFF
+heat_eq, ON
+phase_change, OFF
+melting, OFF
+solidification, OFF
+vaporization, OFF
+condensation, OFF
+surface_tension, OFF
+wettability, OFF
+radiation, OFF
+oxidation, ON
+temperature_dependency, OFF
+vof_adv_fls, OFF,
+LPT_calc, OFF
+solute_diff, ON,
+eutectic, OFF,
+laser, OFF
+
+WENO, ON
+IBM, ON
+interface_capturing_scheme, THINC_WLIC
+phasefield, OFF
+heat_tvd3, OFF
+visc_tvd3, OFF
+
+oxide_kp_model, LEISTIKOW_SCHANZ
+h2_absorp_eval, OFF
+
+bc_xm,    WALL
+bc_xp,    WALL
+bc_ym,    WALL
+bc_yp,    WALL
+bc_zm,    SLIP
+bc_zp,    SLIP
+bct_xm,   INSULATION
+bct_xp,   INSULATION
+bct_ym,   INSULATION
+bct_yp,   INSULATION
+bct_zm,   INSULATION
+bct_zp,   INSULATION
+bcrad_xm, INSULATION
+bcrad_xp, INSULATION
+bcrad_ym, INSULATION
+bcrad_yp, INSULATION
+bcrad_zm, INSULATION
+bcrad_zp, INSULATION
+
+binary, ON
+gnuplot, OFF
+output_mat, ON
+output_ox_dt_local, ON
+
+fp, -
+
+output_filename_templates, %c/%04n.dat, %c_%i/%04n.%04r.single.dat, %c/%04n.%04r.single.dat

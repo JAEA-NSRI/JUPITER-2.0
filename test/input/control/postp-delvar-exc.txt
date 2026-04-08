@@ -1,0 +1,9 @@
+add_postprocess, g1, DEL_VARIABLE_EXCEPT, :all, 2, *pressure, *velocity-z
+add_field_variable, f1, GET, :g1, *pressure, ON, 0, 1, 0, 1, 0, 1
+
+NumberOfGeom, 1
+
+Geom_file, -
+Geom_shape, SET, BOX, $f1, 0.0, 0.0, 9999.0, 1.0, 1.0,
+Geom_pressure, SET, CONST, 1.0, 0.0
+

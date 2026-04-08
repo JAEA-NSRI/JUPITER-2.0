@@ -1,0 +1,346 @@
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: multi_layer_no_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: multi_layer_less_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: film_drainage: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: oxide_kp_model: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: h2_absorp_eval: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: h2_absorp_eval_p_change: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: print_update_level_set_reason: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: force_update_level_set_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: force_update_level_set_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_vof: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_velocity_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_velocity_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_velocity_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_temperature: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_fixed_heat_source: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_fluid_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_thermal_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_surface_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: Reinit_lpt_pewall_n: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_double: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: restart_output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: restart_input_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: restart_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: restart_filename_templates: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_fs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_fl: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_Y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_Vf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_t: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_bnd_norm_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_bnd_norm_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_bnd_norm_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_uvw: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_q: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_qgeom: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_ll: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_uplsflg: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_fs_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_ls_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_Yt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_flux: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_div_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_mass_source_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_mat: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_dens: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_denss: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_thc: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_thcs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_specht: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_spechtf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_mu: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_t_liq: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_t_soli: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_diff_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/valvof-ay.txt: output_latent: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: variable_delta_x: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: variable_delta_y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: variable_delta_z: Key not found, using default
+[    0][ WARN]: line 6 of <PSD>/test/input/param/valvof.txt: NumberOfComponent: Data not found at columns right of "3", using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: NumberOfLayer: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: c_delta: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: lambda: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: sigma_pf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: mobility: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: d_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: U_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: L_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: Forch_coef: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: P_const: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: contact_angle: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: CA_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: film_cell: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: rapture_thickness: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: height_threshold: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vin_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: p_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: coef_lsts: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: ls_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: vaporization_liquid_id: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: reference_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_particle_set: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: LPT_wallref_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: laser_power: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: irrad_radius: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: wave_langth: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: reflectivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: absorptivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: nozzle_position: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/valvof.txt: sweep_velocity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.1.txt: radf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.2.txt: radf: Key not found, using default
+[    0][ INFO]: <PBD>/input-tests/validate-vof-print-ay/input/plist.3.txt: tm_liq_table/tm_liq_func: No Liquidus Temperature tables/functions are given
+[    0][ INFO]: <PBD>/input-tests/validate-vof-print-ay/input/plist.3.txt: tm_soli_table/tm_soli_func: No Solidus Temperature tables/functions are given
+[    0][ WARN]: <PBD>/input-tests/validate-vof-print-ay/input/plist.3.txt: solute_diffusivity: No solute diffusivity defined (will become all 0)!
+[    0][ WARN]: <PSD>/test/input/geom/valvof-s.txt: Geom_print_matrix: Key not found, using default
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/comp_data/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/Y_0/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/Y_1/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/Y_2/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/Yt/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fs/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/fl/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/uvw/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/flux/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/t/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/p/0000.0000.single.dat...
+[    0][ INFO]: <Source:<PSD>/jupiter/io_process.c>: Writing data/binary_data/time/0000.dat...
+[    0][ERROR]: Following error(s) found while VOF validation:
+[    0]       | 
+[    0]       |  * Sum of Solid amounts (VOF * mass fraction) is greater than 1 found at 1000 cells:
+[    0]       |     (0, 0, 0), (1, 0, 0), (2, 0, 0), (3, 0, 0), (4, 0, 0),
+[    0]       |     (5, 0, 0), (6, 0, 0), (7, 0, 0), (8, 0, 0), (9, 0, 0),
+[    0]       |     (0, 1, 0), (1, 1, 0), (2, 1, 0), (3, 1, 0), (4, 1, 0),
+[    0]       |     (5, 1, 0), (6, 1, 0), (7, 1, 0), (8, 1, 0), (9, 1, 0),
+[    0]       |     (0, 2, 0), (1, 2, 0), (2, 2, 0), (3, 2, 0), (4, 2, 0),
+[    0]       |     (5, 2, 0), (6, 2, 0), (7, 2, 0), (8, 2, 0), (9, 2, 0),
+[    0]       |     (0, 3, 0), (1, 3, 0), (2, 3, 0), (3, 3, 0), (4, 3, 0),
+[    0]       |     (5, 3, 0), (6, 3, 0), (7, 3, 0), (8, 3, 0), (9, 3, 0),
+[    0]       |     (0, 4, 0), (1, 4, 0), (2, 4, 0), (3, 4, 0), (4, 4, 0),
+[    0]       |     (5, 4, 0), (6, 4, 0), (7, 4, 0), (8, 4, 0), (9, 4, 0),
+[    0]       |     (0, 5, 0), (1, 5, 0), (2, 5, 0), (3, 5, 0), (4, 5, 0),
+[    0]       |     (5, 5, 0), (6, 5, 0), (7, 5, 0), (8, 5, 0), (9, 5, 0),
+[    0]       |     (0, 6, 0), (1, 6, 0), (2, 6, 0), (3, 6, 0), (4, 6, 0),
+[    0]       |     (5, 6, 0), (6, 6, 0), (7, 6, 0), (8, 6, 0), (9, 6, 0),
+[    0]       |     (0, 7, 0), (1, 7, 0), (2, 7, 0), (3, 7, 0), (4, 7, 0),
+[    0]       |     (5, 7, 0), (6, 7, 0), (7, 7, 0), (8, 7, 0), (9, 7, 0),
+[    0]       |     (0, 8, 0), (1, 8, 0), (2, 8, 0), (3, 8, 0), (4, 8, 0),
+[    0]       |     (5, 8, 0), (6, 8, 0), (7, 8, 0), (8, 8, 0), (9, 8, 0),
+[    0]       |     (0, 9, 0), (1, 9, 0), (2, 9, 0), (3, 9, 0), (4, 9, 0),
+[    0]       |     (5, 9, 0), (6, 9, 0), (7, 9, 0), (8, 9, 0), (9, 9, 0),
+[    0]       |     (0, 0, 1), (1, 0, 1), (2, 0, 1), (3, 0, 1), (4, 0, 1),
+[    0]       |     (5, 0, 1), (6, 0, 1), (7, 0, 1), (8, 0, 1), (9, 0, 1),
+[    0]       |     (0, 1, 1), (1, 1, 1), (2, 1, 1), (3, 1, 1), (4, 1, 1),
+[    0]       |     (5, 1, 1), (6, 1, 1), (7, 1, 1), (8, 1, 1), (9, 1, 1),
+[    0]       |     (0, 2, 1), (1, 2, 1), (2, 2, 1), (3, 2, 1), (4, 2, 1),
+[    0]       |     (5, 2, 1), (6, 2, 1), (7, 2, 1), (8, 2, 1), (9, 2, 1),
+[    0]       |     (0, 3, 1), (1, 3, 1), (2, 3, 1), (3, 3, 1), (4, 3, 1),
+[    0]       |     (5, 3, 1), (6, 3, 1), (7, 3, 1), (8, 3, 1), (9, 3, 1),
+[    0]       |     (0, 4, 1), (1, 4, 1), (2, 4, 1), (3, 4, 1), (4, 4, 1),
+[    0]       |     (5, 4, 1), (6, 4, 1), (7, 4, 1), (8, 4, 1), (9, 4, 1),
+[    0]       |     (0, 5, 1), (1, 5, 1), (2, 5, 1), (3, 5, 1), (4, 5, 1),
+[    0]       |     (5, 5, 1), (6, 5, 1), (7, 5, 1), (8, 5, 1), (9, 5, 1),
+[    0]       |     (0, 6, 1), (1, 6, 1), (2, 6, 1), (3, 6, 1), (4, 6, 1),
+[    0]       |     (5, 6, 1), (6, 6, 1), (7, 6, 1), (8, 6, 1), (9, 6, 1),
+[    0]       |     (0, 7, 1), (1, 7, 1), (2, 7, 1), (3, 7, 1), (4, 7, 1),
+[    0]       |     (5, 7, 1), (6, 7, 1), (7, 7, 1), (8, 7, 1), (9, 7, 1),
+[    0]       |     (0, 8, 1), (1, 8, 1), (2, 8, 1), (3, 8, 1), (4, 8, 1),
+[    0]       |     (5, 8, 1), (6, 8, 1), (7, 8, 1), (8, 8, 1), (9, 8, 1),
+[    0]       |     (0, 9, 1), (1, 9, 1), (2, 9, 1), (3, 9, 1), (4, 9, 1),
+[    0]       |     (5, 9, 1), (6, 9, 1), (7, 9, 1), (8, 9, 1), (9, 9, 1),
+[    0]       |     (0, 0, 2), (1, 0, 2), (2, 0, 2), (3, 0, 2), (4, 0, 2),
+[    0]       |     (5, 0, 2), (6, 0, 2), (7, 0, 2), (8, 0, 2), (9, 0, 2),
+[    0]       |     (0, 1, 2), (1, 1, 2), (2, 1, 2), (3, 1, 2), (4, 1, 2),
+[    0]       |     (5, 1, 2), (6, 1, 2), (7, 1, 2), (8, 1, 2), (9, 1, 2),
+[    0]       |     (0, 2, 2), (1, 2, 2), (2, 2, 2), (3, 2, 2), (4, 2, 2),
+[    0]       |     (5, 2, 2), (6, 2, 2), (7, 2, 2), (8, 2, 2), (9, 2, 2),
+[    0]       |     (0, 3, 2), (1, 3, 2), (2, 3, 2), (3, 3, 2), (4, 3, 2),
+[    0]       |     (5, 3, 2), (6, 3, 2), (7, 3, 2), (8, 3, 2), (9, 3, 2),
+[    0]       |     (0, 4, 2), (1, 4, 2), (2, 4, 2), (3, 4, 2), (4, 4, 2),
+[    0]       |     (5, 4, 2), (6, 4, 2), (7, 4, 2), (8, 4, 2), (9, 4, 2),
+[    0]       |     (0, 5, 2), (1, 5, 2), (2, 5, 2), (3, 5, 2), (4, 5, 2),
+[    0]       |     (5, 5, 2), (6, 5, 2), (7, 5, 2), (8, 5, 2), (9, 5, 2),
+[    0]       |     (0, 6, 2), (1, 6, 2), (2, 6, 2), (3, 6, 2), (4, 6, 2),
+[    0]       |     (5, 6, 2), (6, 6, 2), (7, 6, 2), (8, 6, 2), (9, 6, 2),
+[    0]       |     (0, 7, 2), (1, 7, 2), (2, 7, 2), (3, 7, 2), (4, 7, 2),
+[    0]       |     (5, 7, 2), (6, 7, 2), (7, 7, 2), (8, 7, 2), (9, 7, 2),
+[    0]       |     (0, 8, 2), (1, 8, 2), (2, 8, 2), (3, 8, 2), (4, 8, 2),
+[    0]       |     (5, 8, 2), (6, 8, 2), (7, 8, 2), (8, 8, 2), (9, 8, 2),
+[    0]       |     (0, 9, 2), (1, 9, 2), (2, 9, 2), (3, 9, 2), (4, 9, 2),
+[    0]       |     (5, 9, 2), (6, 9, 2), (7, 9, 2), (8, 9, 2), (9, 9, 2),
+[    0]       |     (0, 0, 3), (1, 0, 3), (2, 0, 3), (3, 0, 3), (4, 0, 3),
+[    0]       |     (5, 0, 3), (6, 0, 3), (7, 0, 3), (8, 0, 3), (9, 0, 3),
+[    0]       |     (0, 1, 3), (1, 1, 3), (2, 1, 3), (3, 1, 3), (4, 1, 3),
+[    0]       |     (5, 1, 3), (6, 1, 3), (7, 1, 3), (8, 1, 3), (9, 1, 3),
+[    0]       |     (0, 2, 3), (1, 2, 3), (2, 2, 3), (3, 2, 3), (4, 2, 3),
+[    0]       |     (5, 2, 3), (6, 2, 3), (7, 2, 3), (8, 2, 3), (9, 2, 3),
+[    0]       |     (0, 3, 3), (1, 3, 3), (2, 3, 3), (3, 3, 3), (4, 3, 3),
+[    0]       |     (5, 3, 3), (6, 3, 3), (7, 3, 3), (8, 3, 3), (9, 3, 3),
+[    0]       |     (0, 4, 3), (1, 4, 3), (2, 4, 3), (3, 4, 3), (4, 4, 3),
+[    0]       |     (5, 4, 3), (6, 4, 3), (7, 4, 3), (8, 4, 3), (9, 4, 3),
+[    0]       |     (0, 5, 3), (1, 5, 3), (2, 5, 3), (3, 5, 3), (4, 5, 3),
+[    0]       |     (5, 5, 3), (6, 5, 3), (7, 5, 3), (8, 5, 3), (9, 5, 3),
+[    0]       |     (0, 6, 3), (1, 6, 3), (2, 6, 3), (3, 6, 3), (4, 6, 3),
+[    0]       |     (5, 6, 3), (6, 6, 3), (7, 6, 3), (8, 6, 3), (9, 6, 3),
+[    0]       |     (0, 7, 3), (1, 7, 3), (2, 7, 3), (3, 7, 3), (4, 7, 3),
+[    0]       |     (5, 7, 3), (6, 7, 3), (7, 7, 3), (8, 7, 3), (9, 7, 3),
+[    0]       |     (0, 8, 3), (1, 8, 3), (2, 8, 3), (3, 8, 3), (4, 8, 3),
+[    0]       |     (5, 8, 3), (6, 8, 3), (7, 8, 3), (8, 8, 3), (9, 8, 3),
+[    0]       |     (0, 9, 3), (1, 9, 3), (2, 9, 3), (3, 9, 3), (4, 9, 3),
+[    0]       |     (5, 9, 3), (6, 9, 3), (7, 9, 3), (8, 9, 3), (9, 9, 3),
+[    0]       |     (0, 0, 4), (1, 0, 4), (2, 0, 4), (3, 0, 4), (4, 0, 4),
+[    0]       |     (5, 0, 4), (6, 0, 4), (7, 0, 4), (8, 0, 4), (9, 0, 4),
+[    0]       |     (0, 1, 4), (1, 1, 4), (2, 1, 4), (3, 1, 4), (4, 1, 4),
+[    0]       |     (5, 1, 4), (6, 1, 4), (7, 1, 4), (8, 1, 4), (9, 1, 4),
+[    0]       |     (0, 2, 4), (1, 2, 4), (2, 2, 4), (3, 2, 4), (4, 2, 4),
+[    0]       |     (5, 2, 4), (6, 2, 4), (7, 2, 4), (8, 2, 4), (9, 2, 4),
+[    0]       |     (0, 3, 4), (1, 3, 4), (2, 3, 4), (3, 3, 4), (4, 3, 4),
+[    0]       |     (5, 3, 4), (6, 3, 4), (7, 3, 4), (8, 3, 4), (9, 3, 4),
+[    0]       |     (0, 4, 4), (1, 4, 4), (2, 4, 4), (3, 4, 4), (4, 4, 4),
+[    0]       |     (5, 4, 4), (6, 4, 4), (7, 4, 4), (8, 4, 4), (9, 4, 4),
+[    0]       |     (0, 5, 4), (1, 5, 4), (2, 5, 4), (3, 5, 4), (4, 5, 4),
+[    0]       |     (5, 5, 4), (6, 5, 4), (7, 5, 4), (8, 5, 4), (9, 5, 4),
+[    0]       |     (0, 6, 4), (1, 6, 4), (2, 6, 4), (3, 6, 4), (4, 6, 4),
+[    0]       |     (5, 6, 4), (6, 6, 4), (7, 6, 4), (8, 6, 4), (9, 6, 4),
+[    0]       |     (0, 7, 4), (1, 7, 4), (2, 7, 4), (3, 7, 4), (4, 7, 4),
+[    0]       |     (5, 7, 4), (6, 7, 4), (7, 7, 4), (8, 7, 4), (9, 7, 4),
+[    0]       |     (0, 8, 4), (1, 8, 4), (2, 8, 4), (3, 8, 4), (4, 8, 4),
+[    0]       |     (5, 8, 4), (6, 8, 4), (7, 8, 4), (8, 8, 4), (9, 8, 4),
+[    0]       |     (0, 9, 4), (1, 9, 4), (2, 9, 4), (3, 9, 4), (4, 9, 4),
+[    0]       |     (5, 9, 4), (6, 9, 4), (7, 9, 4), (8, 9, 4), (9, 9, 4),
+[    0]       |     (0, 0, 5), (1, 0, 5), (2, 0, 5), (3, 0, 5), (4, 0, 5),
+[    0]       |     (5, 0, 5), (6, 0, 5), (7, 0, 5), (8, 0, 5), (9, 0, 5),
+[    0]       |     (0, 1, 5), (1, 1, 5), (2, 1, 5), (3, 1, 5), (4, 1, 5),
+[    0]       |     (5, 1, 5), (6, 1, 5), (7, 1, 5), (8, 1, 5), (9, 1, 5),
+[    0]       |     (0, 2, 5), (1, 2, 5), (2, 2, 5), (3, 2, 5), (4, 2, 5),
+[    0]       |     (5, 2, 5), (6, 2, 5), (7, 2, 5), (8, 2, 5), (9, 2, 5),
+[    0]       |     (0, 3, 5), (1, 3, 5), (2, 3, 5), (3, 3, 5), (4, 3, 5),
+[    0]       |     (5, 3, 5), (6, 3, 5), (7, 3, 5), (8, 3, 5), (9, 3, 5),
+[    0]       |     (0, 4, 5), (1, 4, 5), (2, 4, 5), (3, 4, 5), (4, 4, 5),
+[    0]       |     (5, 4, 5), (6, 4, 5), (7, 4, 5), (8, 4, 5), (9, 4, 5),
+[    0]       |     (0, 5, 5), (1, 5, 5), (2, 5, 5), (3, 5, 5), (4, 5, 5),
+[    0]       |     (5, 5, 5), (6, 5, 5), (7, 5, 5), (8, 5, 5), (9, 5, 5),
+[    0]       |     (0, 6, 5), (1, 6, 5), (2, 6, 5), (3, 6, 5), (4, 6, 5),
+[    0]       |     (5, 6, 5), (6, 6, 5), (7, 6, 5), (8, 6, 5), (9, 6, 5),
+[    0]       |     (0, 7, 5), (1, 7, 5), (2, 7, 5), (3, 7, 5), (4, 7, 5),
+[    0]       |     (5, 7, 5), (6, 7, 5), (7, 7, 5), (8, 7, 5), (9, 7, 5),
+[    0]       |     (0, 8, 5), (1, 8, 5), (2, 8, 5), (3, 8, 5), (4, 8, 5),
+[    0]       |     (5, 8, 5), (6, 8, 5), (7, 8, 5), (8, 8, 5), (9, 8, 5),
+[    0]       |     (0, 9, 5), (1, 9, 5), (2, 9, 5), (3, 9, 5), (4, 9, 5),
+[    0]       |     (5, 9, 5), (6, 9, 5), (7, 9, 5), (8, 9, 5), (9, 9, 5),
+[    0]       |     (0, 0, 6), (1, 0, 6), (2, 0, 6), (3, 0, 6), (4, 0, 6),
+[    0]       |     (5, 0, 6), (6, 0, 6), (7, 0, 6), (8, 0, 6), (9, 0, 6),
+[    0]       |     (0, 1, 6), (1, 1, 6), (2, 1, 6), (3, 1, 6), (4, 1, 6),
+[    0]       |     (5, 1, 6), (6, 1, 6), (7, 1, 6), (8, 1, 6), (9, 1, 6),
+[    0]       |     (0, 2, 6), (1, 2, 6), (2, 2, 6), (3, 2, 6), (4, 2, 6),
+[    0]       |     (5, 2, 6), (6, 2, 6), (7, 2, 6), (8, 2, 6), (9, 2, 6),
+[    0]       |     (0, 3, 6), (1, 3, 6), (2, 3, 6), (3, 3, 6), (4, 3, 6),
+[    0]       |     (5, 3, 6), (6, 3, 6), (7, 3, 6), (8, 3, 6), (9, 3, 6),
+[    0]       |     (0, 4, 6), (1, 4, 6), (2, 4, 6), (3, 4, 6), (4, 4, 6),
+[    0]       |     (5, 4, 6), (6, 4, 6), (7, 4, 6), (8, 4, 6), (9, 4, 6),
+[    0]       |     (0, 5, 6), (1, 5, 6), (2, 5, 6), (3, 5, 6), (4, 5, 6),
+[    0]       |     (5, 5, 6), (6, 5, 6), (7, 5, 6), (8, 5, 6), (9, 5, 6),
+[    0]       |     (0, 6, 6), (1, 6, 6), (2, 6, 6), (3, 6, 6), (4, 6, 6),
+[    0]       |     (5, 6, 6), (6, 6, 6), (7, 6, 6), (8, 6, 6), (9, 6, 6),
+[    0]       |     (0, 7, 6), (1, 7, 6), (2, 7, 6), (3, 7, 6), (4, 7, 6),
+[    0]       |     (5, 7, 6), (6, 7, 6), (7, 7, 6), (8, 7, 6), (9, 7, 6),
+[    0]       |     (0, 8, 6), (1, 8, 6), (2, 8, 6), (3, 8, 6), (4, 8, 6),
+[    0]       |     (5, 8, 6), (6, 8, 6), (7, 8, 6), (8, 8, 6), (9, 8, 6),
+[    0]       |     (0, 9, 6), (1, 9, 6), (2, 9, 6), (3, 9, 6), (4, 9, 6),
+[    0]       |     (5, 9, 6), (6, 9, 6), (7, 9, 6), (8, 9, 6), (9, 9, 6),
+[    0]       |     (0, 0, 7), (1, 0, 7), (2, 0, 7), (3, 0, 7), (4, 0, 7),
+[    0]       |     (5, 0, 7), (6, 0, 7), (7, 0, 7), (8, 0, 7), (9, 0, 7),
+[    0]       |     (0, 1, 7), (1, 1, 7), (2, 1, 7), (3, 1, 7), (4, 1, 7),
+[    0]       |     (5, 1, 7), (6, 1, 7), (7, 1, 7), (8, 1, 7), (9, 1, 7),
+[    0]       |     (0, 2, 7), (1, 2, 7), (2, 2, 7), (3, 2, 7), (4, 2, 7),
+[    0]       |     (5, 2, 7), (6, 2, 7), (7, 2, 7), (8, 2, 7), (9, 2, 7),
+[    0]       |     (0, 3, 7), (1, 3, 7), (2, 3, 7), (3, 3, 7), (4, 3, 7),
+[    0]       |     (5, 3, 7), (6, 3, 7), (7, 3, 7), (8, 3, 7), (9, 3, 7),
+[    0]       |     (0, 4, 7), (1, 4, 7), (2, 4, 7), (3, 4, 7), (4, 4, 7),
+[    0]       |     (5, 4, 7), (6, 4, 7), (7, 4, 7), (8, 4, 7), (9, 4, 7),
+[    0]       |     (0, 5, 7), (1, 5, 7), (2, 5, 7), (3, 5, 7), (4, 5, 7),
+[    0]       |     (5, 5, 7), (6, 5, 7), (7, 5, 7), (8, 5, 7), (9, 5, 7),
+[    0]       |     (0, 6, 7), (1, 6, 7), (2, 6, 7), (3, 6, 7), (4, 6, 7),
+[    0]       |     (5, 6, 7), (6, 6, 7), (7, 6, 7), (8, 6, 7), (9, 6, 7),
+[    0]       |     (0, 7, 7), (1, 7, 7), (2, 7, 7), (3, 7, 7), (4, 7, 7),
+[    0]       |     (5, 7, 7), (6, 7, 7), (7, 7, 7), (8, 7, 7), (9, 7, 7),
+[    0]       |     (0, 8, 7), (1, 8, 7), (2, 8, 7), (3, 8, 7), (4, 8, 7),
+[    0]       |     (5, 8, 7), (6, 8, 7), (7, 8, 7), (8, 8, 7), (9, 8, 7),
+[    0]       |     (0, 9, 7), (1, 9, 7), (2, 9, 7), (3, 9, 7), (4, 9, 7),
+[    0]       |     (5, 9, 7), (6, 9, 7), (7, 9, 7), (8, 9, 7), (9, 9, 7),
+[    0]       |     (0, 0, 8), (1, 0, 8), (2, 0, 8), (3, 0, 8), (4, 0, 8),
+[    0]       |     (5, 0, 8), (6, 0, 8), (7, 0, 8), (8, 0, 8), (9, 0, 8),
+[    0]       |     (0, 1, 8), (1, 1, 8), (2, 1, 8), (3, 1, 8), (4, 1, 8),
+[    0]       |     (5, 1, 8), (6, 1, 8), (7, 1, 8), (8, 1, 8), (9, 1, 8),
+[    0]       |     (0, 2, 8), (1, 2, 8), (2, 2, 8), (3, 2, 8), (4, 2, 8),
+[    0]       |     (5, 2, 8), (6, 2, 8), (7, 2, 8), (8, 2, 8), (9, 2, 8),
+[    0]       |     (0, 3, 8), (1, 3, 8), (2, 3, 8), (3, 3, 8), (4, 3, 8),
+[    0]       |     (5, 3, 8), (6, 3, 8), (7, 3, 8), (8, 3, 8), (9, 3, 8),
+[    0]       |     (0, 4, 8), (1, 4, 8), (2, 4, 8), (3, 4, 8), (4, 4, 8),
+[    0]       |     (5, 4, 8), (6, 4, 8), (7, 4, 8), (8, 4, 8), (9, 4, 8),
+[    0]       |     (0, 5, 8), (1, 5, 8), (2, 5, 8), (3, 5, 8), (4, 5, 8),
+[    0]       |     (5, 5, 8), (6, 5, 8), (7, 5, 8), (8, 5, 8), (9, 5, 8),
+[    0]       |     (0, 6, 8), (1, 6, 8), (2, 6, 8), (3, 6, 8), (4, 6, 8),
+[    0]       |     (5, 6, 8), (6, 6, 8), (7, 6, 8), (8, 6, 8), (9, 6, 8),
+[    0]       |     (0, 7, 8), (1, 7, 8), (2, 7, 8), (3, 7, 8), (4, 7, 8),
+[    0]       |     (5, 7, 8), (6, 7, 8), (7, 7, 8), (8, 7, 8), (9, 7, 8),
+[    0]       |     (0, 8, 8), (1, 8, 8), (2, 8, 8), (3, 8, 8), (4, 8, 8),
+[    0]       |     (5, 8, 8), (6, 8, 8), (7, 8, 8), (8, 8, 8), (9, 8, 8),
+[    0]       |     (0, 9, 8), (1, 9, 8), (2, 9, 8), (3, 9, 8), (4, 9, 8),
+[    0]       |     (5, 9, 8), (6, 9, 8), (7, 9, 8), (8, 9, 8), (9, 9, 8),
+[    0]       |     (0, 0, 9), (1, 0, 9), (2, 0, 9), (3, 0, 9), (4, 0, 9),
+[    0]       |     (5, 0, 9), (6, 0, 9), (7, 0, 9), (8, 0, 9), (9, 0, 9),
+[    0]       |     (0, 1, 9), (1, 1, 9), (2, 1, 9), (3, 1, 9), (4, 1, 9),
+[    0]       |     (5, 1, 9), (6, 1, 9), (7, 1, 9), (8, 1, 9), (9, 1, 9),
+[    0]       |     (0, 2, 9), (1, 2, 9), (2, 2, 9), (3, 2, 9), (4, 2, 9),
+[    0]       |     (5, 2, 9), (6, 2, 9), (7, 2, 9), (8, 2, 9), (9, 2, 9),
+[    0]       |     (0, 3, 9), (1, 3, 9), (2, 3, 9), (3, 3, 9), (4, 3, 9),
+[    0]       |     (5, 3, 9), (6, 3, 9), (7, 3, 9), (8, 3, 9), (9, 3, 9),
+[    0]       |     (0, 4, 9), (1, 4, 9), (2, 4, 9), (3, 4, 9), (4, 4, 9),
+[    0]       |     (5, 4, 9), (6, 4, 9), (7, 4, 9), (8, 4, 9), (9, 4, 9),
+[    0]       |     (0, 5, 9), (1, 5, 9), (2, 5, 9), (3, 5, 9), (4, 5, 9),
+[    0]       |     (5, 5, 9), (6, 5, 9), (7, 5, 9), (8, 5, 9), (9, 5, 9),
+[    0]       |     (0, 6, 9), (1, 6, 9), (2, 6, 9), (3, 6, 9), (4, 6, 9),
+[    0]       |     (5, 6, 9), (6, 6, 9), (7, 6, 9), (8, 6, 9), (9, 6, 9),
+[    0]       |     (0, 7, 9), (1, 7, 9), (2, 7, 9), (3, 7, 9), (4, 7, 9),
+[    0]       |     (5, 7, 9), (6, 7, 9), (7, 7, 9), (8, 7, 9), (9, 7, 9),
+[    0]       |     (0, 8, 9), (1, 8, 9), (2, 8, 9), (3, 8, 9), (4, 8, 9),
+[    0]       |     (5, 8, 9), (6, 8, 9), (7, 8, 9), (8, 8, 9), (9, 8, 9),
+[    0]       |     (0, 9, 9), (1, 9, 9), (2, 9, 9), (3, 9, 9), (4, 9, 9),
+[    0]       |     (5, 9, 9), (6, 9, 9), (7, 9, 9), (8, 9, 9), (9, 9, 9)
+[    0]       | 
+[    0][FATAL]: <Source:<PSD>/jupiter/main.c>: main: Stopping by error(s). Please check.

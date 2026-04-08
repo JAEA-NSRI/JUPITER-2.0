@@ -1,0 +1,51 @@
+
+MPI_processes, 1, 1, 1
+Cell, 100, 2, 100
+Length, 0.1, 0.002, 0.1
+
+NumberOfComponent, 3
+
+stm, 3
+stp, 4
+
+tw_xm,   273.15
+tw_xp,   273.15
+tw_ym,   273.15
+tw_yp,   273.15
+tw_zm,   273.15
+tw_zp,   273.15
+
+dt, 0.0
+CFL_num, 0.5
+DIFF_num, 0.1
+Time, 0.0, 1.0e-4
+
+View, 10
+Output, 1
+
+nsub_step_t,  10
+nsub_step_mu, 1
+
+a0, 0.0
+DH, 0.0
+
+Gravity, 0.0, 0.0, -9.80665
+
+restart_dump_time, NaN
+
+radiation_step_limit, 9999999
+dt_rad, 0.1
+picard_max, 2
+picard_out, 5
+newton_max, 9
+E_cell_err_max, 1e-5
+tmp_cell_err_max, 1e-5
+dtmp_cell_err_max, 1e-7
+division_latitude,  1
+division_longitude, 1
+
+tr, 300.15
+
+d_p, 0.01
+U_ref, 1.0
+L_ref, 1.0

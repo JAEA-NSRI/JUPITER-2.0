@@ -1,0 +1,21 @@
+!integer(4) :: nn , nin , nngh , nfld , ifwp , ifw , ifdmy , nfout, nmmx
+integer(4) :: nin , nfld , iffld , ifsld , ifwp , ifw , ifdmy , nfout, nmmx, nbmx
+!integer(4) :: nin , nfld , ifwp , ifw , ifdmy , nfout, nmmx, nbmx
+!real(8) :: diag, dtmnr, dim, dtr
+real(8) :: diag, dtmnr, dtr
+!parameter ( nn    = 100000  )
+parameter ( nin   = 100    )
+!parameter ( nngh  = 150    )
+parameter ( nfld  = 5      )
+parameter ( iffld = 1      )
+parameter ( ifsld = 2      )
+parameter ( ifwp  = 3      )
+parameter ( ifw   = 4      )
+parameter ( ifdmy = 5      )
+parameter ( nfout = 2000   )
+parameter ( nmmx  = 99     )
+parameter ( nbmx  = 99     )
+parameter ( diag  = 2.0d0  )
+!parameter ( dtmnr = 0.05d0 )
+parameter ( dtmnr = 0.01d0 )
+parameter ( dtr   = 1.1d0  )

@@ -1,0 +1,186 @@
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: multi_layer_no_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: multi_layer_less_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: film_drainage: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: porous: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: two_energy: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: oxide_kp_model: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: h2_absorp_eval: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: h2_absorp_eval_p_change: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: LPT_time_integration_scheme: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: LPT_heat_exchange: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: LPT_wbcal: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: LPT_brownian_force: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: LPT_thermophoretic_force: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: print_update_level_set_reason: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: force_update_level_set_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: force_update_level_set_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_vof: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_velocity_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_velocity_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_velocity_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_temperature: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_fixed_heat_source: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_fluid_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_thermal_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_surface_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: Reinit_lpt_pewall_n: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: validate_VOF_init: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_double: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: restart_output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: restart_input_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: restart_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: restart_filename_templates: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_fs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_fl: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_t: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_bnd_norm_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_bnd_norm_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_bnd_norm_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_uvw: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_q: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_qgeom: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_ll: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_uplsflg: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_ptid: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_oid: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_xpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_ypt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_zpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_pospt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_uxpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_uypt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_uzpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_upt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_timpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fuxpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fuypt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fuzpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fupt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fduxt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fduyt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fduzt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fdt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_dTdt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_uf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_muf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_cpf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_tempf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_gradTf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_pathf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_mwf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_diapt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_denspt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_cppt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_thcpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_htrpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_tothtpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_temppt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_inipospt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_iniupt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_initemppt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_exit: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_flags: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_parceln: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fbpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_fTpt: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_seed: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_Y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_lpt_ewall: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_div_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_mass_source_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_mat: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_dens: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_denss: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_thc: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_thcs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_specht: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_spechtf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/lpt-test-errors.txt: output_mu: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: variable_delta_x: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: variable_delta_y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: variable_delta_z: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: NumberOfLayer: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: c_delta: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: lambda: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: sigma_pf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: mobility: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: d_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: U_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: L_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: Forch_coef: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: P_const: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: contact_angle: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: CA_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: film_cell: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: rapture_thickness: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: height_threshold: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vin_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: p_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: coef_lsts: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: ls_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: vaporization_liquid_id: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: reference_pressure: Key not found, using default
+[    0][ERROR]: line 49, column 12 of <PSD>/test/input/param/lpt-test-errors.txt: -1.0: LPT Output interval must be 0 or greater
+[    0][ WARN]: line 49, column 12 of <PSD>/test/input/param/lpt-test-errors.txt: -1.0: In LPTX, the value to given for LPT_outdt is unused.
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_cunningham_correction: Key not found, using default
+[    0][ERROR]: line 50, column 19 of <PSD>/test/input/param/lpt-test-errors.txt: -1: Number of particles must be 0 or greater
+[    0][ERROR]: line 51, column 3 of <PSD>/test/input/param/lpt-test-errors.txt: 0.0: Particle diameter must be positive
+[    0][ERROR]: line 51, column 8 of <PSD>/test/input/param/lpt-test-errors.txt: 0.0: Particle density must be positive
+[    0][ WARN]: line 52, column 59 of <PSD>/test/input/param/lpt-test-errors.txt: 0.2: Given time range for particle injection, [0.1, 0.2], does not overlap to the computational time range, [0, 0.01]
+[    0][ WARN]: line 54, column 23 of <PSD>/test/input/param/lpt-test-errors.txt: -1.0: X start position is outside of computational domain, [0, 0.1]
+[    0][ WARN]: line 54, column 40 of <PSD>/test/input/param/lpt-test-errors.txt: 0.2: Y end position is outside of computational domain, [0, 0.1]
+[    0][ERROR]: line 54, column 51 of <PSD>/test/input/param/lpt-test-errors.txt: 0.0: Z end position is less than Z start position
+[    0][ERROR]: line 54, column 61 of <PSD>/test/input/param/lpt-test-errors.txt: -0.001: End time is less than start time
+[    0][ WARN]: line 56, column 28 of <PSD>/test/input/param/lpt-test-errors.txt: 0.2: X end position is outside of computational domain, [0, 0.1]
+[    0][ERROR]: line 56, column 39 of <PSD>/test/input/param/lpt-test-errors.txt: 0.0: Y end position is less than Y start position
+[    0][ WARN]: line 56, column 49 of <PSD>/test/input/param/lpt-test-errors.txt: -0.001: Z end position is outside of computational domain, [0, 0.1]
+[    0][ERROR]: line 56, column 49 of <PSD>/test/input/param/lpt-test-errors.txt: -0.001: Z end position is less than Z start position
+[    0][ERROR]: line 58, column 29 of <PSD>/test/input/param/lpt-test-errors.txt: 0.0: X end position is less than X start position
+[    0][ WARN]: line 58, column 39 of <PSD>/test/input/param/lpt-test-errors.txt: -0.001: Y end position is outside of computational domain, [0, 0.1]
+[    0][ERROR]: line 58, column 39 of <PSD>/test/input/param/lpt-test-errors.txt: -0.001: Y end position is less than Y start position
+[    0][ WARN]: line 58, column 47 of <PSD>/test/input/param/lpt-test-errors.txt: -1.0: Z start position is outside of computational domain, [0, 0.1]
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: LPT_wallref_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: laser_power: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: irrad_radius: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: wave_langth: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: reflectivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: absorptivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: nozzle_position: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/lpt-test-errors.txt: sweep_velocity: Key not found, using default
+[    0][ WARN]: line 3, column 17 of <PBD>/input-tests/lpt-errors/input/plist.3.txt: 1: This material id is not used
+[    0][ WARN]: line 4, column 17 of <PBD>/input-tests/lpt-errors/input/plist.3.txt: 2: This material id is not used
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: solid_form: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/geom/small.txt: Geom_print_matrix: Key not found, using default
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][FATAL]: print_param: Some parameters with !! are invalid value. Please check.
+

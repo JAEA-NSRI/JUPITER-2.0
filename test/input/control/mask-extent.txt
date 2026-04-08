@@ -1,0 +1,1 @@
+add_mask, t1, EXTENT, 0, 1, 0, 1, 0, 1

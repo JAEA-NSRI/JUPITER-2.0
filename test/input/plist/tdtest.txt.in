@@ -1,0 +1,5 @@
+
+Material_file, -1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.gas.txt
+Material_file,  0, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.tdtest.txt
+Material_file,  1, @CMAKE_CURRENT_SOURCE_DIR@/input/phys.tdtest2.txt
+

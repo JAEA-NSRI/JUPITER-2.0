@@ -1,0 +1,8 @@
+-- Physical Property for Ar.
+
+rho_g,    CONST,   1.6228
+mu_g,     CONST,   1.0e-5
+specht_g, CONST, 520.64
+thc_g,    CONST,   0.0158
+diff,     CONST,   0.0
+sigma,    CONST,   0.07, -- water

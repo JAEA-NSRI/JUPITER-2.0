@@ -1,0 +1,87 @@
+
+MPI_processes, 1, 1, 1
+Cell, 10, 10, 10
+Length, 1.0, 1.0, 1.0,
+
+NumberOfComponent, 1
+
+stm, 3
+stp, 4
+
+tw_xm,   293.15
+tw_xp,  1293.15
+tw_ym,   273.15
+tw_yp,   273.15
+tw_zm,   273.15
+tw_zp,   673.15
+
+dt, 0.0
+CFL_num, 0.5
+DIFF_num, 0.1
+Time, 0.0, 1.0
+
+View, 10
+Output, 2
+
+nsub_step_t,  100
+nsub_step_mu, 1
+
+a0, 0.0
+DH, 0.0
+
+Gravity, 0.0, 0.0, 0.0
+
+restart_dump_time, NaN
+
+radiation_step_limit, 9999999
+dt_rad, 0.1
+picard_max, 2
+picard_out, 5
+newton_max, 9
+E_cell_err_max, 1e-5
+tmp_cell_err_max, 1e-5
+dtmp_cell_err_max, 1e-7
+division_latitude,  1
+division_longitude, 1
+
+tr, 300.15
+
+LPT_wallref_xm, -999.999,
+LPT_wallref_xp, -999.999,
+LPT_wallref_ym, -999.999,
+LPT_wallref_yp, -999.999,
+LPT_wallref_zm, -999.999,
+LPT_wallref_zp, -999.999,
+
+LPT_outdt, 0.001, LPT.dat
+LPT_particle_set, 1, &
+  0.2, 0.3, &
+  0.1, 0.2, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  7.0e-3, 8800.0, 0.0, 0.0, 0.0, 1000.0, 401.0, 385.0
+LPT_particle_set, 10, &
+  0.2, 0.3, &
+  0.3, 0.4, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  7.0e-4, 8800.0, 0.0, 0.0, 0.0, 1000.0, 401.0, 385.0
+LPT_particle_set, 100, &
+  0.2, 0.3, &
+  0.5, 0.6, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  3.5e-4, 8800.0, 0.0, 0.0, 0.0, 1000.0, 401.0, 385.0
+
+LPT_particle_set, 1, &
+  0.7, 0.8, &
+  0.1, 0.2, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  7.0e-3, 8800.0, 0.0, 0.0, 0.0, 600.0, 401.0, 385.0
+LPT_particle_set, 10, &
+  0.7, 0.8, &
+  0.3, 0.4, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  7.0e-4, 8800.0, 0.0, 0.0, 0.0, 600.0, 401.0, 385.0
+LPT_particle_set, 100, &
+  0.7, 0.8, &
+  0.5, 0.6, &
+  0.1, 0.2, 0.0, 0.0, OFF, &
+  3.5e-4, 8800.0, 0.0, 0.0, 0.0, 600.0, 401.0, 385.0

@@ -1,0 +1,32 @@
+-- SUS from solute_diff version.
+
+tm_soli, 1500.0,
+tm_liq, 1500.0,
+tb, 2792.0,   -- boiling temperature[K]
+-- lh, 297000.0, -- latent heat[J/kg]
+lh, 2970.0, -- latent heat[J/kg]
+molar_mass, 55.85,  -- Fe
+porosity, 1.0e-10,
+permeability, 1.0e-19,
+beta, CONST, 23.0,
+sigma, CONST, 0.86,  -- coefficient of surface tension
+-- density[kg m-3]
+rho_s, CONST, 7930.0,
+rho_l, CONST, 7700.0,
+-- viscosity[Pa s]
+mu_s, CONST, 5.44e-3,
+mu_l, CONST, 6.0e-3,
+-- specific heat at constant volume[J kg-1 K-1]
+specht_s, CONST, 590.0,
+specht_l, CONST, 750.0,
+-- thermal conductivity[W m-1 K-1]
+thc_s, CONST, 16.7,
+thc_l, CONST, 28.0,
+-- emissivity
+emi_s, CONST, 1.0,
+emi_l, CONST, 1.0,
+emi_g, CONST, 1.0,
+-- solute diffusion coefficient
+diff, CONST, 1.0e-2
+
+solid_form, IBM

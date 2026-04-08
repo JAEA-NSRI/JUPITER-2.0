@@ -1,0 +1,249 @@
+[    0][ERROR]: line 160, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_name: Multiple geometry name defined, previously defined at line 159
+[    0][ERROR]: line 173, column 12 of <PSD>/test/input/geom/geom_errors.txt: n2: This name is already defined elsewhere
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: multi_layer_no_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: multi_layer_less_coalescence: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: film_drainage: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: oxide_kp_model: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: h2_absorp_eval: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: h2_absorp_eval_p_change: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: print_update_level_set_reason: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: force_update_level_set_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: force_update_level_set_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_vof: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_velocity_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_velocity_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_velocity_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_temperature: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_fixed_heat_source: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_fluid_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_thermal_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_surface_boundary: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: Reinit_lpt_pewall_n: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: validate_VOF_init: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_double: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: restart_output_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: restart_input_mode: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: restart_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_data_directory: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: restart_filename_templates: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_fs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_fl: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_t: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_bnd_norm_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_bnd_norm_v: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_bnd_norm_w: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_uvw: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_q: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_qgeom: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_lls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_ll: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_ls: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_uplsflg: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_fs_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_ls_ibm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_div_u: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_mass_source_g: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_mat: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_dens: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_denss: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_densf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_thc: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_thcs: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_thcf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_specht: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_spechtf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/flags/geom-test.txt: output_mu: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: variable_delta_x: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: variable_delta_y: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: variable_delta_z: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: NumberOfLayer: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: c_delta: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: lambda: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: sigma_pf: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: mobility: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: d_p: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: U_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: L_ref: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: Forch_coef: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: P_const: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: contact_angle: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: CA_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: film_cell: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: rapture_thickness: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: height_threshold: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vin_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: p_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: dt_rad: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: coef_lsts: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: ls_iteration: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: radiation_step_limit: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: vaporization_liquid_id: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: reference_pressure: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: picard_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: picard_out: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: newton_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: E_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: tmp_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: dtmp_cell_err_max: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: division_latitude: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: division_longitude: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_particle_set: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_xm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_xp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_ym: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_yp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_zm: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: LPT_wallref_zp: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: laser_power: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: irrad_radius: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: wave_langth: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: reflectivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: absorptivity: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: nozzle_position: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/param/geom_comb.txt: sweep_velocity: Key not found, using default
+[    0][ WARN]: line 3, column 17 of <PBD>/input-tests/geom-errors/input/plist.3.txt: 1: This material id is not used
+[    0][ WARN]: line 4, column 17 of <PBD>/input-tests/geom-errors/input/plist.3.txt: 2: This material id is not used
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: lhv: Key not found, using default
+[    0][ WARN]: <PSD>/test/input/phys.0.txt: solid_form: Key not found, using default
+[    0][ERROR]: line 8, column 13 of <PSD>/test/input/geom/geom_errors.txt: SET: Invalid or unusable operator for this shape
+[    0][ERROR]: line 8, column 18 of <PSD>/test/input/geom/geom_errors.txt: COMB: Shape stack is underflowed
+[    0][ERROR]: line 9, column 18 of <PSD>/test/input/geom/geom_errors.txt: GED: Group stack is underflowed
+[    0][ERROR]: line 13, column 18 of <PSD>/test/input/geom/geom_errors.txt: TRA: There is no shapes to transform
+[    0][ERROR]: line 13, column 18 of <PSD>/test/input/geom/geom_errors.txt: TRA: No 'body' shapes defined
+[    0][ WARN]: line 20, column 13 of <PSD>/test/input/geom/geom_errors.txt: ADD: Shape operation should be `SET'
+[    0][ERROR]: line 20, column 18 of <PSD>/test/input/geom/geom_errors.txt: GED: Invalid structure found
+[    0][ERROR]: line 29, column 18 of <PSD>/test/input/geom/geom_errors.txt: COMB: COMB found without any PUSH/SET shapes
+[    0][ERROR]: line 36, column 13 of <PSD>/test/input/geom/geom_errors.txt: PUSH: Uncombined shapes found
+[    0][ERROR]: line 37, column 18 of <PSD>/test/input/geom/geom_errors.txt: GST: Unclosed group found
+[    0][ERROR]: line 45, column 18 of <PSD>/test/input/geom/geom_errors.txt: TRA: There is no shapes to transform
+[    0][ERROR]: line 49, column 50 of <PSD>/test/input/geom/geom_errors.txt: 0.05: (0, 0.05, 0.05): Max position is greater than min on axis X
+[    0][ERROR]: line 51, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Zero vector given for normal
+[    0][ERROR]: line 52, column 38 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Factor must not be zero
+[    0][ERROR]: line 52, column 43 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Factor must not be zero
+[    0][ERROR]: line 52, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Factor must not be zero
+[    0][ERROR]: line 53, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Rotatation axis must not be zero vector
+[    0][ERROR]: line 54, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Zero vector given for an edge
+[    0][ERROR]: line 54, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Vector 1 and Vector 2 are parallel
+[    0][ERROR]: line 54, column 78 of <PSD>/test/input/geom/geom_errors.txt: 1.0: (0, 0, 1): Vector 1 and Vector 3 are parallel
+[    0][ERROR]: line 55, column 65 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (-2, -2, 0): Vector 1 and Vector 2 are parallel
+[    0][ERROR]: line 56, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Vector must not be zero
+[    0][ERROR]: line 56, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Height vector is parallel to radial vector
+[    0][ERROR]: line 57, column 68 of <PSD>/test/input/geom/geom_errors.txt: 2: 2: Number of vertices must be >= 3
+[    0][ERROR]: line 58, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Height vector is parallel to radial vector
+[    0][ERROR]: line 59, column 38 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Radius must be positive
+[    0][ERROR]: line 60, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Vector must not be zero
+[    0][ERROR]: line 60, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Vector must not be zero
+[    0][ERROR]: line 61, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Vector 1 and Vector 2 are parallel
+[    0][ERROR]: line 62, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Vector must not be zero
+[    0][ERROR]: line 62, column 78 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Vector 2 and Vector 3 are parallel
+[    0][ERROR]: line 63, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Height vector is zero
+[    0][ERROR]: line 64, column 53 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Base radius must be positive
+[    0][ERROR]: line 65, column 52 of <PSD>/test/input/geom/geom_errors.txt: -1.0: -1: Base radius must be positive
+[    0][ERROR]: line 66, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Height vector must not be zero
+[    0][ERROR]: line 66, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Bottom base vector A must not be zero
+[    0][ERROR]: line 67, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Height vector is parallel to radial vector
+[    0][ERROR]: line 67, column 68 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Length of vector B must be positive
+[    0][ERROR]: line 68, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Height vector must not be zero
+[    0][ERROR]: line 68, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Bottom base vector A must not be zero
+[    0][ERROR]: line 69, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (1, 0, 0): Height vector is parallel to radial vector
+[    0][ERROR]: line 69, column 68 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Length of vector B must be positive
+[    0][ERROR]: line 70, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Zero vector given for normal
+[    0][ERROR]: line 71, column 53 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Radius must be positive
+[    0][ERROR]: line 71, column 58 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Radius must be positive
+[    0][ERROR]: line 72, column 53 of <PSD>/test/input/geom/geom_errors.txt: -4.0: -4: Radius must be positive
+[    0][ERROR]: line 72, column 59 of <PSD>/test/input/geom/geom_errors.txt: -1.0: -1: Radius must be positive
+[    0][ERROR]: line 73, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0, 0): Zero vector given for normal
+[    0][ERROR]: line 73, column 63 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0): Tube vectors must not be zero
+[    0][ERROR]: line 73, column 73 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, 0): Tube vectors must not be zero
+[    0][ERROR]: line 74, column 53 of <PSD>/test/input/geom/geom_errors.txt: 0.0: 0: Radius must be positive
+[    0][ERROR]: line 75, column 74 of <PSD>/test/input/geom/geom_errors.txt: -2.0: (-1, -2): Two tube vectors are in parallel
+[    0][ERROR]: line 78, column 37 of <PSD>/test/input/geom/geom_errors.txt: -1: (0, 0, -1): Negative power specified
+[    0][ERROR]: line 78, column 41 of <PSD>/test/input/geom/geom_errors.txt: 1.0: 1: Because of the internal structure, powers must be set properly before setting coefficients.
+[    0][ERROR]: line 79, column 51 of <PSD>/test/input/geom/geom_errors.txt: -1: (0, 0, -1): Negative power specified
+[    0][ERROR]: line 79, column 55 of <PSD>/test/input/geom/geom_errors.txt: 1.0: 1: Because of the internal structure, powers must be set properly before setting coefficients.
+[    0][ERROR]: line 80, column 23 of <PSD>/test/input/geom/geom_errors.txt: -1: -1: Degree must be positive
+[    0][ERROR]: line 80, column 38 of <PSD>/test/input/geom/geom_errors.txt: 0: Geometry error: Dependent parameter not found
+[    0][ERROR]: line 80, column 41 of <PSD>/test/input/geom/geom_errors.txt: 1.0: 1: Because of the internal structure, powers must be set properly before setting coefficients.
+[    0][ERROR]: line 52, column 18 of <PSD>/test/input/geom/geom_errors.txt: SCA: Transformation matrix has high singularity
+[    0][ERROR]: line 85, column 18 of <PSD>/test/input/geom/geom_errors.txt: MAT: Transformation matrix has high singularity
+[    0][ERROR]: line 100, column 18 of <PSD>/test/input/geom/geom_errors.txt: GST: Group stack is overflowed
+[    0][ERROR]: line 114, column 13 of <PSD>/test/input/geom/geom_errors.txt: PUSH: Shape stack is overflowed
+[    0][ERROR]: line 119, column 12 of <PSD>/test/input/geom/geom_errors.txt: -: Binary data cannot be written in stdout
+[    0][ WARN]: line 121, column 20 of <PSD>/test/input/geom/geom_errors.txt: UNIFY_MPI: The given filename represents splitted-by-rank data. In this case, the last column of Geom_file should be BYPROCESS if specified.
+[    0][ WARN]: line 124, column 20 of <PSD>/test/input/geom/geom_errors.txt: UNIFY_GATHER: The given filename represents splitted-by-rank data. In this case, the last column of Geom_file should be BYPROCESS if specified.
+[    0][ WARN]: line 127, column 25 of <PSD>/test/input/geom/geom_errors.txt: BYPROCESS: The given filename represents unified data. In this case, the last column of Geom_file should be UNIFY, UNIFY_MPI or UNIFY_GATHER if specified. Assumed UNIFY_MPI.
+[    0][ WARN]: line 132, column 20 of <PSD>/test/input/geom/geom_errors.txt: UNIFY_MPI: The given filename represents splitted-by-rank data. In this case, the output mode should be BYPROCESS
+[    0][ WARN]: line 136, column 20 of <PSD>/test/input/geom/geom_errors.txt: UNIFY_GATHER: The given filename represents splitted-by-rank data. In this case, the output mode should be BYPROCESS
+[    0][ WARN]: line 140, column 25 of <PSD>/test/input/geom/geom_errors.txt: BYPROCESS: The given filename represents unified data. In this case, the output mode should be UNIFY, UNIFY_MPI or UNIFY_GATHER. Using UNIFY_MPI instead.
+[    0][ERROR]: line 139, column 38 of <PSD>/test/input/geom/geom_errors.txt: 1.0: No 'body' shapes defined
+[    0][ERROR]: line 149, column 13 of <PSD>/test/input/geom/geom_errors.txt: SET: Invalid or unusable operator for this shape
+[    0][ERROR]: line 154, column 13 of <PSD>/test/input/geom/geom_errors.txt: SET: Invalid or unusable operator for this shape
+[    0][ERROR]: line 160, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_name: Multiple geometry name defined, previously defined at line 159
+[    0][ERROR]: line 178, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_size: Multiple geometry size defined, previously defined at line 177
+[    0][ERROR]: line 183, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_origin: Multiple geometry origin defined, previously defined at line 182
+[    0][ERROR]: line 189, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_repeat: Multiple repetition number defined, previously defined at line 188
+[    0][ERROR]: line 197, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_offset: Multiple repetition offset defined, previously defined at line 196
+[    0][ WARN]: line 200, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_file: No initialization defined. This set of data won't affect to the calculation
+[    0][ERROR]: line 204, column 34 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (0, -inf, 0): Value must be finite
+[    0][ERROR]: line 204, column 49 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (inf, 0, 0): Value must be finite
+[    0][ERROR]: line 205, column 33 of <PSD>/test/input/geom/geom_errors.txt: nan: (0, 0, nan): All elements must be finite
+[    0][ERROR]: line 205, column 48 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (inf, 0, 0): All elements must be finite
+[    0][ERROR]: line 205, column 53 of <PSD>/test/input/geom/geom_errors.txt: inf: inf: Radius must be positive
+[    0][ERROR]: line 206, column 36 of <PSD>/test/input/geom/geom_errors.txt: inf: inf: Value must be finite
+[    0][ERROR]: line 207, column 50 of <PSD>/test/input/geom/geom_errors.txt: -1: -1: Degree of polynominal must be positive
+[    0][ERROR]: line 209, column 18 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, -1, 0): Negative power specified
+[    0][ERROR]: line 209, column 21 of <PSD>/test/input/geom/geom_errors.txt: 1.0: 1: Because of the internal structure, powers must be set properly before setting coefficients.
+[    0][ERROR]: line 211, column 32 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, -1, 0): Negative power specified
+[    0][ERROR]: line 211, column 35 of <PSD>/test/input/geom/geom_errors.txt: 1.0: 1: Because of the internal structure, powers must be set properly before setting coefficients.
+[    0][ERROR]: line 212, column 59 of <PSD>/test/input/geom/geom_errors.txt: -1: -1: Degree of polynominal must be positive
+[    0][ERROR]: line 213, column 44 of <PSD>/test/input/geom/geom_errors.txt: 3: 3: Precision must be 4 or 8
+[    0][ERROR]: line 218, column 16 of <PSD>/test/input/geom/geom_errors.txt: 10: (10, 10, 10): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 218, column 26 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, 0, 0): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 218, column 35 of <PSD>/test/input/geom/geom_errors.txt: 1: (1, 1, 1): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 218, column 44 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, 0, 0): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 220, column 16 of <PSD>/test/input/geom/geom_errors.txt: 10: (10, 10, 10): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 220, column 26 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, 0, 0): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 220, column 35 of <PSD>/test/input/geom/geom_errors.txt: 1: (1, 1, 1): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 220, column 44 of <PSD>/test/input/geom/geom_errors.txt: 0: (0, 0, 0): Number of cells, origin, repeats cannot be set for splitted-by-rank data
+[    0][ERROR]: line 222, column 35 of <PSD>/test/input/geom/geom_errors.txt: 0: (1, 1, 0): Number of copies must be positive
+[    0][ERROR]: line 224, column 16 of <PSD>/test/input/geom/geom_errors.txt: 10: (10, 0, 10): Number of cells must be positive
+[    0][ERROR]: line 229, column 66 of <PSD>/test/input/geom/geom_errors.txt: 0.3: (0.3, 0.3): Two vectors are parallel
+[    0][ERROR]: line 230, column 46 of <PSD>/test/input/geom/geom_errors.txt: 0.0: (nan, 0): Value must be finite
+[    0][ERROR]: line 230, column 66 of <PSD>/test/input/geom/geom_errors.txt: 0.1: (inf, 0.1): Value must be finite
+[    0][ERROR]: line 231, column 46 of <PSD>/test/input/geom/geom_errors.txt: nan: (0, nan): Value must be finite
+[    0][ERROR]: line 231, column 56 of <PSD>/test/input/geom/geom_errors.txt: 0.3: (inf, 0.3): Value must be finite
+[    0][ERROR]: line 238, column 21 of <PSD>/test/input/geom/geom_errors.txt: SET: Uncombined shapes found
+[    0][ERROR]: line 244, column 26 of <PSD>/test/input/geom/geom_errors.txt: COMB: Shape stack is underflowed
+[    0][ERROR]: line 252, column 21 of <PSD>/test/input/geom/geom_errors.txt: SET: Invalid or unusable operator for this shape
+[    0][ERROR]: line 259, column 26 of <PSD>/test/input/geom/geom_errors.txt: COMB: Shape stack is underflowed
+[    0][ERROR]: line 275, column 21 of <PSD>/test/input/geom/geom_errors.txt: PUSH: Shape stack is overflowed
+[    0][ WARN]: line 281, column 21 of <PSD>/test/input/geom/geom_errors.txt: ADD: Shape operation should be `SET'
+[    0][ERROR]: line 286, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_surface_shape: No shapes provide their surfaces to set surface shapes
+[    0][ERROR]: line 287, column 36 of <PSD>/test/input/geom/geom_errors.txt: 373.0: No 'body' shapes defined
+[    0][ERROR]: line 296, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_surface_shape: Surface shapes can not be used for whole region or file-based geometry
+[    0][ERROR]: line 300, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_surface_shape: Surface shapes can not be used for whole region or file-based geometry
+[    0][ERROR]: line 303, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_file: Can not set both of file and shape. First shape is defined at line 304
+[    0][ERROR]: line 311, column 53 of <PSD>/test/input/geom/geom_errors.txt: -1: Number of inlet components must be positive
+[    0][ WARN]: line 318, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_surface_boundary: Using multiple Geom_surface_boundary in single set is just overwriting the previous setting. Last Geom_surface_boundary is at line 317. (These conditions may be set to different positions if their threshold values are different, but I don't think this is what you want to do.)
+[    0][ WARN]: line 321, column 1 of <PSD>/test/input/geom/geom_errors.txt: Geom_surface_boundary: No Geom_surface_shape is set. Geom_surface_boundary will have no effect.
+[    0][ERROR]: line 324, column 52 of <PSD>/test/input/geom/geom_errors.txt: -1: Number of inlet components must be positive
+[    0][ INFO]: <PBD>/bin/jupiter-double: No control input file given (-control)
+[    0][FATAL]: print_param: Some parameters with !! are invalid value. Please check.
+

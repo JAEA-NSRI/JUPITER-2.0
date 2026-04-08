@@ -1,0 +1,3431 @@
+[    1] === Flags data =======================================================
+[    1]  * File: 
+[    1]    <PSD>/test/input/flags/fp-test.txt
+[    1]  * Print Messages:                                   ON
+[    1]  * Use non-uniform grid (info only):                OFF
+[    1]  * Load Geometry:                                    ON
+[    1]  * Fluid Dynamics:                                   ON
+[    1]  * Heat Equation:                                    ON
+[    1]  * Phase Change:                                    OFF
+[    1]  * Melting:                                         OFF
+[    1]  * Solidification:                                  OFF
+[    1]  * Vaporization:                                    OFF
+[    1]  * Condensation:                                    OFF
+[    1]  * Surface Tension:                                 OFF
+[    1]  * Oxidation:                                       OFF
+[    1]  * Radiation:                                       OFF
+[    1]  * Lagrangean Particle Tracking:                    OFF
+[    1]  * Laser Irradiation:                               OFF
+[    1]  * WENO Method:                                     OFF
+[    1]  * 3rd Order TVD RK to Heat eq.:                     ON
+[    1]  * 3rd Order TVD RK to Visc eq.:                     ON
+[    1]  * Immersed Boundary Method:                        OFF
+[    1]  * VOF Advection calculation:                       OFF
+[    1]  * Multi layer method where no bubble coalesce:     OFF
+[    1]  * Multi layer method where less bubble coalesce:   OFF
+[    1]  * Film drainage model:                             OFF
+[    1]  * Eutectic calculation:                            OFF
+[    1]  * Solute diffusion calculation:                    OFF
+[    1]  * Phasefield Method:                               OFF
+[    1]  * Interface Capturing Scheme:                    THINC
+[    1]  * Use porous model:                                OFF
+[    1]  * Use two energy model for porous model:           OFF
+[    1]  * Use contact angle model:                         OFF
+[    1]  * X- Boundary:                                    WALL
+[    1]  * X+ Boundary:                                    WALL
+[    1]  * Y- Boundary:                                    WALL
+[    1]  * Y+ Boundary:                                    WALL
+[    1]  * Z- Boundary:                                    WALL
+[    1]  * Z+ Boundary:                                    WALL
+[    1]  * X- Thermal Boundary:                      INSULATION
+[    1]  * X+ Thermal Boundary:                      INSULATION
+[    1]  * Y- Thermal Boundary:                      INSULATION
+[    1]  * Y+ Thermal Boundary:                      INSULATION
+[    1]  * Z- Thermal Boundary:                      ISOTHERMAL
+[    1]  * Z+ Thermal Boundary:                      ISOTHERMAL
+[    1]  * X- Radiation Boundary:                    INSULATION
+[    1]  * X+ Radiation Boundary:                    INSULATION
+[    1]  * Y- Radiation Boundary:                    INSULATION
+[    1]  * Y+ Radiation Boundary:                    INSULATION
+[    1]  * Z- Radiation Boundary:                    INSULATION
+[    1]  * Z+ Radiation Boundary:                    INSULATION
+[    1]  * Enforce to update level-set ls:                  OFF
+[    1]  * Enforce to update level-set lls:                 OFF
+[    1]  * Re-initialize Geom_vof:                          OFF
+[    1]  * Re-initialize Geom_velocity_u:                   OFF
+[    1]  * Re-initialize Geom_velocity_v:                   OFF
+[    1]  * Re-initialize Geom_velocity_w:                   OFF
+[    1]  * Re-initialize Geom_temperature:                  OFF
+[    1]  * Re-initialize Geom_pressure:                     OFF
+[    1]  * Re-initialize Geom_fixed_heat_source:            OFF
+[    1]  * Re-initialize Geom_boundary:                     OFF
+[    1]  * Re-initialize Geom_tboundary:                    OFF
+[    1]  * Re-initialize Geom_surface_boundary:              ON
+[    1]  * Re-initialize Geom_LPT_wall_reflection_n and Geom_LPT_boundary_wall_reflection: 
+[    1]                                                     OFF
+[    1]  * Validate initialized VOF values:                  ON
+[    1]  * Maximum number of outputs for VOF validation:    100
+[    1] --- Binary output settings -------------------------------------------
+[    1]  * Output binary data:                               ON
+[    1]  * Output double precision data:                    OFF
+[    1]  * Binary data file output mode:              UNIFY_MPI
+[    1]  * Binary output directory:            data/binary_data
+[    1]  * Binary input directory:             data/binary_data
+[    1]  * Binary time file template:               %c/%04n.dat
+[    1]  * Binary component based file template: 
+[    1]                              %c_%i/%04n.%04r.single.dat
+[    1]  * Binary other file template:  %c/%04n.%04r.single.dat
+[    1]  * Restart data output directory:      data/binary_data
+[    1]  * Restart data input directory:       data/binary_data
+[    1]  * Restart time file template:                 time.dat
+[    1]  * Restart component based file template: 
+[    1]                                          %c_%i/%04r.dat
+[    1]  * Restart other file template:             %c/%04r.dat
+[    1]  * Output solid VOF:                                 ON
+[    1]  * Output liquid VOF:                                ON
+[    1]  * Output staggered velocity u:                     OFF
+[    1]  * Output staggered velocity v:                     OFF
+[    1]  * Output staggered velocity w:                     OFF
+[    1]  * Output relative pressure p:                       ON
+[    1]  * Output temperature t:                             ON
+[    1]  * Output velocity uvw vector:                       ON
+[    1]  * Output heat source q:                            OFF
+[    1]  * Output G/S+L levelset lls:                       OFF
+[    1]  * Output L/S+G levelset ll:                        OFF
+[    1]  * Output S/L+G levelset ls:                        OFF
+[    1]  * Output radiation heat rad:                       OFF
+[    1]  * Output density dens:                             OFF
+[    1]  * Output solid density denss:                      OFF
+[    1]  * Output fluid density densf:                      OFF
+[    1]  * Output specific heat specht:                     OFF
+[    1]  * Output fluid specific heat spechtf:              OFF
+[    1]  * Output thermal conductivity thc:                 OFF
+[    1]  * Output solid thermal conductivity thcs:          OFF
+[    1]  * Output fluid thermal conductivety thcf:          OFF
+[    1]  * Output viscousity mu:                            OFF
+[    1]  * Output emissivity emi:                           OFF
+[    1]  * Output boundary information:                     OFF
+[    1]  * Output level set update flags:                   OFF
+[    1]  * Output uvw on restart:                           OFF
+[    1]  * Output q on restart:                             OFF
+[    1]  * Output rad on restart:                           OFF
+[    1]  * Output flux on restart:                          OFF
+[    1]  * Output dens on restart:                          OFF
+[    1]  * Output denss on restart:                         OFF
+[    1]  * Output densf on restart:                         OFF
+[    1]  * Output specht on restart:                        OFF
+[    1]  * Output spechtf on restart:                       OFF
+[    1]  * Output thc on restart:                           OFF
+[    1]  * Output thcs on restart:                          OFF
+[    1]  * Output thcf on restart:                          OFF
+[    1]  * Output mu on restart:                            OFF
+[    1]  * Output emi on restart:                           OFF
+[    1] === Parameter data ===================================================
+[    1]  * File: 
+[    1]    <PSD>/test/input/param/small-mpi.txt
+[    1] --- Common parameters ------------------------------------------------
+[    1]  * MPI processes(x):                                  2
+[    1]  * MPI processes(y):                                  1
+[    1]  * MPI processes(z):                                  1
+[    1]  * MPI processes(angular):                            0
+[    1]  * Cell(x):                                           5
+[    1]  * Cell(y):                                          10
+[    1]  * Cell(z):                                          10
+[    1]  * Length(x):                              1.000000e-01 m
+[    1]  * Length(y):                              1.000000e-01 m
+[    1]  * Length(z):                              1.000000e-01 m
+[    1]  * Gravity, X:                             0.000000e+00 m/s2
+[    1]  * Gravity, Y:                             0.000000e+00 m/s2
+[    1]  * Gravity, Z:                            -9.806650e+00 m/s2
+[    1]  * Stencil, - dir:                                    3 cell(s)
+[    1]  * Stencil, + dir:                                    4 cell(s)
+[    1]  * Number of components:                              1
+[    1]  * Number of Solid-Liquid components:                 1
+[    1] --- Boundary parameters ----------------------------------------------
+[    1]  * Z- Boundary Temperature:                2.731500e+02 K
+[    1]  * Z+ Boundary Temperature:                6.731500e+02 K
+[    1] --- Mesh information (information only) ------------------------------
+[    1]  * Mesh width along X-axis:                1.000000e-02 m
+[    1]  * Mesh width along Y-axis:                1.000000e-02 m
+[    1]  * Mesh width along Z-axis:                1.000000e-02 m
+[    1]  * Coord of world X start:                 0.000000e+00 m
+[    1]  * Coord of world Y start:                 0.000000e+00 m
+[    1]  * Coord of world Z start:                 0.000000e+00 m
+[    1]  * Coord of world X end:                   1.000000e-01 m
+[    1]  * Coord of world Y end:                   1.000000e-01 m
+[    1]  * Coord of world Z end:                   1.000000e-01 m
+[    1]  * Coord of local X start:                 5.000000e-02 m
+[    1]  * Coord of local Y start:                 0.000000e+00 m
+[    1]  * Coord of local Z start:                 0.000000e+00 m
+[    1]  * Coord of local X end:                   1.000000e-01 m
+[    1]  * Coord of local Y end:                   1.000000e-01 m
+[    1]  * Coord of local Z end:                   1.000000e-01 m
+[    1] --- Chronological parameters -----------------------------------------
+[    1]  * Time step width (ignored):              0.000000e+00 s
+[    1]  * CFL Coeff. for fluid dynamics:          1.000000e-01
+[    1]  * CFL Coeff. for thermal eq.:             1.000000e-01
+[    1]  * Start time:                             0.000000e+00 s
+[    1]  * End time:                               1.000000e-02 s
+[    1]  * Restart dump elapsed time:                 (not set) s
+[    1]  * Message print interval:                           10 step(s)
+[    1]  * Number of Outputs:                                 1
+[    1]  * # of substeps for heat_tvd3:                     100 step(s)
+[    1]  * # of substeps for visc_tvd3:                       1 step(s)
+[    1]  * Constant pressure value at outflow boundary: 
+[    1]                                            0.000000e+00
+[    1] --- Phase Field parameters -------------------------------------------
+[    1]  * Coefficient of the surface width in PF method: 
+[    1]                                            2.000000e+00
+[    1]  * Interface smoothness:                   1.000000e-02
+[    1]  * Surface tension (depends on physical prop.): 
+[    1]                                            7.280000e-02 N/m
+[    1]  * Intensity of phase field (anti)diffusion: 
+[    1]                                            1.000000e+00
+[    1] --- Level-set parameters ---------------------------------------------
+[    1]  * Coefficient of the time step of level-set iteration: 
+[    1]                                            2.500000e-01
+[    1] --- Contact angle parameters -----------------------------------------
+[    1]  * Contact angle:                          9.000000e+01
+[    1]  * Iteration number of contact angle extrapolation:   6
+[    1] --- Film drainage model parameters -----------------------------------
+[    1]  * film_cell:                              3.000000e+00
+[    1]  * rapture_thickness:                      1.000000e+00
+[    1]  * height_threshold angle:                -1.000000e+10
+[    1] --- Porous model parameters ------------------------------------------
+[    1]  * Particle diameter:                      1.000000e-02 m
+[    1]  * Representative velocity (depends on flow field.): 
+[    1]                                            1.000000e+00 m/s
+[    1]  * Representative length (depends on domain size.): 
+[    1]                                            1.000000e+00 m
+[    1] --- Miscellaneous parameters -----------------------------------------
+[    1]  * Room temperature:                       3.001500e+02 K
+[    1] === Heat sources =====================================================
+[    1]  * (No heat source)
+[    1] === Physical Property data ===========================================
+[    1] --- Gas (ID = -1) ----------------------------------------------------
+[    1]  * File: 
+[    1]    <PSD>/test/input/phys.gas.txt
+[    1] ... Density 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         1.200000e+00 kg/m3
+[    1] ... Viscousity 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         4.000000e-05 Pa.s
+[    1] ... Specific Heat 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         1.000000e+03 J/kg.K
+[    1] ... Thermal Conductivity 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         2.600000e-02 W/m.K
+[    1]  * Molar Mass:                             2.896000e+01 g/mol
+[    1] --- Material ID = 0 --------------------------------------------------
+[    1]  * File: 
+[    1]    <PSD>/test/input/phys.0.txt
+[    1]  * Solidus Temperature:                    2.300000e+03 K
+[    1]  * Liquidus Temperature:                   2.300000e+03 K
+[    1]  * Vaporization Temperature:               2.792000e+03 K
+[    1]  * Latent Heat (Solid--Liquid):            2.970000e+05 J/kg
+[    1]  * Latent Heat (Liquid--Gas):              0.000000e+00 J/kg
+[    1]  * Molar Mass:                             2.700300e+02 g/mol
+[    1] ... Volumetric Expansion Coefficient 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         0.000000e+00 /K
+[    1] ... Surface Tension Coefficient 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         8.600000e-01 N/m
+[    1] ... Density, Solid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         1.097000e+04 kg/m3
+[    1] ... Density, Liquid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         9.800000e+03 kg/m3
+[    1] ... Viscousity, Solid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         4.250000e-03 Pa.s
+[    1] ... Viscousity, Liquid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         4.250000e-03 Pa.s
+[    1] ... Specific Heat, Solid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         3.500000e+02 J/kg.K
+[    1] ... Specific Heat, Liquid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         2.170000e+02 J/kg.K
+[    1] ... Thermal Conductivity, Solid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         2.000000e+00 W/m.K
+[    1] ... Thermal Conductivity, Liquid 
+[    1]  * Temperature dependency type:                   CONST
+[    1]  * Constant value:                         4.000000e+00 W/m.K
+[    1] === Initial Geometry information =====================================
+[    1]  * File: 
+[    1]    <PSD>/test/input/geom/fp-test.txt
+[    1] --- Geometry Data Number 1 -------------------------------------------
+[    1]  * Dump Geometry Data to:    data/whole_0001.single.dat
+[    1]  * Dump output mode:                          BYPROCESS
+[    1]  * (whole region)
+[    1] ... Initialization 1 
+[    1]  * Target:                                          VOF
+[    1]  * Material ID:                                      -1
+[    1]  * Phase to set:                                    GAS
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         1.000000e+00
+[    1] ... Initialization 2 
+[    1]  * Target:                                   Velocity U
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         1.000000e-05 m/s
+[    1] ... Initialization 3 
+[    1]  * Target:                                   Velocity V
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         1.000000e-05 m/s
+[    1] ... Initialization 4 
+[    1]  * Target:                                   Velocity W
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         1.000000e-05 m/s
+[    1] ... Initialization 5 
+[    1]  * Target:                                  Temperature
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         4.731500e+02 K
+[    1] ... Initialization 6 
+[    1]  * Target:                                     Pressure
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         0.000000e+00 Pa
+[    1] ... End of Initializations for Data 1 
+[    1] --- Geometry Data Number 2 -------------------------------------------
+[    1]  * Geometry Data File:       data/whole_0001.single.dat
+[    1]  * Read mode:                                 BYPROCESS
+[    1] ... Initialization 1 
+[    1]  * Target:                                          VOF
+[    1]  * Material ID:                                      -1
+[    1]  * Phase to set:                                    GAS
+[    1]  * Initialization mode:                             SET
+[    1]  * Initialization function:                       CONST
+[    1]  * Geometry Threshold:                     1.000000e+00
+[    1]  * Constant value:                         1.000000e+00
+[    1] ... End of Initializations for Data 2 
+[    1] === Controlling Geometry information =================================
+[    1]  * File:                                      (no file)
+[    1]  * (No Geometry data) 
+[    1] === End of Parameter List ============================================
+[    1] 
+[    1] ---- Solid VOF, component 0
+[    1] 
+[    1] 'H':                  x >   1.000000e+00
+[    1] '@':                  x ==  1.000000e+00
+[    1] '#':  8.750000e-01 <  x <   1.000000e+00
+[    1] '%':  7.500000e-01 <  x <=  8.750000e-01
+[    1] '*':  6.750000e-01 <  x <=  7.500000e-01
+[    1] 'x':  5.000000e-01 <  x <=  6.750000e-01
+[    1] '=':  3.750000e-01 <  x <=  5.000000e-01
+[    1] '~':  2.500000e-01 <  x <=  3.750000e-01
+[    1] '-':  1.250000e-01 <  x <=  2.500000e-01
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-01
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Liquid VOF, component 0
+[    1] 
+[    1] 'H':                  x >   1.000000e+00
+[    1] '@':                  x ==  1.000000e+00
+[    1] '#':  8.750000e-01 <  x <   1.000000e+00
+[    1] '%':  7.500000e-01 <  x <=  8.750000e-01
+[    1] '*':  6.750000e-01 <  x <=  7.500000e-01
+[    1] 'x':  5.000000e-01 <  x <=  6.750000e-01
+[    1] '=':  3.750000e-01 <  x <=  5.000000e-01
+[    1] '~':  2.500000e-01 <  x <=  3.750000e-01
+[    1] '-':  1.250000e-01 <  x <=  2.500000e-01
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-01
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Temperature [K]
+[    1] 
+[    1] 'H':                  x >   5.204650e+02
+[    1] '@':                  x ==  5.204650e+02
+[    1] '#':  5.145506e+02 <  x <   5.204650e+02
+[    1] '%':  5.086362e+02 <  x <=  5.145506e+02
+[    1] '*':  5.050876e+02 <  x <=  5.086362e+02
+[    1] 'x':  4.968075e+02 <  x <=  5.050876e+02
+[    1] '=':  4.908931e+02 <  x <=  4.968075e+02
+[    1] '~':  4.849787e+02 <  x <=  4.908931e+02
+[    1] '-':  4.790644e+02 <  x <=  4.849787e+02
+[    1] '.':  4.731500e+02 <  x <=  4.790644e+02
+[    1] ' ':                  x ==  4.731500e+02
+[    1] 'L':                  x <   4.731500e+02
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   HHHHH    +  9.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     8 |   HHHHH    |  5.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     3 +   HHHHH    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   HHHHH    +  9.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     8 |   HHHHH    |  5.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     3 +   HHHHH    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   HHHHH    +  9.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     8 |   HHHHH    |  5.000000e-02
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]       |   HHHHH    |
+[    1]     3 +   HHHHH    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   LLLLL    +  9.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     8 |   LLLLL    |  5.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     3 +   LLLLL    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   LLLLL    +  9.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     8 |   LLLLL    |  5.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     3 +   LLLLL    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +   LLLLL    +  9.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     8 |   LLLLL    |  5.000000e-02
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]       |   LLLLL    |
+[    1]     3 +   LLLLL    +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Velocity U [m/s]
+[    1] 
+[    1] 'H':                  x >   1.000000e-05
+[    1] '@':                  x ==  1.000000e-05
+[    1] '#':  8.750000e-06 <  x <   1.000000e-05
+[    1] '%':  7.500000e-06 <  x <=  8.750000e-06
+[    1] '*':  6.750000e-06 <  x <=  7.500000e-06
+[    1] 'x':  5.000000e-06 <  x <=  6.750000e-06
+[    1] '=':  3.750000e-06 <  x <=  5.000000e-06
+[    1] '~':  2.500000e-06 <  x <=  3.750000e-06
+[    1] '-':  1.250000e-06 <  x <=  2.500000e-06
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-06
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@@@@@+  9.000000e-02
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     8 |@@@@@@@@@@@@|  5.000000e-02
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     3 +@@@@@@@@@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@L@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@L@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]    13 |@@@LLLLLL@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@ LLL+  9.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     8 |@@@@@@@@ LLL|  5.000000e-02
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]       |@@@@@@@@ LLL|
+[    1]     3 +@@@@@@@@ LLL+  0.000000e+00
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     0 |@@@LLLLLL@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@L@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@L@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@L@@@|  1.000000e-01
+[    1]    12 +@@@LLLLLL@@@+  9.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     8 |@@@LLLLLL@@@|  5.000000e-02
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]       |@@@LLLLLL@@@|
+[    1]     3 +@@@LLLLLL@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Velocity V [m/s]
+[    1] 
+[    1] 'H':                  x >   1.000000e-05
+[    1] '@':                  x ==  1.000000e-05
+[    1] '#':  8.750000e-06 <  x <   1.000000e-05
+[    1] '%':  7.500000e-06 <  x <=  8.750000e-06
+[    1] '*':  6.750000e-06 <  x <=  7.500000e-06
+[    1] 'x':  5.000000e-06 <  x <=  6.750000e-06
+[    1] '=':  3.750000e-06 <  x <=  5.000000e-06
+[    1] '~':  2.500000e-06 <  x <=  3.750000e-06
+[    1] '-':  1.250000e-06 <  x <=  2.500000e-06
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-06
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@@@@@+  9.000000e-02
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     8 |@@@@@@@@@@@@|  5.000000e-02
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     3 +@@@@@@@@@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@        @|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Velocity W [m/s]
+[    1] 
+[    1] 'H':                  x >   1.000000e-05
+[    1] '@':                  x ==  1.000000e-05
+[    1] '#':  8.750000e-06 <  x <   1.000000e-05
+[    1] '%':  7.500000e-06 <  x <=  8.750000e-06
+[    1] '*':  6.750000e-06 <  x <=  7.500000e-06
+[    1] 'x':  5.000000e-06 <  x <=  6.750000e-06
+[    1] '=':  3.750000e-06 <  x <=  5.000000e-06
+[    1] '~':  2.500000e-06 <  x <=  3.750000e-06
+[    1] '-':  1.250000e-06 <  x <=  2.500000e-06
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-06
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@     @@@@|
+[    1]       |@@@     @@@@|
+[    1]    13 |@@@     @@@@|  1.000000e-01
+[    1]    12 +@@@        @+  9.000000e-02
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]     8 |@@@        @|  5.000000e-02
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@     @@@@|
+[    1]       |@@@     @@@@|
+[    1]     0 |@@@     @@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]    13 |@@@LLLLL@@@@|  1.000000e-01
+[    1]    12 +@@@@@@@@LLL@+  9.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     8 |@@@@@@@@LLL@|  5.000000e-02
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]       |@@@@@@@@LLL@|
+[    1]     3 +@@@@@@@@LLL@+  0.000000e+00
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     0 |@@@LLLLL@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@     @@@@|
+[    1]       |@@@     @@@@|
+[    1]    13 |@@@     @@@@|  1.000000e-01
+[    1]    12 +@@@        @+  9.000000e-02
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]     8 |@@@        @|  5.000000e-02
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]       |@@@        @|
+[    1]     3 +@@@        @+  0.000000e+00
+[    1]       |@@@     @@@@|
+[    1]       |@@@     @@@@|
+[    1]     0 |@@@     @@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]    13 |@@@@@@@@@@@@|  1.000000e-01
+[    1]    12 +@@@LLLLL@@@@+  9.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     8 |@@@LLLLL@@@@|  5.000000e-02
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]       |@@@LLLLL@@@@|
+[    1]     3 +@@@LLLLL@@@@+  0.000000e+00
+[    1]       |@@@@@@@@@@@@|
+[    1]       |@@@@@@@@@@@@|
+[    1]     0 |@@@@@@@@@@@@| -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Fixed Heat Source [W/m3]
+[    1] 
+[    1] 'H':                  x >   1.000000e+00
+[    1] '@':                  x ==  1.000000e+00
+[    1] '#':  8.750000e-01 <  x <   1.000000e+00
+[    1] '%':  7.500000e-01 <  x <=  8.750000e-01
+[    1] '*':  6.750000e-01 <  x <=  7.500000e-01
+[    1] 'x':  5.000000e-01 <  x <=  6.750000e-01
+[    1] '=':  3.750000e-01 <  x <=  5.000000e-01
+[    1] '~':  2.500000e-01 <  x <=  3.750000e-01
+[    1] '-':  1.250000e-01 <  x <=  2.500000e-01
+[    1] '.':  0.000000e+00 <  x <=  1.250000e-01
+[    1] ' ':                  x ==  0.000000e+00
+[    1] 'L':                  x <   0.000000e+00
+[    1] 'N':                  x is NaN
+[    1] 
+[    1]     z = 16 ( 1.300000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 15 ( 1.200000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 14 ( 1.100000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 13 ( 1.000000e-01)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 12 ( 9.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 11 ( 8.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 10 ( 7.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 9 ( 6.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 8 ( 5.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 7 ( 4.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 6 ( 3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 5 ( 2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 4 ( 1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 3 ( 0.000000e+00)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 2 (-1.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 1 (-2.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1]     z = 0 (-3.000000e-02)
+[    1]     y +---+---+----+
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]    13 |            |  1.000000e-01
+[    1]    12 +            +  9.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     8 |            |  5.000000e-02
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]       |            |
+[    1]     3 +            +  0.000000e+00
+[    1]       |            |
+[    1]       |            |
+[    1]     0 |            | -3.000000e-02
+[    1]       +---+---+----+
+[    1]        0         11 x
+[    1]         1.000000e-01
+[    1] 
+[    1] 
+[    1] ---- Bottom (Z-) boundary map (fluid)
+[    1] 
+[    1] 1: WALL
+[    1] 
+[    1]     y +-------+
+[    1]    11 |1111111|
+[    1]    10 |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]     5 |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]     0 |1111111|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- Bottom (Z-) boundary map (thermal)
+[    1] 
+[    1] 1: ISOTHERMAL
+[    1]       Tconst = 273.15 [K]
+[    1] 
+[    1]     y +-------+
+[    1]    11 |1111111|
+[    1]    10 |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]     5 |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]       |1111111|
+[    1]     0 |1111111|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- Top (Z+) boundary map (fluid)
+[    1] 
+[    1] 2: WALL
+[    1] 
+[    1]     y +-------+
+[    1]    11 |2222222|
+[    1]    10 |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]     5 |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]     0 |2222222|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- Top (Z+) boundary map (thermal)
+[    1] 
+[    1] 2: ISOTHERMAL
+[    1]       Tconst = 673.15 [K]
+[    1] 
+[    1]     y +-------+
+[    1]    11 |2222222|
+[    1]    10 |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]     5 |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]       |2222222|
+[    1]     0 |2222222|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- South (Y-) boundary map (fluid)
+[    1] 
+[    1] 3: WALL
+[    1] 
+[    1]     z +-------+
+[    1]    11 |3333333|
+[    1]    10 |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]     5 |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]     0 |3333333|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- South (Y-) boundary map (thermal)
+[    1] 
+[    1] 3: INSULATION
+[    1] 
+[    1]     z +-------+
+[    1]    11 |3333333|
+[    1]    10 |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]     5 |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]       |3333333|
+[    1]     0 |3333333|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- North (Y+) boundary map (fluid)
+[    1] 
+[    1] 4: WALL
+[    1] 
+[    1]     z +-------+
+[    1]    11 |4444444|
+[    1]    10 |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]     5 |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]     0 |4444444|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- North (Y+) boundary map (thermal)
+[    1] 
+[    1] 4: INSULATION
+[    1] 
+[    1]     z +-------+
+[    1]    11 |4444444|
+[    1]    10 |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]     5 |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]       |4444444|
+[    1]     0 |4444444|
+[    1]       +-------+
+[    1]        0     6 x
+[    1] 
+[    1] 
+[    1] ---- West (X-) boundary map (fluid)
+[    1] 
+[    1] M: (MPI connected boundary)
+[    1] 
+[    1]     z +------------+
+[    1]    11 |MMMMMMMMMMMM|
+[    1]    10 |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]     5 |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]     0 |MMMMMMMMMMMM|
+[    1]       +------------+
+[    1]        0         11 y
+[    1] 
+[    1] 
+[    1] ---- West (X-) boundary map (thermal)
+[    1] 
+[    1] M: (MPI connected boundary)
+[    1] 
+[    1]     z +------------+
+[    1]    11 |MMMMMMMMMMMM|
+[    1]    10 |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]     5 |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]       |MMMMMMMMMMMM|
+[    1]     0 |MMMMMMMMMMMM|
+[    1]       +------------+
+[    1]        0         11 y
+[    1] 
+[    1] 
+[    1] ---- East (X+) boundary map (fluid)
+[    1] 
+[    1] 5: WALL
+[    1] 
+[    1]     z +------------+
+[    1]    11 |555555555555|
+[    1]    10 |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]     5 |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]     0 |555555555555|
+[    1]       +------------+
+[    1]        0         11 y
+[    1] 
+[    1] 
+[    1] ---- East (X+) boundary map (thermal)
+[    1] 
+[    1] 5: INSULATION
+[    1] 
+[    1]     z +------------+
+[    1]    11 |555555555555|
+[    1]    10 |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]     5 |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]       |555555555555|
+[    1]     0 |555555555555|
+[    1]       +------------+
+[    1]        0         11 y
+[    1] 
