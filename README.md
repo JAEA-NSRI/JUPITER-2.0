@@ -1,6 +1,6 @@
-**JUPITER numerically reproduces, using computational fluid dynamics, material melting behavior associated with temperature rise as well as molten material migration and solidification behavior. All phases are treated as fluids. The main features are summarized below.**
-
-***
+**JUPITER is an analysis code developed with the objective of achieving an advanced understanding of the complex melting and relocation phenomena occurring inside a reactor core during severe accidents (SA). It is capable of accurately simulating multiphase and multicomponent flows consisting of gas, liquid, and solid phases with arbitrary compositions.
+The application scope of JUPITER covers a wide range of phenomena, including core melting behavior in the early stages of severe accidents—taking into account eutectic reactions and steam oxidation reactions—as well as gas–liquid two‑phase flow analysis within fuel assemblies. In addition, JUPITER can be applied to the analysis of air‑cooling behavior of debris in the containment vessel using porous media models.
+Furthermore, JUPITER is equipped with a multicomponent analysis capability that enables unified treatment of multicomponent systems regardless of whether the materials are in solid, liquid, or gaseous states. It also provides modeling functions for solid–liquid phase change and the ability to directly import and analyze complex structural geometries from 3D‑CAD data. In addition, chemical reactions such as eutectic reactions, steam oxidation reactions, and hydrogen absorption reactions can be evaluated in conjunction with thermodynamic databases. By leveraging large‑scale parallel computation based on a hybrid MPI–OpenMP framework and GPGPU implementation using CUDA, JUPITER achieves high computational performance and supports simulations with mesh sizes on the order of hundreds of billions of grid cells. Moreover, JUPITER enables porous media flow analysis based on the Darcy–Brinkman equation and radiative heat transfer analysis using the discrete ordinate (DO) method. These features allow comprehensive reproduction of the diverse and strongly coupled physical phenomena that characterize severe accidents, which constitutes one of the major strengths of the code. The main features are summarized below.**
 
 ## Numerical Model Features
 
@@ -21,8 +21,6 @@
     *   Advection equations: selectable among 5th‑order WENO, 3rd‑order upwind, and 1st‑order upwind schemes.
     *   Interface advection equations: selectable among THINC, THINC/WLIC, THINC/AWLIC, and PLIC methods.
     *   Diffusion equations: 2nd‑order central difference scheme is used.
-
-***
 
 ## Computational Code Features
 
