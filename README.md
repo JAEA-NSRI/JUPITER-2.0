@@ -1,11 +1,20 @@
 # JUPITER
 
+## References to be cited
+
+   S. Yamashita, T. Ina, Y. Idomura and H. Yoshida, “A numerical simulation method for molten material behavior in nuclear reactors,” Nucl. Eng. Des., 332, pp. 301-312 (2017). https://www.sciencedirect.com/science/article/pii/S0029549317303035
+
+
+## Manual
+
+   S. Yamashita, "Development of Multiphase and MulticomponentDetailed Thermal Hydraulics Code JUPITER", JAEA-Data/Code 2025-[002(Japanese)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-002.pdf)/[003(English)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-002.pdf)
+
 ## Code Description
 
 JUPITER is an analysis code developed with the objective of achieving an advanced understanding of the complex melting and relocation phenomena occurring inside a reactor core during severe accidents (SA). It is capable of accurately simulating multiphase and multicomponent flows consisting of gas, liquid, and solid phases with arbitrary compositions.
 
 The application scope of JUPITER covers a wide range of phenomena, including core melting behavior in the early stages of severe accidents—taking into account eutectic reactions and steam oxidation reactions—as well as gas–liquid two‑phase flow analysis within fuel assemblies. In addition, JUPITER can be applied to the analysis of air‑cooling behavior of debris in the containment vessel using porous media models.
-Furthermore, JUPITER is equipped with a multicomponent analysis capability that enables unified treatment of multicomponent systems regardless of whether the materials are in solid, liquid, or gaseous states. It also provides modeling functions for solid–liquid phase change and the ability to directly import and analyze complex structural geometries from 3D‑CAD data. In addition, chemical reactions such as eutectic reactions, steam oxidation reactions, and hydrogen absorption reactions can be evaluated in conjunction with thermodynamic databases. 
+Furthermore, JUPITER is equipped with a multicomponent analysis capability that enables unified treatment of multicomponent systems regardless of whether the materials are in solid, liquid, or gaseous states. It also provides modeling functions for solid–liquid phase change and the ability to directly import and analyze complex structural geometries from 3D‑CAD data. In addition, chemical reactions such as eutectic reactions, steam oxidation reactions, and hydrog##en absorption reactions can be evaluated in conjunction with thermodynamic databases. 
 
 By leveraging large‑scale parallel computation based on a hybrid MPI–OpenMP framework and GPGPU implementation using CUDA, JUPITER achieves high computational performance and supports simulations with mesh sizes on the order of hundreds of billions of grid cells. Moreover, JUPITER enables porous media flow analysis based on the Darcy–Brinkman equation and radiative heat transfer analysis using the discrete ordinate (DO) method. These features allow comprehensive reproduction of the diverse and strongly coupled physical phenomena that characterize severe accidents, which constitutes one of the major strengths of the code. The main features are summarized below.**
 
