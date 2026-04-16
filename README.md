@@ -7,7 +7,7 @@
 
 ## Manual
 
-   S. Yamashita, "Development of Multiphase and Multicomponent Detailed Thermal Hydraulics Code JUPITER", JAEA-Data/Code 2025-[002(Japanese)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-002.pdf)/[003(English)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-002.pdf)
+   S. Yamashita, "Development of Multiphase and Multicomponent Detailed Thermal Hydraulics Code JUPITER", JAEA-Data/Code 2025-[002(Japanese)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-002.pdf)/[003(English)](https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2025-003.pdf)
 
 ## Code Description
 
