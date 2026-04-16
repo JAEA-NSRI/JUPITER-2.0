@@ -15,7 +15,7 @@ XO = 0.0
 YO = 0.0
 ZO = 0.0
 # time interval
-DT = 0.01
+DT = 0.001
 # Number of Component
 #NCOMP = 2
 #precision
