@@ -18,6 +18,15 @@
 extern type time_level_set_eq;
 #endif
 
+static inline int level_set_needs_solid_normals(const parameter *prm)
+{
+  return prm->flg->wettability == ON && prm->cdo->contact_angle != 90.0;
+}
+
+static inline int level_set_needs_ibm_level_set(const flags *flg)
+{
+  return flg->output_data.ls_ibm.outf == ON || flg->restart_data.ls_ibm.outf == ON;
+}
 
 
 //  flop : 16
@@ -94,6 +103,18 @@ void vof2ls(int init_flg, type *fs, type *ls, domain *cdo)
   }
 }
 
+static inline type level_set_reinit_band(const domain *cdo)
+{
+  return 1.5*cdo->width + 2.0*cdo->dx;
+}
+
+static inline int level_set_inside_reinit_band(type f, type f0, const domain *cdo)
+{
+  type band = level_set_reinit_band(cdo);
+
+  return fabs(f) <= band || fabs(f0) <= band;
+}
+
 void level_set_eq(type *fn, type a0, type *f0, type af, type aft, type *f, domain *cdo)
 {
   int  j, jx, jy, jz, stm=cdo->stm,
@@ -111,6 +132,11 @@ void level_set_eq(type *fn, type a0, type *f0, type af, type aft, type *f, domai
     for(jy = 0; jy < ny; jy++) {
       for(jx = 0; jx < nx; jx++) {
         j = (jx+stm) + mx*(jy+stm) + mxy*(jz+stm);
+
+        if (!level_set_inside_reinit_band(f[j], f0[j], cdo)) {
+          fn[j] = a0*f0[j] + af*f[j];
+          continue;
+        }
 
         sign = f[j]/sqrt(f[j]*f[j] + dx*dy);
         LS_ADV_mp(fz2, f[j-2*mxy],f[j-mxy],f[j],f[j+mxy],f[j+2*mxy], sign, dzi);
@@ -146,6 +172,11 @@ void level_set_eq_c(type *fn, type a0, type *f0, type af, type aft, type *f,
     for(jy = 0; jy < ny; jy++) {
       for(jx = 0; jx < nx; jx++) {
         j = (jx+stm) + mx*(jy+stm) + mxy*(jz+stm);
+
+        if (!level_set_inside_reinit_band(f[j], f0[j], cdo)) {
+          fn[j] = a0*f0[j] + af*f[j];
+          continue;
+        }
 
         s = nvlx[j]*nsww_x[j] + nvly[j]*nsww_y[j] + nvlz[j]*nsww_z[j];
 
@@ -206,15 +237,13 @@ type Level_Set(int init_flg, int itr_max, type *ls, type *fs, parameter *prm)
     domain *cdo = prm->cdo;
     // memory allocation for work array.
     static int  n1st = 0;
-    static type *tmp1, *tmp2;
+  static type *tmp1;
     size_t size = sizeof(type)*(cdo->m);
     if (n1st++ == 0) {
   #ifdef _MEM_ALIGN_
           tmp1 = (type *) _mm_malloc( size,32 );
-          tmp2 = (type *) _mm_malloc( size,32 );
   #else
           tmp1 = (type *) malloc( size );
-          tmp2 = (type *) malloc( size );
   #endif
       }
 
@@ -222,7 +251,7 @@ type Level_Set(int init_flg, int itr_max, type *ls, type *fs, parameter *prm)
     vof2ls(init_flg, fs, ls, cdo);
     bcf(ls, prm);
 
-    // 3rd-order TVD Runge-Kutta
+    // 2nd-order TVD Runge-Kutta
     int  itr = 0;
     type dt = cdo->coef_lsts*cdo->dx;
     while (itr++ < itr_max) {
@@ -230,10 +259,7 @@ type Level_Set(int init_flg, int itr_max, type *ls, type *fs, parameter *prm)
       level_set_eq(tmp1,    1., ls,    0.,      dt, ls,   cdo);
       bcf(tmp1, prm);
 
-      level_set_eq(tmp2, 3./4., ls, 1./4.,1./4.*dt, tmp1, cdo);
-      bcf(tmp2, prm);
-
-      level_set_eq(ls,   1./3., ls, 2./3.,2./3.*dt, tmp2, cdo);
+      level_set_eq(ls,    0.5, ls,    0.5,  0.5*dt, tmp1, cdo);
       bcf(ls,   prm);
 
     }
@@ -256,6 +282,7 @@ type Level_Set_contact(int init_flg, int itr_max, type *ls, type *nvlx, type *nv
   static type *nsww_x, *nsww_y, *nsww_z;
   size_t size = sizeof(type)*(cdo->m);
   type theta = cdo->contact_angle*M_PI/180.0, det;
+  type band = level_set_reinit_band(cdo);
 
   if (n1st++ == 0) {
 #ifdef _MEM_ALIGN_
@@ -284,6 +311,14 @@ type Level_Set_contact(int init_flg, int itr_max, type *ls, type *nvlx, type *nv
     for(jy = 0; jy < my; jy++) {
       for(jx = 0; jx < mx; jx++) {
         j = jx + mx*jy + mxy*jz;
+
+        if (fabs(ls[j]) > band) {
+          nwx[j] = 0.0;
+          nwy[j] = 0.0;
+          nwz[j] = 0.0;
+          continue;
+        }
+
         nwx[j] = fs[j]*nvsx[j];
         nwy[j] = fs[j]*nvsy[j];
         nwz[j] = fs[j]*nvsz[j];
@@ -297,6 +332,14 @@ type Level_Set_contact(int init_flg, int itr_max, type *ls, type *nvlx, type *nv
     for(jy = 0; jy < my; jy++) {
       for(jx = 0; jx < mx; jx++) {
         j = jx + mx*jy + mxy*jz;
+
+        if (fabs(ls[j]) > band) {
+          nsww_x[j] = 0.0;
+          nsww_y[j] = 0.0;
+          nsww_z[j] = 0.0;
+          continue;
+        }
+
         nsww_x[j] = (nvlz[j]*nwx[j] - nvlx[j]*nwz[j])*nwz[j] - (nvlx[j]*nwy[j] - nvly[j]*nwx[j])*nwy[j];
         nsww_y[j] = (nvlx[j]*nwy[j] - nvly[j]*nwx[j])*nwx[j] - (nvly[j]*nwz[j] - nvlz[j]*nwy[j])*nwz[j];
         nsww_z[j] = (nvly[j]*nwz[j] - nvlz[j]*nwy[j])*nwy[j] - (nvlz[j]*nwx[j] - nvlx[j]*nwz[j])*nwx[j];
@@ -326,6 +369,7 @@ void level_set_all(variable *val, parameter *prm)
 
   domain *cdo = prm->cdo;
   flags *flg = prm->flg;
+  const int need_solid_normals = level_set_needs_solid_normals(prm);
 
   type *fl, *fs, *fs_ibm;
 
@@ -347,7 +391,7 @@ if(flg->multi_layer == OFF){
     if (update_level_set_flags_wants_update(&flg->update_level_set_lls))
       Level_Set(1, cdo->ls_iteration, val->lls, val->fls, prm);
     // calc normal vector & curvature
-    if (update_level_set_flags_wants_update(&flg->update_level_set_ls))
+    if (need_solid_normals && update_level_set_flags_wants_update(&flg->update_level_set_ls))
       normal_vector_cell(val->nvsx, val->nvsy, val->nvsz, NULL,      val->ls, cdo);
     if (update_level_set_flags_wants_update(&flg->update_level_set_lls))
       normal_vector_cell(val->nvlx, val->nvly, val->nvlz, val->curv, val->lls, cdo);
@@ -377,7 +421,7 @@ if(flg->multi_layer == OFF){
       if (update_level_set_flags_wants_update(&flg->update_level_set_ls))
         Level_Set(1, cdo->ls_iteration, val->ls,  fs,  prm);
       // calc normal vector & curvature for solid
-      if (update_level_set_flags_wants_update(&flg->update_level_set_ls))
+      if (need_solid_normals && update_level_set_flags_wants_update(&flg->update_level_set_ls))
         normal_vector_cell(val->nvsx, val->nvsy, val->nvsz, NULL,      val->ls, cdo);
 
     for(int ilayer = 0; ilayer < cdo->NumberOfLayer; ilayer++) {
@@ -421,14 +465,14 @@ if(flg->multi_layer == OFF){
 
   }
 
-  if (update_level_set_flags_wants_update(&flg->update_level_set_ls) && val->fs_ibm) {
+  if (level_set_needs_ibm_level_set(flg)
+      && update_level_set_flags_wants_update(&flg->update_level_set_ls)
+      && val->fs_ibm) {
   CSVASSERT(val->ls_ibm);
-  CSVASSERT(val->nvibmx);
-  CSVASSERT(val->nvibmy);
-  CSVASSERT(val->nvibmz);
 
   Level_Set(1, cdo->ls_iteration, val->ls_ibm, val->fs_ibm, prm);
-  normal_vector_cell(val->nvibmx, val->nvibmy, val->nvibmz, NULL, val->ls_ibm, cdo);
+  if (val->nvibmx && val->nvibmy && val->nvibmz)
+    normal_vector_cell(val->nvibmx, val->nvibmy, val->nvibmz, NULL, val->ls_ibm, cdo);
   }    
 
 }

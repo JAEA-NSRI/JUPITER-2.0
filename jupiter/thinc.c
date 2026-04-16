@@ -27,6 +27,13 @@ type clip(type f)
   return f;
 }
 
+static inline int vof_needs_ics_normal(type f)
+{
+  type fc = clip(f);
+
+  return 1.0e-20 < fc && fc < 1.0 - 1.0e-20;
+}
+
 type thinc_flux(type fm2, type fm, type fp, type fp2, type udt, type dx)
 {
   type beta = 3.5, fclip_a, fclip_b, fclip_c,
@@ -121,6 +128,13 @@ void normal_vector_ics(type *nvx, type *nvy, type *nvz, type *f, domain *cdo, fl
         for(jy = -1; jy < ny+1; jy++) {
             for(jx = -1; jx < nx+1; jx++) {
               j = (jx+stm) + mx*(jy+stm) + mxy*(jz+stm);
+
+              if (!vof_needs_ics_normal(f[j])) {
+                nvx[j] = 0.0;
+                nvy[j] = 0.0;
+                nvz[j] = 0.0;
+                continue;
+              }
 
               nvx_tne = 0.25*(f[j+mx+1] - f[j+mx] + f[j+1] - f[j] + f[j+mx+1+mxy] - f[j+mx+mxy] + f[j+1+mxy] - f[j+mxy])*dxi;
               nvx_tnw = 0.25*(f[j+mx] - f[j+mx-1] + f[j] - f[j-1] + f[j+mx+mxy] - f[j+mx-1+mxy] + f[j+mxy] - f[j-1+mxy])*dxi;
@@ -637,56 +651,34 @@ int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *
   return 0;
 }
 
-static void copy_vof_field(type *dst, const type *src, domain *cdo)
-{
-  int j;
+  static void advance_split_plic_step(type *f, type *flx, type *fly, type *flz,
+                 type *nvx, type *nvy, type *nvz,
+                 type *alpha, type *u, type *v, type *w,
+                 type *ls, type *fs, type *fs_ibm,
+                 int icompo, int ilayer, variable *val,
+                 parameter *prm, const int order[3])
+  {
+    domain *cdo = prm->cdo;
+    flags *flg = prm->flg;
 
-#pragma omp parallel for private(j)
-  for (j = 0; j < cdo->m; ++j) {
-    dst[j] = src[j];
+    normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
+    plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
+      icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
+      val->surface_bnd, prm, val, order[0]);
+    bcf(f,prm);
+
+    normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
+    plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
+      icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
+      val->surface_bnd, prm, val, order[1]);
+    bcf(f,prm);
+
+    normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
+    plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
+      icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
+      val->surface_bnd, prm, val, order[2]);
+    bcf(f,prm);
   }
-}
-
-static void combine_vof_field(type *dst, type a0, const type *f0,
-                              type a1, const type *f1, domain *cdo)
-{
-  int j;
-
-#pragma omp parallel for private(j)
-  for (j = 0; j < cdo->m; ++j) {
-    dst[j] = a0 * f0[j] + a1 * f1[j];
-  }
-}
-
-static void advance_split_plic_step(type *f, type *flx, type *fly, type *flz,
-                                    type *nvx, type *nvy, type *nvz,
-                                    type *alpha, type *u, type *v, type *w,
-                                    type *ls, type *fs, type *fs_ibm,
-                                    int icompo, int ilayer, variable *val,
-                                    parameter *prm, const int order[3])
-{
-  domain *cdo = prm->cdo;
-  flags *flg = prm->flg;
-
-  normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
-  plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
-       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-       val->surface_bnd, prm, val, order[0]);
-  bcf(f, prm);
-
-  normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
-  plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
-       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-       val->surface_bnd, prm, val, order[1]);
-  bcf(f, prm);
-
-  normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
-  plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
-       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-       val->surface_bnd, prm, val, order[2]);
-  bcf(f, prm);
-}
-
 
 type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type *fs_ibm, int icompo, int ilayer, variable *val, parameter *prm)
 {
@@ -696,7 +688,6 @@ type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type 
   // memory allocation for work array.
   static int  n1st = 0;
   static type *flx, *fly, *flz, *nvx, *nvy, *nvz, *alpha;
-  static type *frk0, *frk1, *frk2;
   size_t size = sizeof(type)*(cdo->m);
   int  j, jx, jy, jz, m=cdo->m, nx=cdo->nx, ny=cdo->ny, nz=cdo->nz,
        NumCompo=cdo->NumberOfComponent, mx=cdo->mx, mxy=cdo->mxy, stm=cdo->stm;
@@ -713,9 +704,6 @@ type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type 
     nvy = (type *) malloc( size );
     nvz = (type *) malloc( size );
     alpha = (type *) malloc( size );
-    frk0 = (type *) malloc( size );
-    frk1 = (type *) malloc( size );
-    frk2 = (type *) malloc( size );
   }
 
  
@@ -727,29 +715,26 @@ type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type 
   else if(cdo->icnt % 6 == 4){order[0]=2; order[1]=0; order[2]=1;}
   else if(cdo->icnt % 6 == 5){order[0]=1; order[1]=0; order[2]=2;}
 
-  if(prm->flg->interface_capturing_scheme==PLIC){
-    copy_vof_field(frk0, f, cdo);
+    if(prm->flg->interface_capturing_scheme==PLIC){
+      if (cdo->cfl_num > 0.5) {
+        csvperrorf(__FILE__, __LINE__, 0, CSV_EL_FATAL, __func__,
+                   "For PLIC, CFL_num must be <= 0.5 (current: %.6g)",
+                   cdo->cfl_num);
+        prm->status = ON;
+        return 0.0;
+      }
 
-    copy_vof_field(frk1, frk0, cdo);
-    advance_split_plic_step(frk1, flx, fly, flz, nvx, nvy, nvz, alpha,
-                            u, v, w, ls, fs, fs_ibm, icompo, ilayer,
-                            val, prm, order);
+      type dt_org = cdo->dt;
+      int isub;
 
-    copy_vof_field(frk2, frk1, cdo);
-    advance_split_plic_step(frk2, flx, fly, flz, nvx, nvy, nvz, alpha,
-                            u, v, w, ls, fs, fs_ibm, icompo, ilayer,
-                            val, prm, order);
-    combine_vof_field(frk1, 3.0 / 4.0, frk0, 1.0 / 4.0, frk2, cdo);
-    bcf(frk1, prm);
+      cdo->dt = dt_org / 3.0;
+      for (isub = 0; isub < 3; ++isub) {
+        advance_split_plic_step(f, flx, fly, flz, nvx, nvy, nvz, alpha,
+                                u, v, w, ls, fs, fs_ibm, icompo, ilayer,
+                                val, prm, order);
+      }
+      cdo->dt = dt_org;
 
-    copy_vof_field(frk2, frk1, cdo);
-    advance_split_plic_step(frk2, flx, fly, flz, nvx, nvy, nvz, alpha,
-                            u, v, w, ls, fs, fs_ibm, icompo, ilayer,
-                            val, prm, order);
-    combine_vof_field(f, 1.0 / 3.0, frk0, 2.0 / 3.0, frk2, cdo);
-    bcf(f, prm);
-
-    
   }else if(prm->flg->interface_capturing_scheme==THINC){ 
 
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,

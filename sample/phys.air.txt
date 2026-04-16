@@ -1,0 +1,7 @@
+-- Physical Property for Air@room temp.
+-- (note: This text is not comment,just ignored by Jupiter)
+molar_mass, 1.0
+rho_g,CONST,1.204
+mu_g,CONST,1.824E-05
+specht_g,CONST,1007.099149
+thc_g,CONST,0.025635396

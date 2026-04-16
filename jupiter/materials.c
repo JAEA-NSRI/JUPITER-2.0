@@ -91,6 +91,27 @@ type NPHV2(type *fs, type *fl, type fg, type *ms, type *ml, type mg, domain *cdo
   return val;
 }
 
+static inline int tempdep_is_const(const tempdep_property *prop)
+{
+  return prop->type == TEMPDEP_PROPERTY_CONST;
+}
+
+static inline type tempdep_calc_cached(const tempdep_property *prop, type temp,
+                                       int is_const, type const_value)
+{
+  if (is_const) {
+    return const_value;
+  }
+  return tempdep_calc((tempdep_property *)prop, temp);
+}
+
+static inline void tempdep_init_const_cache(const tempdep_property *prop,
+                                            int *is_const, type *const_value)
+{
+  *is_const = tempdep_is_const(prop);
+  *const_value = *is_const ? prop->data.t_const.value : 0.0;
+}
+
 type set_materials(material *mtl, variable *val, parameter *prm)
 {
   flags       *flg = prm->flg;
@@ -104,6 +125,10 @@ type set_materials(material *mtl, variable *val, parameter *prm)
   type time0 = cpu_time(), *z=cdo->z;
   type fls_sum;
   type *Y = val->Y,*fl=val->fl, fg;//, *fg=val->fg;
+  const int update_thermal = (flg->heat_eq == ON || flg->porous == ON ||
+                              flg->two_energy == ON || flg->radiation == ON);
+  const int update_emi = (flg->radiation == ON);
+  const int update_porous = (flg->porous == ON);
   /*
    * YSE: Removed mu_l and tm_l, which is unused.
    * If required, you must calcurate them with:
@@ -112,6 +137,24 @@ type set_materials(material *mtl, variable *val, parameter *prm)
    *     tm_l = phv->comps[0].tm_liq;
    */
   type mumin, mumax, mumin_G, mumax_G;
+  int rho_s_is_const[NumBCompo], rho_l_is_const[NumBCompo];
+  int mu_s_is_const[NumBCompo], mu_l_is_const[NumBCompo];
+  int specht_s_is_const[NumBCompo], specht_l_is_const[NumBCompo];
+  int thc_s_is_const[NumBCompo], thc_l_is_const[NumBCompo];
+  int emi_s_is_const[NumBCompo], emi_l_is_const[NumBCompo], emi_g_is_const[NumBCompo];
+  int rho_g_comp_is_const[NumCompo], mu_g_comp_is_const[NumCompo];
+  int specht_g_comp_is_const[NumCompo], thc_g_comp_is_const[NumCompo];
+  type rho_s_const[NumBCompo], rho_l_const[NumBCompo];
+  type mu_s_const[NumBCompo], mu_l_const[NumBCompo];
+  type specht_s_const[NumBCompo], specht_l_const[NumBCompo];
+  type thc_s_const[NumBCompo], thc_l_const[NumBCompo];
+  type emi_s_const[NumBCompo], emi_l_const[NumBCompo], emi_g_const[NumBCompo];
+  type rho_g_comp_const[NumCompo], mu_g_comp_const[NumCompo];
+  type specht_g_comp_const[NumCompo], thc_g_comp_const[NumCompo];
+  int rho_g_is_const, mu_g_is_const, specht_g_is_const, thc_g_is_const;
+  int sigma_is_const;
+  type rho_g_const, mu_g_const, specht_g_const, thc_g_const;
+  type sigma_const;
   type fs_tmp[NumBCompo],fl_tmp[NumBCompo];
 
   type *eps = val->eps; 
@@ -119,6 +162,48 @@ type set_materials(material *mtl, variable *val, parameter *prm)
   type *perm = val->perm;
   type *sgm = val->sgm;
   type *fs = val->fs; 
+
+  for (icompo = 0; icompo < NumBCompo; ++icompo) {
+    tempdep_init_const_cache(&phv->comps[icompo].rho_s,
+                             &rho_s_is_const[icompo], &rho_s_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].rho_l,
+                             &rho_l_is_const[icompo], &rho_l_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].mu_s,
+                             &mu_s_is_const[icompo], &mu_s_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].mu_l,
+                             &mu_l_is_const[icompo], &mu_l_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].specht_s,
+                             &specht_s_is_const[icompo], &specht_s_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].specht_l,
+                             &specht_l_is_const[icompo], &specht_l_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].thc_s,
+                             &thc_s_is_const[icompo], &thc_s_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo].thc_l,
+                             &thc_l_is_const[icompo], &thc_l_const[icompo]);
+    if (update_emi) {
+      tempdep_init_const_cache(&phv->comps[icompo].emi_s,
+                               &emi_s_is_const[icompo], &emi_s_const[icompo]);
+      tempdep_init_const_cache(&phv->comps[icompo].emi_l,
+                               &emi_l_is_const[icompo], &emi_l_const[icompo]);
+      tempdep_init_const_cache(&phv->comps[icompo].emi_g,
+                               &emi_g_is_const[icompo], &emi_g_const[icompo]);
+    }
+  }
+  for (icompo = 0; icompo < NumGCompo; ++icompo) {
+    tempdep_init_const_cache(&phv->comps[icompo + NumBCompo].rho_g,
+                             &rho_g_comp_is_const[icompo], &rho_g_comp_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo + NumBCompo].mu_g,
+                             &mu_g_comp_is_const[icompo], &mu_g_comp_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo + NumBCompo].specht_g,
+                             &specht_g_comp_is_const[icompo], &specht_g_comp_const[icompo]);
+    tempdep_init_const_cache(&phv->comps[icompo + NumBCompo].thc_g,
+                             &thc_g_comp_is_const[icompo], &thc_g_comp_const[icompo]);
+  }
+  tempdep_init_const_cache(&phv->rho_g, &rho_g_is_const, &rho_g_const);
+  tempdep_init_const_cache(&phv->mu_g, &mu_g_is_const, &mu_g_const);
+  tempdep_init_const_cache(&phv->specht_g, &specht_g_is_const, &specht_g_const);
+  tempdep_init_const_cache(&phv->thc_g, &thc_g_is_const, &thc_g_const);
+  tempdep_init_const_cache(&phv->comps[0].sigma, &sigma_is_const, &sigma_const);
 
   /*
    * Please rewrite set_materials() when you add 'generated' component(s).
@@ -134,6 +219,13 @@ type set_materials(material *mtl, variable *val, parameter *prm)
   if(flg->solute_diff == OFF) {
     /* Not supported yet */
     CSVASSERT(component_info_ncompo(&cdo->mass_source_g_comps) == 0);
+
+    if (!update_emi) {
+#pragma omp parallel for
+      for (j = 0; j < cdo->m; j++) {
+        mtl->emi[j] = 0.0;
+      }
+    }
 
 #pragma omp parallel
     {
@@ -193,7 +285,7 @@ type set_materials(material *mtl, variable *val, parameter *prm)
         for(jx = 0; jx < mx; jx++) {
           /* YSE: Added to separate tempdep calc and average NPHV1 etc. */
           type s_tmp[NumBCompo], l_tmp[NumBCompo], g_tmp;
-          type g_tmpa[NumBCompo], temp, tempf, temps;
+          type temp, tempf, temps;
 
           j = jx + mx*jy + mxy*jz;
           // clipping of VOF value
@@ -229,18 +321,22 @@ type set_materials(material *mtl, variable *val, parameter *prm)
           }
           //--- density
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].rho_s, temps);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].rho_l, tempf);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].rho_s, temps,
+                                                rho_s_is_const[icompo], rho_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].rho_l, tempf,
+                                                rho_l_is_const[icompo], rho_l_const[icompo]);
           }
-          g_tmp = tempdep_calc(&phv->rho_g, tempf);
+          g_tmp = tempdep_calc_cached(&phv->rho_g, tempf, rho_g_is_const, rho_g_const);
           mtl->dens[j] = NPHV1(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
           mtl->denss[j] = mtl->dens[j];
           //--- viscosity
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].mu_s, temps);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].mu_l, tempf);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].mu_s, temps,
+                                                mu_s_is_const[icompo], mu_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].mu_l, tempf,
+                                                mu_l_is_const[icompo], mu_l_const[icompo]);
           }
-          g_tmp = tempdep_calc(&phv->mu_g, tempf);
+          g_tmp = tempdep_calc_cached(&phv->mu_g, tempf, mu_g_is_const, mu_g_const);
           mtl->mu[j] = NPHV1(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
 
           /* film drainage model */
@@ -252,80 +348,93 @@ type set_materials(material *mtl, variable *val, parameter *prm)
             }
           }
 
-          //--- specific heat coefficient
-          for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].specht_s, temps);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].specht_l, tempf);
-          }
-          g_tmp = tempdep_calc(&phv->specht_g, tempf);
-          mtl->specht[j] = NPHV1(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
-          //--- thermal conductivity
-          for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_s, temps);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_l, tempf);
-          }
-          g_tmp = tempdep_calc(&phv->thc_g, tempf);
-          mtl->thc[j] = NPHV2(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
-          mtl->thcs[j] = mtl->thc[j];
-          //--- emissivity < 2016 Added by KKE
-          if (flg->radiation == ON) {
+          if (update_thermal) {
+            //--- specific heat coefficient
             for (icompo = 0; icompo < NumBCompo; icompo++) {
-              s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].emi_s, temps);
-              l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].emi_l, tempf);
-              g_tmpa[icompo] = tempdep_calc(&phv->comps[icompo].emi_g, tempf);
+              s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].specht_s, temps,
+                                                  specht_s_is_const[icompo], specht_s_const[icompo]);
+              l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].specht_l, tempf,
+                                                  specht_l_is_const[icompo], specht_l_const[icompo]);
+            }
+            g_tmp = tempdep_calc_cached(&phv->specht_g, tempf,
+                                        specht_g_is_const, specht_g_const);
+            mtl->specht[j] = NPHV1(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
+            //--- thermal conductivity
+            for (icompo = 0; icompo < NumBCompo; icompo++) {
+              s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_s, temps,
+                                                  thc_s_is_const[icompo], thc_s_const[icompo]);
+              l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_l, tempf,
+                                                  thc_l_is_const[icompo], thc_l_const[icompo]);
+            }
+            g_tmp = tempdep_calc_cached(&phv->thc_g, tempf, thc_g_is_const, thc_g_const);
+            mtl->thc[j] = NPHV2(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmp, cdo);
+            mtl->thcs[j] = mtl->thc[j];
+          }
+          //--- emissivity < 2016 Added by KKE
+          if (update_emi) {
+            type g_tmpa[NumBCompo];
+
+            for (icompo = 0; icompo < NumBCompo; icompo++) {
+              s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].emi_s, temps,
+                                                  emi_s_is_const[icompo], emi_s_const[icompo]);
+              l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].emi_l, tempf,
+                                                  emi_l_is_const[icompo], emi_l_const[icompo]);
+              g_tmpa[icompo] = tempdep_calc_cached(&phv->comps[icompo].emi_g, tempf,
+                                                   emi_g_is_const[icompo], emi_g_const[icompo]);
             }
             mtl->emi[j] = NPHV1_emi(fs_tmp, fl_tmp, fg, s_tmp, l_tmp, g_tmpa, cdo);
-          } else {
-            mtl->emi[j] = 0.0;
           }
 
-          mtl->st[j] = tempdep_calc(&phv->comps[0].sigma, tempf); //! under construction
+          mtl->st[j] = tempdep_calc_cached(&phv->comps[0].sigma, tempf,
+                                           sigma_is_const, sigma_const); //! under construction
           if(mtl->mu[j] > mumax) mumax = mtl->mu[j];
           if(mtl->mu[j] < mumin) mumin = mtl->mu[j];
 
-          //---- porous medium settings, by Yamashita 2020/6/22
-          val->eps[j] = 1.0; // porosity
-          val->epss[j] = 1.0; // porosity
-          {
-            int refcompo = -1;
-            int is_porous = 0;
+          if (update_porous) {
+            //---- porous medium settings, by Yamashita 2020/6/22
+            val->eps[j] = 1.0; // porosity
+            val->epss[j] = 1.0; // porosity
+            {
+              int refcompo = -1;
+              int is_porous = 0;
 
-            /*
-             * Find a material to use as reference.
-             *
-             * While not supported, but implemented as use properties
-             * of last porous media when multiple porous media of
-             * fs[j] > 0.
-             *
-             * While not supported, but implemented as porous media has
-             * priority when both fs[j] > 0.
-             */
-            for (icompo = 0; icompo < NumBCompo; icompo++) {
-              enum solid_form sform = phv->comps[icompo].sform;
-              if (sform == SOLID_FORM_UNUSED)
-                continue;
+              /*
+               * Find a material to use as reference.
+               *
+               * While not supported, but implemented as use properties
+               * of last porous media when multiple porous media of
+               * fs[j] > 0.
+               *
+               * While not supported, but implemented as porous media has
+               * priority when both fs[j] > 0.
+               */
+              for (icompo = 0; icompo < NumBCompo; icompo++) {
+                enum solid_form sform = phv->comps[icompo].sform;
+                if (sform == SOLID_FORM_UNUSED)
+                  continue;
 
-              if (val->fs[j + icompo * m] == 0.0)
-                continue;
+                if (val->fs[j + icompo * m] == 0.0)
+                  continue;
 
-              if (sform == SOLID_FORM_POROUS) {
-                is_porous = 1;
-                refcompo = icompo;
-              } else if (!is_porous) {
-                refcompo = icompo;
+                if (sform == SOLID_FORM_POROUS) {
+                  is_porous = 1;
+                  refcompo = icompo;
+                } else if (!is_porous) {
+                  refcompo = icompo;
+                }
               }
-            }
-            if (refcompo >= 0) {
-              if (is_porous) {
-                eps[j] = prm->phv->comps[refcompo].poros; // porosity
-                perm[j] = 1.0 / prm->phv->comps[refcompo].permea; // permeability
-              } else {
-                eps[j] = 0.0;
-                perm[j] = 0.0; // mathematically, infinity
+              if (refcompo >= 0) {
+                if (is_porous) {
+                  eps[j] = prm->phv->comps[refcompo].poros; // porosity
+                  perm[j] = 1.0 / prm->phv->comps[refcompo].permea; // permeability
+                } else {
+                  eps[j] = 0.0;
+                  perm[j] = 0.0; // mathematically, infinity
+                }
+              } else { /* no solid exists */
+                eps[j] = 1.0;
+                perm[j] = 0.0;
               }
-            } else { /* no solid exists */
-              eps[j] = 1.0;
-              perm[j] = 0.0;
             }
           }
         }
@@ -334,8 +443,10 @@ type set_materials(material *mtl, variable *val, parameter *prm)
 
     /* Yamashita, 2020/6/22 */
     //bcf_VOF(0, val->eps, val, prm);
-    bcf(eps, prm);
-    bcf(perm, prm);
+    if (update_porous) {
+      bcf(eps, prm);
+      bcf(perm, prm);
+    }
 
     // if porous == ON, (tentative) 
     if(flg->porous == ON) {
@@ -375,7 +486,7 @@ type set_materials(material *mtl, variable *val, parameter *prm)
             j = jx + mx*jy + mxy*jz;
             if (flg->two_energy == OFF) tempf = val->t[j];
             else tempf = val->tf[j];
-            g_tmp = tempdep_calc(&phv->rho_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->rho_g, tempf, rho_g_is_const, rho_g_const);
             mtl->dens_f[j] = g_tmp; //rho_f
           }
         }
@@ -411,7 +522,8 @@ type set_materials(material *mtl, variable *val, parameter *prm)
             j = jx + mx*jy + mxy*jz;
             if (flg->two_energy == OFF) tempf = val->t[j];
             else tempf = val->tf[j];
-            g_tmp = tempdep_calc(&phv->specht_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->specht_g, tempf,
+                                        specht_g_is_const, specht_g_const);
             mtl->c_f[j] = g_tmp; //c_f
           }
         }
@@ -424,7 +536,7 @@ type set_materials(material *mtl, variable *val, parameter *prm)
             j = jx + mx*jy + mxy*jz;
             if (flg->two_energy == OFF) tempf = val->t[j];
             else tempf = val->tf[j];
-            g_tmp = tempdep_calc(&phv->thc_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->thc_g, tempf, thc_g_is_const, thc_g_const);
             mtl->thcf[j] = g_tmp;
           }
         }
@@ -482,7 +594,7 @@ type set_materials(material *mtl, variable *val, parameter *prm)
             j = jx + mx*jy + mxy*jz;
             if (flg->two_energy == OFF) tempf = val->t[j];
             else tempf = val->tf[j];
-            g_tmp = tempdep_calc(&phv->mu_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->mu_g, tempf, mu_g_is_const, mu_g_const);
             {
               int refcompo = -1;
               int is_porous = 0;
@@ -533,12 +645,13 @@ type set_materials(material *mtl, variable *val, parameter *prm)
               tempf = val->tf[j];
               temps = val->ts[j];
             }
-            g_tmp = tempdep_calc(&phv->thc_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->thc_g, tempf, thc_g_is_const, thc_g_const);
             for(icompo = 0; icompo < NumBCompo; icompo++) {
               if (phv->comps[icompo].sform != SOLID_FORM_POROUS)
                 continue;
 
-              s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_s, temps);
+              s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_s, temps,
+                                                  thc_s_is_const[icompo], thc_s_const[icompo]);
               if(fs[j+icompo*m] == 0.0) continue;
               //mtl->thc[j] = eps[j]*g_tmp*fs[j+icompo*m] + (1.0-eps[j])*s_tmp[icompo];
               //mtl->thc[j] = 1.0/(eps[j]/(g_tmp*fs[j+icompo*m]) + (1.0-eps[j])/s_tmp[icompo]);
@@ -566,12 +679,13 @@ type set_materials(material *mtl, variable *val, parameter *prm)
               tempf = val->tf[j];
               temps = val->ts[j];
             }
-            g_tmp = tempdep_calc(&phv->thc_g, tempf);
+            g_tmp = tempdep_calc_cached(&phv->thc_g, tempf, thc_g_is_const, thc_g_const);
             for(icompo = 0; icompo < NumBCompo; icompo++) {
               if (phv->comps[icompo].sform != SOLID_FORM_POROUS)
                 continue;
 
-              s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_s, temps);
+              s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_s, temps,
+                                                  thc_s_is_const[icompo], thc_s_const[icompo]);
               if(fs[j+icompo*m] == 0.0) continue;
               val->epss[j] = (s_tmp[icompo] - mtl->thc[j])/(s_tmp[icompo] - g_tmp);
             }
@@ -673,11 +787,13 @@ type set_materials(material *mtl, variable *val, parameter *prm)
 
     }
 
-    bcf(sgm, prm);
+    if (update_porous) {
+      bcf(sgm, prm);
 
-    bcf(eps, prm);
-    bcf(epss, prm);
-    bcf(perm, prm);
+      bcf(eps, prm);
+      bcf(epss, prm);
+      bcf(perm, prm);
+    }
 
     mumax_G = mumax;
     mumin_G = mumin;
@@ -883,13 +999,16 @@ type set_materials(material *mtl, variable *val, parameter *prm)
 
           //--- density
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].rho_s, temp);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].rho_l, temp);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].rho_s, temp,
+                                                rho_s_is_const[icompo], rho_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].rho_l, temp,
+                                                rho_l_is_const[icompo], rho_l_const[icompo]);
           }
           for (icompo = 0; icompo < NumGCompo; icompo++) {
-            g_tmp[icompo] = tempdep_calc(&phv->comps[icompo + NumBCompo].rho_g, temp);
+            g_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo + NumBCompo].rho_g, temp,
+                                                rho_g_comp_is_const[icompo], rho_g_comp_const[icompo]);
           }
-          g_tmp[icompo] = tempdep_calc(&phv->rho_g, temp);
+          g_tmp[icompo] = tempdep_calc_cached(&phv->rho_g, temp, rho_g_is_const, rho_g_const);
           mtl->dens[j] = YNPHV2c(NumBCompo, NumGCompo + 1,
                                  Y_clip, Yga, &fs_tmp, &fl_tmp, fg,
                                  s_tmp, l_tmp, g_tmp);
@@ -914,37 +1033,47 @@ type set_materials(material *mtl, variable *val, parameter *prm)
 
           //--- vicosity
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].mu_s, temp);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].mu_l, temp);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].mu_s, temp,
+                                                mu_s_is_const[icompo], mu_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].mu_l, temp,
+                                                mu_l_is_const[icompo], mu_l_const[icompo]);
           }
           for (icompo = 0; icompo < NumGCompo; icompo++) {
-            g_tmp[icompo] = tempdep_calc(&phv->comps[icompo + NumBCompo].mu_g, temp);
+            g_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo + NumBCompo].mu_g, temp,
+                                                mu_g_comp_is_const[icompo], mu_g_comp_const[icompo]);
           }
-          g_tmp[icompo] = tempdep_calc(&phv->mu_g, temp);
+          g_tmp[icompo] = tempdep_calc_cached(&phv->mu_g, temp, mu_g_is_const, mu_g_const);
           mtl->mu[j] = YNPHV2c(NumBCompo, NumGCompo + 1,
                                Y_clip, Yga, &fs_tmp, &fl_tmp, fg,
                                s_tmp, l_tmp, g_tmp);
           //--- specific heat coefficient
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].specht_s, temp);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].specht_l, temp);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].specht_s, temp,
+                                                specht_s_is_const[icompo], specht_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].specht_l, temp,
+                                                specht_l_is_const[icompo], specht_l_const[icompo]);
           }
           for (icompo = 0; icompo < NumGCompo; icompo++) {
-            g_tmp[icompo] = tempdep_calc(&phv->comps[icompo + NumBCompo].specht_g, temp);
+            g_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo + NumBCompo].specht_g, temp,
+                                                specht_g_comp_is_const[icompo], specht_g_comp_const[icompo]);
           }
-          g_tmp[icompo] = tempdep_calc(&phv->specht_g, temp);
+          g_tmp[icompo] = tempdep_calc_cached(&phv->specht_g, temp,
+                                              specht_g_is_const, specht_g_const);
           mtl->specht[j] = YNPHV2c(NumBCompo, NumGCompo + 1,
                                    Y_clip, Yga, &fs_tmp, &fl_tmp, fg,
                                    s_tmp, l_tmp, g_tmp);
           //--- thermal conductivity
           for (icompo = 0; icompo < NumBCompo; icompo++) {
-            s_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_s, temp);
-            l_tmp[icompo] = tempdep_calc(&phv->comps[icompo].thc_l, temp);
+            s_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_s, temp,
+                                                thc_s_is_const[icompo], thc_s_const[icompo]);
+            l_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo].thc_l, temp,
+                                                thc_l_is_const[icompo], thc_l_const[icompo]);
           }
           for (icompo = 0; icompo < NumGCompo; icompo++) {
-            g_tmp[icompo] = tempdep_calc(&phv->comps[icompo + NumBCompo].thc_g, temp);
+            g_tmp[icompo] = tempdep_calc_cached(&phv->comps[icompo + NumBCompo].thc_g, temp,
+                                                thc_g_comp_is_const[icompo], thc_g_comp_const[icompo]);
           }
-          g_tmp[icompo] = tempdep_calc(&phv->thc_g, temp);
+          g_tmp[icompo] = tempdep_calc_cached(&phv->thc_g, temp, thc_g_is_const, thc_g_const);
           mtl->thc[j] = YNPHV2c(NumBCompo, NumGCompo + 1,
                                 Y_clip, Yga, &fs_tmp, &fl_tmp, fg,
                                 s_tmp, l_tmp, g_tmp);
@@ -1014,7 +1143,8 @@ type set_materials(material *mtl, variable *val, parameter *prm)
           //mtl->t_liq[j] = 1.0/liq_sum;
           //mtl->t_soli[j] = mtl->t_liq[j];
 
-          mtl->st[j] = tempdep_calc(&phv->comps[0].sigma, temp); //! under construction
+          mtl->st[j] = tempdep_calc_cached(&phv->comps[0].sigma, temp,
+                                           sigma_is_const, sigma_const); //! under construction
 
           //---- temperature dependency
           //if(prm->flg->debug == ON){

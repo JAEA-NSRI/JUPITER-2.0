@@ -1,0 +1,30 @@
+-- Physical Property for .
+-- (note: This text is not comment, just ignored by Jupiter)
+
+tm_soli, 1500.0,
+tm_liq, 1500.0,
+tb, 373.15,   -- boiling temperature[K]
+lh, 2256.4e+3, -- latent heat[J/kg]
+lhv, 2256.4e+3, -- latent heat[J/kg]
+beta , CONST, 23.0,
+sigma, CONST, 72.75E-3,  -- coefficient of surface tension
+molar_mass, 1.0
+porosity, 1.0
+permeability, 1.0
+-- density[kg m-3]
+rho_s, CONST, 2000.0,
+rho_l, CONST, 998.2,
+-- viscosity[Pa s]
+mu_s, CONST, 0.006,
+mu_l, CONST, 1002E-6,
+-- specific heat at constant volume[J kg-1 K-1]
+specht_s, CONST, 750.0,
+specht_l, CONST, 4179.0,
+-- thermal conductivity[W m-1 K-1]
+thc_s, CONST, 28.0,
+thc_l, CONST, 0.6104,
+-- emissivity
+emi_s, CONST, 1.0,
+emi_l, CONST, 1.0,
+emi_g, CONST, 1.0,
+
