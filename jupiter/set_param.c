@@ -345,6 +345,12 @@ timer_main *init_timer_main(int argc, char *argv[])
   time->dtctl = 0.0;
   time->vof   = 0.0;
   time->rk3   = 0.0;
+  time->rk3_level_set = 0.0;
+  time->rk3_advection = 0.0;
+  time->rk3_viscosity = 0.0;
+  time->rk3_surface_tension = 0.0;
+  time->rk3_forchheimer = 0.0;
+  time->rk3_overhead = 0.0;
   time->heat  = 0.0;
   time->radiation  = 0.0; // << 2016 Added by KKE
   time->phase = 0.0;
@@ -1170,10 +1176,23 @@ parameter  *set_parameters(int *argc, char **argv[], enum set_parameters_options
 
 /* YSE: print_param is moved to print_param.c */
 
+static type print_timer_line(FILE *fp, const char *name, type value, type total)
+{
+  type percent = 0.0;
+
+  if (total > 0.0) {
+    percent = 100.0*value/total;
+  }
+  fprintf(fp, "%-20s = %9.3e [sec/step],  %2.2f [percent]\n", name, value, percent);
+  return percent;
+}
+
 void print_timer(parameter *prm)
 {
   timer_main *t = prm->time;
   FILE *fp = prm->flg->fp;
+  flags *flg = prm->flg;
+  type percent_sum = 0.0;
   t->total = t->dtctl + t->vof + t->multi_layer + t->rk3 + t->heat + t->eutectic + t->solute +
              t->radiation + t->phase + t->div + t->oxide + t->matel +
              t->hsource + t->lpt + t->control_update +
@@ -1186,24 +1205,41 @@ void print_timer(parameter *prm)
                 MPI_TYPE, MPI_MAX, prm->mpi->CommJUPITER);
 #endif
   if(prm->mpi->rank == 0 && prm->cdo->viewflg == 1) {
-    fprintf(fp, "dt_control        = %9.3e [sec/step],  %2.2f [percent]\n", t->dtctl, 100.0*t->dtctl/t->total);
-    fprintf(fp, "vof_advection     = %9.3e [sec/step],  %2.2f [percent]\n", t->vof,   100.0*t->vof  /t->total);
-    fprintf(fp, "multi_layer       = %9.3e [sec/step],  %2.2f [percent]\n", t->multi_layer, 100.0*t->multi_layer  /t->total);
-    fprintf(fp, "tvd_runge_kutta_3 = %9.3e [sec/step],  %2.2f [percent]\n", t->rk3,   100.0*t->rk3  /t->total);
-    fprintf(fp, "heat_conduction   = %9.3e [sec/step],  %2.2f [percent]\n", t->heat,  100.0*t->heat /t->total);
-    fprintf(fp, "radiation         = %9.3e [sec/step],  %2.2f [percent]\n", t->radiation,  100.0*t->radiation /t->total); // < 2016 Added by KKE
-    fprintf(fp, "phase_change      = %9.3e [sec/step],  %2.2f [percent]\n", t->phase, 100.0*t->phase/t->total);
-    fprintf(fp, "eutectic          = %9.3e [sec/step],  %2.2f [percent]\n", t->eutectic, 100.0*t->eutectic/t->total);
-    fprintf(fp, "divergence_free   = %9.3e [sec/step],  %2.2f [percent]\n", t->div,   100.0*t->div  /t->total);
-    fprintf(fp, "solute diff       = %9.3e [sec/step],  %2.2f [percent]\n", t->solute,   100.0*t->solute  /t->total);
-    fprintf(fp, "oxidation         = %9.3e [sec/step],  %2.2f [percent]\n", t->oxide,   100.0*t->oxide  /t->total);
-    fprintf(fp, "materials         = %9.3e [sec/step],  %2.2f [percent]\n", t->matel, 100.0*t->matel/t->total);
-    fprintf(fp, "hsource           = %9.3e [sec/step],  %2.2f [percent]\n", t->hsource, 100.0*t->hsource/t->total);
+    percent_sum += print_timer_line(fp, "dt_control", t->dtctl, t->total);
+    percent_sum += print_timer_line(fp, "vof_advection", t->vof, t->total);
+    if (flg->multi_layer == ON || t->multi_layer > 0.0)
+      percent_sum += print_timer_line(fp, "multi_layer", t->multi_layer, t->total);
+    percent_sum += print_timer_line(fp, "level_set", t->rk3_level_set, t->total);
+    percent_sum += print_timer_line(fp, "advection", t->rk3_advection, t->total);
+    if (flg->visc_tvd3 == ON || t->rk3_viscosity > 0.0)
+      percent_sum += print_timer_line(fp, "viscosity", t->rk3_viscosity, t->total);
+    percent_sum += print_timer_line(fp, "surf_tension", t->rk3_surface_tension, t->total);
+    if (flg->porous == ON || t->rk3_forchheimer > 0.0)
+      percent_sum += print_timer_line(fp, "Forchheimer", t->rk3_forchheimer, t->total);
+    percent_sum += print_timer_line(fp, "rk3_overhead", t->rk3_overhead, t->total);
+    if (flg->heat_eq == ON || t->heat > 0.0)
+      percent_sum += print_timer_line(fp, "heat_conduction", t->heat, t->total);
+    if (flg->radiation == ON || t->radiation > 0.0)
+      percent_sum += print_timer_line(fp, "radiation", t->radiation, t->total);
+    if (flg->phase_change == ON || t->phase > 0.0)
+      percent_sum += print_timer_line(fp, "phase_change", t->phase, t->total);
+    if (t->eutectic > 0.0)
+      percent_sum += print_timer_line(fp, "eutectic", t->eutectic, t->total);
+    percent_sum += print_timer_line(fp, "divergence_free", t->div, t->total);
+    if (t->solute > 0.0)
+      percent_sum += print_timer_line(fp, "solute diff", t->solute, t->total);
+    if (t->oxide > 0.0)
+      percent_sum += print_timer_line(fp, "oxidation", t->oxide, t->total);
+    percent_sum += print_timer_line(fp, "materials", t->matel, t->total);
+    if (t->hsource > 0.0)
+      percent_sum += print_timer_line(fp, "hsource", t->hsource, t->total);
 #ifdef HAVE_LPT
-    fprintf(fp, "particle track    = %9.3e [sec/step],  %2.2f [percent]\n", t->lpt, 100.0*t->lpt/t->total);
+    if (t->lpt > 0.0)
+      percent_sum += print_timer_line(fp, "particle track", t->lpt, t->total);
 #endif
-    fprintf(fp, "update fv/stats   = %9.3e [sec/step],  %2.2f [percent]\n", t->control_update, 100.0*t->control_update/t->total);
-    fprintf(fp, "output_data       = %9.3e [sec/step],  %2.2f [percent]\n", t->data,  100.0*t->data /t->total);
+    percent_sum += print_timer_line(fp, "update fv/stats", t->control_update, t->total);
+    percent_sum += print_timer_line(fp, "output_data", t->data, t->total);
+    fprintf(fp, "percent_sum       = %9.3e [percent]\n", percent_sum);
     fprintf(fp, "----------- total = %9.3e [sec/step]\n", t->total);
     fprintf(fp, "    < job total > = %9.3e [sec/step]\n", t->total_job);
     fprintf(fp, "\n");

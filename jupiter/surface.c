@@ -144,6 +144,7 @@ void normal_vector_cell(type *nvx, type *nvy, type *nvz, type *curv, type *f, do
        mx=cdo->mx, my=cdo->my, mxy=mx*my, stm=cdo->stm;
   type dxi=cdo->dxi, dyi=cdo->dyi, dzi=cdo->dzi;
   type nvx_tmp, nvy_tmp, nvz_tmp, det;
+  type normal_band = 1.5*cdo->width;
   type nvx_bne,nvx_bnw,nvx_bse,nvx_bsw, nvx_tne,nvx_tnw,nvx_tse,nvx_tsw,
        nvy_bne,nvy_bnw,nvy_bse,nvy_bsw, nvy_tne,nvy_tnw,nvy_tse,nvy_tsw,
        nvz_bne,nvz_bnw,nvz_bse,nvz_bsw, nvz_tne,nvz_tnw,nvz_tse,nvz_tsw;
@@ -161,6 +162,13 @@ void normal_vector_cell(type *nvx, type *nvy, type *nvz, type *curv, type *f, do
     for(jy = -2; jy < ny+2; jy++) {
       for(jx = -2; jx < nx+2; jx++) {
         j = (jx+stm) + mx*(jy+stm) + mxy*(jz+stm);
+
+        if(f[j] < -normal_band || normal_band < f[j]) {
+          nvx[j] = 0.0;
+          nvy[j] = 0.0;
+          nvz[j] = 0.0;
+          continue;
+        }
 
         nvx_bne = 0.25*(f[j+mx+1] - f[j+mx] + f[j+1] - f[j] + f[j+mx+1-mxy] - f[j+mx-mxy] + f[j+1-mxy] - f[j-mxy])*dxi;
         nvx_bnw = 0.25*(f[j+mx] - f[j+mx-1] + f[j] - f[j-1] + f[j+mx-mxy] - f[j+mx-1-mxy] + f[j-mxy] - f[j-1-mxy])*dxi;
@@ -201,11 +209,6 @@ void normal_vector_cell(type *nvx, type *nvy, type *nvz, type *curv, type *f, do
         nvx[j] = nvx_tmp/det;
         nvy[j] = nvy_tmp/det;
         nvz[j] = nvz_tmp/det;
-        if(f[j] < - 1.5*cdo->width || 1.5*cdo->width < f[j]) {
-          nvx[j] = 0.0;
-          nvy[j] = 0.0;
-          nvz[j] = 0.0;
-        }
       }
     }
   }
@@ -219,11 +222,14 @@ void normal_vector_cell(type *nvx, type *nvy, type *nvz, type *curv, type *f, do
         for(jx = -1; jx < nx+1; jx++) {
           j = (jx+stm) + mx*(jy+stm) + mxy*(jz+stm);
 
+          if(f[j] < - cdo->width || cdo->width < f[j]) {
+            curv[j] = 0.0;
+            continue;
+          }
+
           curv[j] = 0.5*(nvx[j+1  ] - nvx[j-1  ])*dxi
             + 0.5*(nvy[j+mx ] - nvy[j-mx ])*dyi
             + 0.5*(nvz[j+mxy] - nvz[j-mxy])*dzi;
-
-          if(f[j] < - cdo->width || cdo->width < f[j]) curv[j] = 0.0;
         }
       }
     }

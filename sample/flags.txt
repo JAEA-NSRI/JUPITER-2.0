@@ -1,0 +1,74 @@
+print, OFF
+geom_in, ON
+
+fluid_dynamics, ON
+heat_eq, OFF
+phase_change, OFF
+vaporization, OFF
+condensation, OFF
+melting, OFF
+solidification, OFF
+surface_tension, ON
+radiation, OFF
+oxidation, OFF
+temperature_dependency, OFF
+multi_layer_no_coalescence, OFF,
+vof_adv_fls, ON,
+solute_diff, OFF,
+eutectic, OFF,
+LPT_calc, OFF
+porous, OFF
+laser, OFF
+phasefield, OFF
+wettability, OFF
+
+WENO, ON
+IBM, ON
+interface_capturing_scheme, PLIC
+heat_tvd3, OFF
+visc_tvd3, OFF
+
+vof_validate_init, OFF
+
+bc_xm,    WALL
+bc_xp,    WALL
+bc_ym,    WALL
+bc_yp,    WALL
+bc_zm,    WALL
+bc_zp,    OUT
+bct_xm,   INSULATION
+bct_xp,   INSULATION
+bct_ym,   INSULATION
+bct_yp,   INSULATION
+bct_zm,   INSULATION
+bct_zp,   INSULATION
+bcrad_xm, INSULATION
+bcrad_xp, INSULATION
+bcrad_ym, INSULATION
+bcrad_yp, INSULATION
+bcrad_zm, INSULATION
+bcrad_zp, INSULATION
+
+binary, ON
+gnuplot, OFF
+
+fp, msgs/msgs.%04r.lst
+
+output_mode, UNIFY_MPI
+output_double, OFF
+
+output_bnd_norm_u, ON
+output_bnd_norm_v, ON
+output_bnd_norm_w, ON
+output_ll, ON
+output_ls, ON
+output_lls, ON
+output_u, ON
+output_v, ON
+output_w, ON
+output_p, ON
+output_div_u, ON
+output_data_directory, vdata, vdata
+restart_data_directory, rdata, rdata
+output_filename_templates, time/%c.%04n.dat, %c_%i/%c_%i_%04n.dat, %c/%c_%04n.dat
+restart_filename_templates, %c.dat, %c_%i/%04r.dat, %c/%04r.dat

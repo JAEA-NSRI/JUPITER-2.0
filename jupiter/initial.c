@@ -229,27 +229,27 @@ void init_variables(variable *val, material *mtl, parameter *prm)
 
   if(flg->multi_layer==OFF){
     // Level Set (solid -(liquid+gas))
-    Level_Set(1, 20, val->ls, val->fs_sum, prm);
+    Level_Set(1, cdo->ls_iteration, val->ls, val->fs_sum, prm);
     bcf(val->ls, prm);
     // Level Set (liquid -(solid+gas))
-    Level_Set(1, 20, val->ll, val->fl_sum, prm);
+    Level_Set(1, cdo->ls_iteration, val->ll, val->fl_sum, prm);
     // Level Set (solid A )
-    Level_Set(1, 20, val->lls, val->work, prm);
+    Level_Set(1, cdo->ls_iteration, val->lls, val->work, prm);
     bcf(val->ll, prm);
     bcf(val->lls, prm);    
   }else{
     /* -- Multi_layerモデル -- */
     // same process is in restart()
     // ls is NOT defined layer-wise
-    Level_Set(1, 20, val->ls, val->fs_sum, prm);
+    Level_Set(1, cdo->ls_iteration, val->ls, val->fs_sum, prm);
     bcf(val->ls, prm);
 
     // ll and lls are layer-wise
     for(int ilayer= 0; ilayer<cdo->NumberOfLayer; ilayer++){
-      Level_Set(1, 20, &val->ll_layer[ilayer*m] , &val->fl_layer[ilayer*m] , prm);
+      Level_Set(1, cdo->ls_iteration, &val->ll_layer[ilayer*m] , &val->fl_layer[ilayer*m] , prm);
       bcf(&val->ll_layer[ilayer*m], prm);
 
-      Level_Set(1, 20, &val->lls_layer[ilayer*m], &val->fls_layer[ilayer*m], prm);
+      Level_Set(1, cdo->ls_iteration, &val->lls_layer[ilayer*m], &val->fls_layer[ilayer*m], prm);
       bcf(&val->lls_layer[ilayer*m], prm);    
     }
       
@@ -258,7 +258,7 @@ void init_variables(variable *val, material *mtl, parameter *prm)
 
   // Level Set ((gas+liquid+non-IBM solid) - IBM solid)
   if (val->ls_ibm && val->fs_ibm) {
-    Level_Set(1, 20, val->ls_ibm, val->fs_ibm, prm);
+    Level_Set(1, cdo->ls_iteration, val->ls_ibm, val->fs_ibm, prm);
     bcf(val->ls_ibm, prm);
   }
 

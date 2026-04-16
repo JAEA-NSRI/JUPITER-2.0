@@ -7894,7 +7894,7 @@ int restart(int iout, variable *val, material *mtl, parameter *prm)
     // normal_vector_cell(val->nvlx, val->nvly, val->nvlz, val->curv, val->ll, cdo);
 
     if (val->ls_ibm && val->fs_ibm) {
-      Level_Set(1, 20, val->ls_ibm, val->fs_ibm, prm);
+      Level_Set(1, cdo->ls_iteration, val->ls_ibm, val->fs_ibm, prm);
       bcf(val->ls_ibm, prm);
 
       if (val->nvibmx && val->nvibmy && val->nvibmz) {
@@ -7906,23 +7906,23 @@ int restart(int iout, variable *val, material *mtl, parameter *prm)
     // Level set function will be rebuilt with fl_layer and fls_layer, made by restart data.
     // same process is in  init_variables()
     // ls is NOT defined layer-wise
-    Level_Set(1, 20, val->ls, val->fs_sum, prm);
+    Level_Set(1, cdo->ls_iteration, val->ls, val->fs_sum, prm);
     bcf(val->ls, prm);
     normal_vector_cell(val->nvsx, val->nvsy, val->nvsz, NULL, val->ls, cdo);
 
     // ll and lls are layer-wise
     for(int ilayer= 0; ilayer<cdo->NumberOfLayer; ilayer++){
-      Level_Set(1, 20, &val->ll_layer[ilayer*cdo->m] , &val->fl_layer[ilayer*cdo->m] , prm);
+      Level_Set(1, cdo->ls_iteration, &val->ll_layer[ilayer*cdo->m] , &val->fl_layer[ilayer*cdo->m] , prm);
       bcf(&val->ll_layer[ilayer*cdo->m], prm);
 
-      Level_Set(1, 20, &val->lls_layer[ilayer*cdo->m], &val->fls_layer[ilayer*cdo->m], prm);
+      Level_Set(1, cdo->ls_iteration, &val->lls_layer[ilayer*cdo->m], &val->fls_layer[ilayer*cdo->m], prm);
       bcf(&val->lls_layer[ilayer*cdo->m], prm);    
       normal_vector_cell(&val->nvlx_layer[ilayer*cdo->m], &val->nvly_layer[ilayer*cdo->m], &val->nvlz_layer[ilayer*cdo->m], &val->curv_layer[ilayer*cdo->m], &val->lls_layer[ilayer*cdo->m], cdo);
     }
 
     // ls_ibmもlayer毎に定義されておらず、通常の取り扱いと同じ。
     if (val->ls_ibm && val->fs_ibm) {
-      Level_Set(1, 20, val->ls_ibm, val->fs_ibm, prm);
+      Level_Set(1, cdo->ls_iteration, val->ls_ibm, val->fs_ibm, prm);
       bcf(val->ls_ibm, prm);
 
       if (val->nvibmx && val->nvibmy && val->nvibmz) {

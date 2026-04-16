@@ -204,6 +204,62 @@ static type calc_gas_jet_flow_rate(variable *val, parameter *prm)
   return rate;
 }
 
+static type calc_max_kinematic_viscosity(material *mtl, variable *val,
+                                        parameter *prm, type fs_thr)
+{
+  domain *cdo;
+  int mx, my, mz;
+  int is, js, ks;
+  int ie, je, ke;
+  type nu_max_local;
+  type nu_max_global;
+
+  if (!mtl || !mtl->mu || !mtl->dens)
+    return 0.0;
+
+  cdo = prm->cdo;
+  mx = cdo->mx;
+  my = cdo->my;
+  mz = cdo->mz;
+
+  is = cdo->stm;
+  js = cdo->stm;
+  ks = cdo->stm;
+  ie = is + cdo->nx - 1;
+  je = js + cdo->ny - 1;
+  ke = ks + cdo->nz - 1;
+
+  nu_max_local = 0.0;
+
+#pragma omp parallel for collapse(3) reduction(max:nu_max_local)
+  for (int k = ks; k < ke + 1; ++k) {
+    for (int j = js; j < je + 1; ++j) {
+      for (int i = is; i < ie + 1; ++i) {
+        ptrdiff_t jj;
+        type nu;
+
+        jj = calc_address(i, j, k, mx, my, mz);
+        if (val && val->fs && val->fs[jj] >= fs_thr)
+          continue;
+        if (mtl->dens[jj] <= 0.0 || mtl->mu[jj] <= 0.0)
+          continue;
+
+        nu = mtl->mu[jj] / mtl->dens[jj];
+        if (nu > nu_max_local)
+          nu_max_local = nu;
+      }
+    }
+  }
+
+  nu_max_global = nu_max_local;
+#ifdef JUPITER_MPI
+  MPI_Allreduce(MPI_IN_PLACE, &nu_max_global, 1, MPI_TYPE, MPI_MAX,
+                prm->mpi->CommJUPITER);
+#endif
+
+  return nu_max_global;
+}
+
 /* YSE: re-implement minmax */
 struct ya_max_data_element
 {
@@ -650,19 +706,24 @@ type dt_control(variable *val, material *mtl, parameter *prm)
   phase_value *phv = prm->phv;
   int    nx=cdo->nx, ny=cdo->ny, nz=cdo->nz,
          mx=cdo->mx, my=cdo->my, stm=cdo->stm;
-  type   dt_cfl=1.0, dt_diff=1.0, dt_diff_org=1.0, dx=cdo->dx, dy=cdo->dy;
+  type   dt_cfl=(type)HUGE_VAL, dt_visc=(type)HUGE_VAL,
+    dt_visc_org=(type)HUGE_VAL,
+    dt_s=(type)HUGE_VAL, dx=cdo->dx, dy=cdo->dy;
   type   time0 = cpu_time();
-  type dt_g, dt_s;
   FILE   *fp = prm->flg->fp;
   FILE   *pp;
   char filename[100];
+
+  type a_priori_max_speed = 0.5;
 
   struct ya_max_data u_maxs, v_maxs, w_maxs, t_maxs, tf_maxs, ts_maxs, q_maxs, rad_maxs;
   struct ya_max_data ox_dt_maxs, ox_q_maxs;
   type enthalpy_sum, init_enthalpy_sum, enthalpy_time_derivative_sum; /*Fukuda enthaply monitor*/
   type enthalpy_icrease_from_beginning_sum;
-  type u_max, v_max, w_max, vel_max, t_max, tf_max, ts_max;
+  type u_max, v_max, w_max, vel_max, vel_for_cfl, t_max, tf_max, ts_max;
+  type nu_max;
   type fs_thr = (type)0.999;
+  int use_velocity_floor, use_visc_limit, use_surface_tension_limit;
   int ox_f_IB, ox_f_OB, ox_f_S, ox_f_F, ox_f_G, ox_f_R;
   int ox_f_IB_nG, ox_f_OB_nG, ox_f_S_nG, ox_f_F_nG, ox_f_R_nG;
 
@@ -795,21 +856,31 @@ type dt_control(variable *val, material *mtl, parameter *prm)
   }
 
   vel_max = MAX3(u_max, v_max, w_max);
-//  vel_max = MAX2(vel_max, 1.0);//<= 1.0 is minimum velocity
-  vel_max = MAX2(vel_max, 0.5);//<= 0.1 is minimum velocity, added by Chai
-  // vel_max = MAX2(vel_max, 1.0e-02);// < 2016 Added by KKE
+  vel_for_cfl = vel_max;
+  use_visc_limit = (prm->flg->visc_tvd3 == ON);
+  use_surface_tension_limit = (prm->flg->surface_tension == ON);
+  use_velocity_floor = (vel_max == 0.0 && !use_visc_limit &&
+                        !use_surface_tension_limit);
 
-  // advection velocity limmiting
-  dt_cfl  = cdo->cfl_num * dx / vel_max;
-  // Gravity limiting
-  dt_g = cdo->cfl_num*dx/(sqrt(u_max*u_max + v_max*v_max + w_max*w_max) + sqrt(u_max*u_max + v_max*v_max + w_max*w_max + 4.0*(-cdo->grav_z)*dx));
-  dt_cfl = MIN2(dt_cfl, dt_g);
+  if (vel_max > 0.0) {
+    dt_cfl = cdo->cfl_num * dx / vel_for_cfl;
+  }
 
-  // Surface tension limiting
-  if (prm->flg->surface_tension == ON) {
-    // dt_s = cdo->cfl_num*0.5*pow(cdo->dx,1.5)*sqrt(phv->rho_l[0]/8.0/3.14/phv->sigma[0]);
-    dt_s = cdo->cfl_num*sqrt(0.5*(tempdep_calc(&phv->rho_g,273.0)+tempdep_calc(&phv->comps[0].rho_l,273.0))*cdo->dx*cdo->dx*cdo->dx/2.0/M_PI/tempdep_calc(&phv->comps[0].sigma,273.0));
-    dt_cfl = MIN2(dt_cfl, dt_s);
+  if (use_surface_tension_limit) {
+    type sigma = tempdep_calc(&phv->comps[0].sigma,273.0);
+    if (sigma > 0.0) {
+      dt_s = cdo->cfl_num *
+        sqrt(0.5*(tempdep_calc(&phv->rho_g,273.0)+tempdep_calc(&phv->comps[0].rho_l,273.0))
+             * cdo->dx*cdo->dx*cdo->dx / 2.0 / M_PI / sigma);
+    }
+  }
+
+  if (use_visc_limit) {
+    nu_max = calc_max_kinematic_viscosity(mtl, val, prm, fs_thr);
+    if (nu_max > 0.0) {
+      dt_visc_org = cdo->diff_num * dx * dy / nu_max;
+      dt_visc = dt_visc_org * cdo->nsub_step_mu;
+    }
   }
 
   // thermal conductivity limmiting
@@ -829,9 +900,17 @@ type dt_control(variable *val, material *mtl, parameter *prm)
     }
   */
 
-  // choose smaller time step
-  //cdo->dt = MIN2(dt_cfl, dt_diff);
   cdo->dt = dt_cfl;
+  cdo->dt = MIN2(cdo->dt, dt_visc);
+  cdo->dt = MIN2(cdo->dt, dt_s);
+
+  if (!isfinite(cdo->dt) || cdo->dt == (type)HUGE_VAL) {
+    cdo->dt = cdo->cfl_num * dx / a_priori_max_speed;
+    if (prm->mpi->rank == 0) {
+      printf("[dt_control] fallback dt is used (a_priori_max_speed=%g): dt=%e\n",
+             (double)a_priori_max_speed, (double)cdo->dt);
+    }
+  }
   
   //    if(prm->flg->fluid_dynamics == OFF) {
   //      cdo->dt = dt_diff;
@@ -845,10 +924,18 @@ type dt_control(variable *val, material *mtl, parameter *prm)
     /* YSE: Set view flag */
     cdo->viewflg = 1;
     fprintf(fp, "\n====[%08d steps, %05d outputs]=============\n", cdo->icnt, cdo->iout);
-    fprintf(fp, "  dt(cfl = %1.2f, diff = %1.2f [substep = %03d]) = %9.3e\n",
-            cdo->cfl_num, cdo->diff_num, cdo->nsub_step_t, cdo->dt);
-    fprintf(fp, "  dt_cfl  = %9.3e\n", dt_cfl);
-    fprintf(fp, "  dt_diff = %9.3e (/%d) = %9.3e\n", dt_diff, cdo->nsub_step_t, dt_diff/cdo->nsub_step_t);
+    if (isfinite(dt_cfl))
+      fprintf(fp, "  %-7s = %9.3e\n", "dt_cfl", dt_cfl);
+    if (isfinite(dt_visc))
+      fprintf(fp, "  %-7s = %9.3e (/%d) = %9.3e\n",
+              "dt_visc", dt_visc, cdo->nsub_step_mu, dt_visc_org);
+    if (isfinite(dt_s))
+      fprintf(fp, "  %-7s = %9.3e\n", "dt_surf.", dt_s);
+    fprintf(fp, "  dt      = %9.3e\n", cdo->dt);
+    if (use_velocity_floor) {
+      fprintf(fp, "  note    = vel_max=0 and no visc/surface-tension limit; use vel=%9.3e for dt_cfl\n",
+              vel_for_cfl);
+    }
     fprintf(fp, "  time    = %9.3e\n", cdo->time);
     ya_print_max(fp, &u_maxs, "u_max", 9, 3);
     ya_print_max(fp, &v_maxs, "v_max", 9, 3);

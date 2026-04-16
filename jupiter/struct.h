@@ -1020,6 +1020,12 @@ typedef struct
         vof,   // vof_advection()
         multi_layer, // multi_layer()
         rk3,   // tvd_runge_kutta3()
+        rk3_level_set, // level_set_all() in tvd_runge_kutta_3()
+        rk3_advection, // advection terms in tvd_runge_kutta_3()
+        rk3_viscosity, // viscous terms in tvd_runge_kutta_3()
+        rk3_surface_tension, // surface_tension_eq() in tvd_runge_kutta_3()
+        rk3_forchheimer, // Forchheimer substep in tvd_runge_kutta_3()
+        rk3_overhead, // remaining cost in tvd_runge_kutta_3()
         heat,  // heat_conduction()
         radiation, // radiation() < 2016 Added by KKE
         phase, // phase_change()

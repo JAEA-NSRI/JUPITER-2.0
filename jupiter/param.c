@@ -2422,10 +2422,10 @@ void set_cdomain(flags *flg, domain *cdo, mpi_param *mpi,
 
   //--- Time step restriction
   SET_P(&cdo->dt, double, "dt", 1, 0.0); // dt[s] (reads, but not used)
-  SET_P(&cdo->cfl_num, double, "CFL_num", 1, 0.0);   // cfl number[u dt dx-1]
+   SET_P(&cdo->cfl_num, double, "CFL_num", 1, 0.1);   // cfl number[u dt dx-1]
   SET_P_PERROR_FINITE(cdo->cfl_num, ERROR, "CFL_num must be finite");
 
-  SET_P(&cdo->diff_num, double, "DIFF_num", 1, 0.0); // diffusion number[k dt dx-2]
+  SET_P(&cdo->diff_num, double, "DIFF_num", 1, 0.5); // diffusion number[k dt dx-2]
   SET_P_PERROR_FINITE(cdo->diff_num, ERROR, "DIFF_num must be finite");
 
   SET_P(&cdo->dt_rad, double, "dt_rad", 1,
@@ -2433,12 +2433,12 @@ void set_cdomain(flags *flg, domain *cdo, mpi_param *mpi,
   SET_P_PERROR_GREATER(cdo->dt_rad, 0.0, OFF, OFF,
                        ERROR, "dt_rad must be positive");
 
-  SET_P(&cdo->coef_lsts, double, "coef_lsts", 1, 0.25);
+  SET_P(&cdo->coef_lsts, double, "coef_lsts", 1, 0.5);
   if (!SET_P_PERROR_RANGE(cdo->coef_lsts, 0.0, 0.5, OFF, ON, ERROR,
         "coefficient of time step of level-set iteration must be in the range of 0 < coef_lsts <= 0.5")) {
     if(stat) *stat = ON;
   }
-  SET_P(&cdo->ls_iteration, int, "ls_iteration", 1, 20); 
+  SET_P(&cdo->ls_iteration, int, "ls_iteration", 1, 10); 
   if (cdo->ls_iteration< 1) {
     if (stat) *stat = ON;
     SET_P_PERROR(ERROR, "level-set iteration must be greater than 1");

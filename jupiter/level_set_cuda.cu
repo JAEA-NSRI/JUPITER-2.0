@@ -49,7 +49,7 @@ void vof2ls_cuda(int init_flg, type *fs, type *ls, domain *cdo)
 
 __global__ void level_set_eq_cuda_kernel(type *fn, type a0, type *f0, type af, type aft, type *f,
   int nx, int ny, int nz, int mx,int my,int mz,int stm,
-  type dx, type dy, type dz, type dzi,type dyi,type dxi){
+  type dx, type dy, type dz, type dzi,type dyi,type dxi, type band){
 
   int j, jx, jy, jz, mxy;
   type  fx2, fy2, fz2, ft, sign;
@@ -60,6 +60,11 @@ __global__ void level_set_eq_cuda_kernel(type *fn, type a0, type *f0, type af, t
 
   mxy = mx*my;
   j=jx+stm + mx*(jy+stm) + mxy*(jz + stm);
+
+  if (fabs(f[j]) > band && fabs(f0[j]) > band) {
+    fn[j] = a0*f0[j] + af*f[j];
+    return;
+  }
 
   sign = f[j]/sqrt(f[j]*f[j] + dx*dy);
   LS_ADV_mp(fz2, f[j-2*mxy], f[j-mxy], f[j], f[j+mxy], f[j+2*mxy], sign, dzi);
@@ -96,6 +101,7 @@ void level_set_eq_cuda(type *fn, type a0, type *f0, type af, type aft, type *f, 
     mx=cdo->mx, my=cdo->my, mz=cdo->mz;
   type dx=cdo->dx, dy=cdo->dy, dz=cdo->dz,
     dxi=1.0/dx, dyi=1.0/dy, dzi=1.0/dz;
+  type band = 1.5*cdo->width + 2.0*cdo->dx;
   int block_x, block_y, block_z;
 
   block_x=nx/blockDim_x;
@@ -115,14 +121,14 @@ void level_set_eq_cuda(type *fn, type a0, type *f0, type af, type aft, type *f, 
   dim3 Dg(block_x,block_y,block_z);
   dim3 Db(blockDim_x,blockDim_y,blockDim_z);
 
-  level_set_eq_cuda_kernel<<<Dg,Db>>>(fn, a0, f0, af, aft, f,nx,ny,nz,mx,my,mz,stm,dx,dy,dz,dzi,dyi,dxi);
+  level_set_eq_cuda_kernel<<<Dg,Db>>>(fn, a0, f0, af, aft, f,nx,ny,nz,mx,my,mz,stm,dx,dy,dz,dzi,dyi,dxi,band);
 
 }
 
 
 type Level_Set_cuda(int init_flg, int itr_max, type *ls, type *fs, parameter *prm)
 {
-  type *d_ls, *d_fs, *d_tmp1, *d_tmp2;
+  type *d_ls, *d_fs, *d_tmp1;
   domain *cdo = prm->cdo;
 
   //printf("call Level_Set_cuda\n");
@@ -150,9 +156,8 @@ type Level_Set_cuda(int init_flg, int itr_max, type *ls, type *fs, parameter *pr
   bcf_cuda_buf(d_ls, prm, &comm_buf_cu);
 
 
-  // 3rd-order TVD Runge-Kutta
+  // 2nd-order TVD Runge-Kutta
   cudaMalloc((void**)&d_tmp1,size);
-  cudaMalloc((void**)&d_tmp2,size);
   int  itr = 0;
   type dt = cdo->coef_lsts*cdo->dx;
 
@@ -162,17 +167,12 @@ type Level_Set_cuda(int init_flg, int itr_max, type *ls, type *fs, parameter *pr
 
     bcf_cuda_buf(d_tmp1, prm,&comm_buf_cu);
 
-    level_set_eq_cuda(d_tmp2, 3./4., d_ls, 1./4.,1./4.*dt, d_tmp1, cdo);
-
-    bcf_cuda_buf(d_tmp2, prm,&comm_buf_cu);
-
-    level_set_eq_cuda(d_ls,   1./3., d_ls, 2./3.,2./3.*dt, d_tmp2, cdo);
+    level_set_eq_cuda(d_ls,    0.5, d_ls,    0.5,  0.5*dt, d_tmp1, cdo);
 
     bcf_cuda_buf(d_ls, prm,&comm_buf_cu);
   }
 
   cudaFree(d_tmp1);
-  cudaFree(d_tmp2);
 
   cudaMemcpy(ls, d_ls, size, cudaMemcpyDeviceToHost);
   cudaFree(d_ls);

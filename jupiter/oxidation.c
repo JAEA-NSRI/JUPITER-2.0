@@ -1155,7 +1155,7 @@ type oxidation_calc(struct oxidation_calc_args *p)
   }
   bcf(p->ox_vof, p->prm);
 
-  Level_Set(1, 20, p->ox_lset, p->ox_vof, p->prm);
+  Level_Set(1, p->prm->cdo->ls_iteration, p->ox_lset, p->ox_vof, p->prm);
   bcf(p->ox_lset, p->prm);
 
 #pragma omp parallel

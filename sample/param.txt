@@ -1,0 +1,38 @@
+MPI_processes, 1, 1, 2
+Cell, 50, 50, 50
+Length, 500.0e-3, 500.0e-3, 1000.0e-3
+
+NumberOfComponent, 2
+
+stm, 3
+stp, 4
+
+tw_xm,   273.15
+tw_xp,   273.15
+tw_ym,   273.15
+tw_yp,   273.15
+tw_zm,   273.15
+tw_zp,   273.15
+
+dt, 0.0
+CFL_num, 0.25
+DIFF_num, 0.1
+Time, 0.0, 1
+
+View, 1
+Output, 1000
+
+nsub_step_t,  100
+nsub_step_mu, 1
+
+p_zp, NEUMANN
+
+a0, 0.0
+DH, 0.0
+
+Gravity, 0.0, 0.0, -9.80665
+contact_angle, 90.0
+
+restart_dump_time, 1000000
+
+tr, 300.15

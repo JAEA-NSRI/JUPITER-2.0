@@ -558,10 +558,10 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
             for(jy=0; jy<ny; jy++){
                 for(jx=0; jx<nx; jx++){
 
-                    type fc;
+                    type cc;
 
                     j=(jx+stm)+mx*(jy+stm)+mxy*(jz+stm);
-                    fc = clip(f[j]);
+                    cc = f[j]>0.5 ? 1: 0;
 
                     if(fs[j] > 0.5){
                         up = 0.0; um = 0.0;
@@ -590,8 +590,8 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
 
                     //flw=flx[j];
                     //fle=flx[j+1]; 
-                    flw = flx[j] - fc*um*dxi*dt;
-                    fle = flx[j+1] - fc*up*dxi*dt; 
+                    flw = flx[j] - cc*um*dxi*dt;
+                    fle = flx[j+1] - cc*up*dxi*dt; 
 
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&flw,&fle,j,fs_ibm,cdo,direction_flag);
@@ -612,10 +612,10 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
             for(jy=0; jy<ny; jy++){
                 for(jx=0; jx<nx; jx++){
 
-                    type fc;
+                    type cc;
 
                     j=(jx+stm)+mx*(jy+stm)+mxy*(jz+stm);
-                    fc = clip(f[j]);
+                    cc = f[j]>0.5 ? 1: 0;
 
                     if(fs[j] > 0.5){
                         vp = 0.0; vm = 0.0;
@@ -646,8 +646,8 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
 
                     //fls=fly[j];
                     //fln=fly[j+mx]; 
-                    fls = fly[j] - fc*vm*dyi*dt;
-                    fln = fly[j+mx] - fc*vp*dyi*dt; 
+                    fls = fly[j] - cc*vm*dyi*dt;
+                    fln = fly[j+mx] - cc*vp*dyi*dt; 
 
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&fls,&fln, j,fs_ibm,cdo,direction_flag);
@@ -668,10 +668,10 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
             for(jy=0; jy<ny; jy++){
                 for(jx=0; jx<nx; jx++){
 
-                    type fc;
+                    type cc;
 
                     j=(jx+stm)+mx*(jy+stm)+mxy*(jz+stm);
-                    fc = clip(f[j]);
+                    cc = f[j]>0.5 ? 1: 0;
 
                     if(fs[j] > 0.5){
                         wp = 0.0; wm = 0.0;
@@ -700,8 +700,8 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
 
                     //flb=flz[j];
                     //flt=flz[j+mxy]; 
-                    flb = flz[j] - fc*wm*dzi*dt;
-                    flt = flz[j+mxy] - fc*wp*dzi*dt; 
+                    flb = flz[j] - cc*wm*dzi*dt;
+                    flt = flz[j+mxy] - cc*wp*dzi*dt; 
 
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&flb,&flt, j,fs_ibm,cdo,direction_flag);

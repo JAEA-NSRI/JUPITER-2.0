@@ -966,7 +966,8 @@ static int touches_surface_inlet_boundary(variable *val, parameter *prm,
 // The check is performed per-rank (local), and the caller is expected to
 // gather per-rank results to rank 0 as needed (same pattern used elsewhere).
 static void detect_bubble_contact(int *label, BubbleMeta *bubble_meta, int max_label,
-                                 int k, int nx, int ny, int nz,
+                                 int k, int too_small_bubble_volume,
+                                 int nx, int ny, int nz,
                                  int mx, int my, int mz, int mxy, int m,
                                  int stm, parameter *prm,
                                  int **contact_pairs_out, int *num_contact_pairs_out)
@@ -979,8 +980,18 @@ static void detect_bubble_contact(int *label, BubbleMeta *bubble_meta, int max_l
     // First-stage: provisional pairs by bbox overlap (bboxes already expanded by k)
     for(int i=0;i<max_label;i++){
         BubbleMeta *a = &bubble_meta[i];
+        int a_is_small_skip =
+            a->volume < too_small_bubble_volume &&
+            !a->touches_surface_inlet && !a->has_orifice;
+        if(a_is_small_skip) continue;
+
         for(int j=i+1;j<max_label;j++){
             BubbleMeta *b = &bubble_meta[j];
+            int b_is_small_skip =
+                b->volume < too_small_bubble_volume &&
+                !b->touches_surface_inlet && !b->has_orifice;
+            if(b_is_small_skip) continue;
+
             int overlap =
                 (a->bbox[0] <= b->bbox[1] && a->bbox[1] >= b->bbox[0]) &&
                 (a->bbox[2] <= b->bbox[3] && a->bbox[3] >= b->bbox[2]) &&
@@ -1322,6 +1333,7 @@ static void APT(variable *val, parameter *prm, int max_label){
     // Stage 2: for each provisional pair, do a stricter local check to reduce false positives.
     int *contact_pairs = NULL;
     detect_bubble_contact(label, bubble_meta, max_label, k,
+                        too_small_bubble_volume,
                         nx, ny, nz, mx, my, mz, mxy, m, stm, prm,
                         &contact_pairs, &num_contact_pairs);
 
@@ -1524,8 +1536,8 @@ static void APT(variable *val, parameter *prm, int max_label){
                         int new_layer = layer_map[lbl-1];
                         if(new_layer >= NumberOfLayer) {
                             // !! This is an ad hoc workaround, and ideally this situation should not arise.
-                            printf("[Error] new_layer=%d exceeds NumberOfLayer=%d for label %d. So the bubble with this label is allocated in the highest layer\n",
-                                new_layer, NumberOfLayer, lbl);
+                            // printf("[Error] new_layer=%d exceeds NumberOfLayer=%d for label %d. So the bubble with this label is allocated in the highest layer\n",
+                            //    new_layer, NumberOfLayer, lbl);
                             new_layer = NumberOfLayer-1;
                         }
                         new_label[j+m*new_layer]=lbl;

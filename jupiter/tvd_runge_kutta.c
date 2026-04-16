@@ -123,7 +123,15 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 {
   domain *cdo = prm->cdo;
   flags *flg = prm->flg;
+  timer_main *tm = prm->time;
   type   dt = cdo->dt, dti = 1.0/cdo->dt, time0=cpu_time();
+  type   time_rk3_level_set = 0.0,
+         time_rk3_advection = 0.0,
+         time_rk3_viscosity = 0.0,
+         time_rk3_surface_tension = 0.0,
+         time_rk3_forchheimer = 0.0,
+         time_rk3_overhead = 0.0,
+         rk3_total = 0.0;
   // memory allocation for work array.
   static int  n1st = 0;
   static type *up,  *vp,  *wp,  *tp, *t, //2020.4.14
@@ -155,6 +163,15 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
   type *eps = (flg->porous == ON) ? val->eps : NULL;
   type *dens=mtl->dens;
   type *sgm = (flg->porous == ON) ? val->sgm : NULL;
+
+  if (tm) {
+    tm->rk3_level_set = 0.0;
+    tm->rk3_advection = 0.0;
+    tm->rk3_viscosity = 0.0;
+    tm->rk3_surface_tension = 0.0;
+    tm->rk3_forchheimer = 0.0;
+    tm->rk3_overhead = 0.0;
+  }
 
   if (prm->flg->fluid_dynamics == OFF) return 0.0;
 
@@ -284,7 +301,11 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 #endif
   }
 
-  level_set_all(val, prm); // contain Level_Set, Level_Set_contact and normal_vector_cell
+  {
+    type time_local = cpu_time();
+    level_set_all(val, prm); // contain Level_Set, Level_Set_contact and normal_vector_cell
+    time_rk3_level_set += cpu_time() - time_local;
+  }
 
   // zero clear of ft
   zero_clear(ut, cdo->m);
@@ -435,18 +456,30 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
       }
       //--- original
       // ===== 1st stage =====
-      advection_eq(1, tt, val_temp, val->u, val->v, val->w, val_eps, fs_ibm,
-           val->surface_bnd, prm);
+      {
+        type time_local = cpu_time();
+        advection_eq(1, tt, val_temp, val->u, val->v, val->w, val_eps, fs_ibm,
+             val->surface_bnd, prm);
+        time_rk3_advection += cpu_time() - time_local;
+      }
       update_tvd3(tp, 1., val_temp, 0., dt, t, tt, cdo);
       bct(tp, val, prm);
       // ===== 2nd stage =====
-      advection_eq(1, tt, tp, val->u, val->v, val->w, val_eps, fs_ibm,
-           val->surface_bnd, prm);
+      {
+        type time_local = cpu_time();
+        advection_eq(1, tt, tp, val->u, val->v, val->w, val_eps, fs_ibm,
+             val->surface_bnd, prm);
+        time_rk3_advection += cpu_time() - time_local;
+      }
       update_tvd3(tn, 3./4., val_temp, 1./4., 1./4.*dt, tp, tt, cdo);
       bct(tn,val,prm);
       // ===== 3rd stage =====
-      advection_eq(1, tt, tn, val->u, val->v, val->w, val_eps, fs_ibm,
-           val->surface_bnd, prm);
+      {
+        type time_local = cpu_time();
+        advection_eq(1, tt, tn, val->u, val->v, val->w, val_eps, fs_ibm,
+             val->surface_bnd, prm);
+        time_rk3_advection += cpu_time() - time_local;
+      }
       update_tvd3(val_temp, 1./3., val_temp, 2./3., 2./3.*dt, tn, tt, cdo);
       bct(val_temp, val, prm);
     }
@@ -454,21 +487,36 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
   }
   // ===== 1st stage =====
   //-- calc df/dt
-  advection_eq(2, ut, val->u, val->u, val->v, val->w, eps, NULL,
-               val->surface_bnd, prm);
-  advection_eq(3, vt, val->v, val->u, val->v, val->w, eps, NULL,
-               val->surface_bnd, prm);
-  advection_eq(4, wt, val->w, val->u, val->v, val->w, eps, NULL,
-               val->surface_bnd, prm);
+  {
+    type time_local = cpu_time();
+    advection_eq(2, ut, val->u, val->u, val->v, val->w, eps, NULL,
+                 val->surface_bnd, prm);
+    advection_eq(3, vt, val->v, val->u, val->v, val->w, eps, NULL,
+                 val->surface_bnd, prm);
+    advection_eq(4, wt, val->w, val->u, val->v, val->w, eps, NULL,
+                 val->surface_bnd, prm);
+    time_rk3_advection += cpu_time() - time_local;
+  }
   /* YSE: calculation of concentration advection */
+  {
+    type time_local = cpu_time();
   for (icompo = 0; icompo < NCompo; ++icompo) {
     advection_eq(1, Yt[icompo], Y[icompo], val->u, val->v, val->w, NULL, fs_ibm,
            val->surface_bnd, prm);
   }
+    time_rk3_advection += cpu_time() - time_local;
+  }
 
-  if (prm->flg->visc_tvd3 == ON)
+  if (prm->flg->visc_tvd3 == ON) {
+    type time_local = cpu_time();
     visc_eq(0,ut,vt,wt, val->u,val->v,val->w, dens, mtl->mu, val, prm);
-  surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_viscosity += cpu_time() - time_local;
+  }
+  {
+    type time_local = cpu_time();
+    surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_surface_tension += cpu_time() - time_local;
+  }
   //-- update
   update_tvd3(up, 1., val->u, 0., dt, val->u, ut, cdo);
   update_tvd3(vp, 1., val->v, 0., dt, val->v, vt, cdo);
@@ -493,18 +541,33 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 
   // ===== 2nd stage =====
   // calc df/dt
-  advection_eq(2, ut, up, up, vp, wp, eps, NULL, val->surface_bnd, prm);
-  advection_eq(3, vt, vp, up, vp, wp, eps, NULL, val->surface_bnd, prm);
-  advection_eq(4, wt, wp, up, vp, wp, eps, NULL, val->surface_bnd, prm);
+  {
+    type time_local = cpu_time();
+    advection_eq(2, ut, up, up, vp, wp, eps, NULL, val->surface_bnd, prm);
+    advection_eq(3, vt, vp, up, vp, wp, eps, NULL, val->surface_bnd, prm);
+    advection_eq(4, wt, wp, up, vp, wp, eps, NULL, val->surface_bnd, prm);
+    time_rk3_advection += cpu_time() - time_local;
+  }
   /* YSE: calculation of concentration advection */
+  {
+    type time_local = cpu_time();
   for (icompo = 0; icompo < NCompo; ++icompo) {
     advection_eq(1, Yt[icompo], Yp[icompo], up, vp, wp, NULL, fs_ibm,
            val->surface_bnd, prm);
   }
+    time_rk3_advection += cpu_time() - time_local;
+  }
 
-  if(prm->flg->visc_tvd3 == ON)
+  if(prm->flg->visc_tvd3 == ON) {
+    type time_local = cpu_time();
     visc_eq(0,ut,vt,wt, up,vp,wp, dens, mtl->mu, val, prm);
-  surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_viscosity += cpu_time() - time_local;
+  }
+  {
+    type time_local = cpu_time();
+    surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_surface_tension += cpu_time() - time_local;
+  }
   //-- update
   update_tvd3(un, 3./4., val->u, 1./4.,1./4.*dt, up, ut, cdo);
   update_tvd3(vn, 3./4., val->v, 1./4.,1./4.*dt, vp, vt, cdo);
@@ -528,18 +591,33 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 
   // ===== 3rd stage =====
   //-- calc df/dt
-  advection_eq(2, ut, un, un, vn, wn, eps, NULL, val->surface_bnd, prm);
-  advection_eq(3, vt, vn, un, vn, wn, eps, NULL, val->surface_bnd, prm);
-  advection_eq(4, wt, wn, un, vn, wn, eps, NULL, val->surface_bnd, prm);
+  {
+    type time_local = cpu_time();
+    advection_eq(2, ut, un, un, vn, wn, eps, NULL, val->surface_bnd, prm);
+    advection_eq(3, vt, vn, un, vn, wn, eps, NULL, val->surface_bnd, prm);
+    advection_eq(4, wt, wn, un, vn, wn, eps, NULL, val->surface_bnd, prm);
+    time_rk3_advection += cpu_time() - time_local;
+  }
   /* YSE: calculation of concentration advection */
+  {
+    type time_local = cpu_time();
   for (icompo = 0; icompo < NCompo; ++icompo) {
     advection_eq(1, Yt[icompo], Yn[icompo], un, vn, wn, NULL, fs_ibm,
            val->surface_bnd, prm);
   }
+    time_rk3_advection += cpu_time() - time_local;
+  }
 
-  if(prm->flg->visc_tvd3 == ON)
+  if(prm->flg->visc_tvd3 == ON) {
+    type time_local = cpu_time();
     visc_eq(0,ut,vt,wt, un,vn,wn, dens, mtl->mu, val, prm);
-  surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_viscosity += cpu_time() - time_local;
+  }
+  {
+    type time_local = cpu_time();
+    surface_tension_eq(tt,ut,vt,wt, mtl->st, dens, val, prm);
+    time_rk3_surface_tension += cpu_time() - time_local;
+  }
   //-- update
   update_tvd3(val->u, 1./3., val->u, 2./3.,2./3.*dt, un, ut, cdo);
   update_tvd3(val->v, 1./3., val->v, 2./3.,2./3.*dt, vn, vt, cdo);
@@ -553,10 +631,12 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
   if (prm->flg->porous == ON) {
     int   itr = 0, itr_max = cdo->nsub_step_mu;
     type  mdt = cdo->dt / ((type) cdo->nsub_step_mu);
+    type time_local = cpu_time();
     while (itr++ < itr_max) {
       Forchheimer(mdt, val->u, val->v, val->w, val, mtl, prm);
       bcu(val->u,val->v,val->w,val,mtl,prm);
     }
+    time_rk3_forchheimer += cpu_time() - time_local;
   }
 
   bcu(val->u,val->v,val->w,val,mtl,prm);
@@ -660,6 +740,7 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 
   if(prm->flg->visc_tvd3 == OFF) {
     /*      Implicit method         */
+    type time_local = cpu_time();
     //-- U
     set_b(0,mtl->div_b, val->u, dens, mtl->mu, val, prm);
 #ifdef _TIME_
@@ -685,6 +766,24 @@ type tvd_runge_kutta_3(variable *val, material *mtl, parameter *prm)
 #endif
 
     bcu(val->u,val->v,val->w,val,mtl,prm);
+    time_rk3_viscosity += cpu_time() - time_local;
   }
-  return cpu_time() - time0;
+  rk3_total = cpu_time() - time0;
+  time_rk3_overhead = rk3_total - (time_rk3_level_set + time_rk3_advection +
+                                   time_rk3_viscosity + time_rk3_surface_tension +
+                                   time_rk3_forchheimer);
+  if (time_rk3_overhead < 0.0) {
+    time_rk3_overhead = 0.0;
+  }
+
+  if (tm) {
+    tm->rk3_level_set = time_rk3_level_set;
+    tm->rk3_advection = time_rk3_advection;
+    tm->rk3_viscosity = time_rk3_viscosity;
+    tm->rk3_surface_tension = time_rk3_surface_tension;
+    tm->rk3_forchheimer = time_rk3_forchheimer;
+    tm->rk3_overhead = time_rk3_overhead;
+  }
+
+  return rk3_total;
 }

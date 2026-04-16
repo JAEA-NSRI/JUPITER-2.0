@@ -1,0 +1,29 @@
+NumberOfGeom, 3
+
+Geom_file,  -
+Geom_vof, -1, GAS, SET, CONST, 1.0, 1.0
+Geom_velocity_u, SET, CONST, 1.0, 0.0
+Geom_velocity_v, SET, CONST, 1.0, 0.0
+Geom_velocity_w, SET,CONST, 1.0, 0.0
+Geom_temperature, SET, CONST, 1.0, 573.0
+Geom_pressure, SET, CONST, 1.0, 0.0
+
+-- water column
+Geom_file, -
+Geom_shape, SET, RCC, 250.0e-3, 250.0e-3, 0.0, 0.0, 0.0, 750.0e-3, 50.00e-3, &
+  -10.0, -10.0, -10.0, -10.0, 0.0, 0.0
+Geom_vof, 0, LIQUID, SET, CONST, 1.0, 1.0
+Geom_velocity_u,  SET, CONST, 1.0, 0.0
+Geom_velocity_v,  SET, CONST, 1.0, 0.0
+Geom_velocity_w,  SET, CONST, 1.0, 0.0
+Geom_temperature, SET, CONST, 1.0, 573.0
+
+-- obstacle
+Geom_file, -
+Geom_shape, SET, BOX, 325.0e-3, 325.0e-3, 0.0, 425.0e-3, 425.0e-3, 100.0e-3
+Geom_vof, 1, SOLID, SET, CONST, 1.0, 1.0
+Geom_velocity_u,  SET, CONST, 1.0, 0.0
+Geom_velocity_v,  SET, CONST, 1.0, 0.0
+Geom_velocity_w,  SET, CONST, 1.0, 0.0
+Geom_temperature, SET, CONST, 1.0, 573.0
+
