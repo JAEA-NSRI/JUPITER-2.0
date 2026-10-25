@@ -414,6 +414,40 @@ int outflow_flux_direction_split(type *flm, type *flp, int j, int n, mpi_param *
   return 0;
 }
 
+/* The legacy limiter above has no per-face condition and rejects INLET
+ * fluxes as well. Direction-split VOF must use the actual boundary map,
+ * which can override a global WALL with a partial inlet. */
+int outflow_flux_direction_split_bc(type *flm, type *flp,
+                                    int jx, int jy, int jz, int direction_flag,
+                                    variable *val, parameter *prm)
+{
+  domain *cdo = prm->cdo;
+  struct boundary_array *bnd[6] = {
+    &val->bnd_B, &val->bnd_T, &val->bnd_S,
+    &val->bnd_N, &val->bnd_W, &val->bnd_E,
+  };
+  int pos[3] = {jx, jy, jz};
+  int n[3] = {cdo->nx, cdo->ny, cdo->nz};
+  int nb[3] = {cdo->nbx, cdo->nby, cdo->nbz};
+  int axis = direction_flag;
+  int a, b, face;
+  ptrdiff_t jj;
+
+  CSVASSERT(axis >= 0 && axis < 3);
+  a = axis == 0 ? 1 : 0;
+  b = axis == 2 ? 1 : 2;
+  face = 4 - 2 * axis;
+  jj = pos[a] + cdo->stmb + (pos[b] + cdo->stmb) * nb[a];
+  if (prm->mpi->nrk[face] == -1 && pos[axis] == 0 && *flm >= 0.0) {
+    if (bnd[face]->fl[jj]->cond != INLET) *flm = 0.0;
+  }
+  if (prm->mpi->nrk[face + 1] == -1 && pos[axis] == n[axis] - 1 &&
+      *flp <= 0.0) {
+    if (bnd[face + 1]->fl[jj]->cond != INLET) *flp = 0.0;
+  }
+  return 0;
+}
+
 int outflow_flux(type *flw, type *fle, type *fls, type *fln, type *flb, type *flt, int jx, int jy, int jz, int nx, int ny, int nz, mpi_param *mpi)
 {
   if(mpi->nrk[4]==-1 && jx==0    && *flw>=0.0) *flw = 0.0;// west

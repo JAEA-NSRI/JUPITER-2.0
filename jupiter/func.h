@@ -553,6 +553,13 @@ JUPITER_DECL
 type bcs(type *f, type *v, variable *val, parameter *prm, material *mtl);
 JUPITER_DECL
 type bcf_VOF(int flag, type *f, variable *val, parameter *prm);
+/** Refresh one component/layer pointer, without a second component offset. */
+JUPITER_DECL
+type bcf_VOF_component(type *f, int icompo, int ilayer,
+                       variable *val, parameter *prm);
+JUPITER_DECL
+void vof_inlet_flux(type *flux, type *f, type *velocity, type scale,
+                     int axis, variable *val, parameter *prm);
 JUPITER_DECL
 type bcf_VOF_layer(int flag, type *f, variable *val, parameter *prm);
 JUPITER_DECL
@@ -1281,6 +1288,10 @@ JUPITER_DECL
 int IBM_flux_corr_vof(type *flw, type *fle, type *fls, type *fln, type *flb, type *flt, int j, type *f, domain *cdo);
 JUPITER_DECL
 int outflow_flux_direction_split(type *flm, type *flp, int j, int n, mpi_param *mpi,int direction_flag);
+JUPITER_DECL
+int outflow_flux_direction_split_bc(type *flm, type *flp,
+                                    int jx, int jy, int jz, int direction_flag,
+                                    variable *val, parameter *prm);
 JUPITER_DECL
 int outflow_flux(type *flw, type *fle, type *fls, type *fln, type *flb, type *flt, int jx, int jy, int jz, int nx, int ny, int nz, mpi_param *mpi);
 JUPITER_DECL

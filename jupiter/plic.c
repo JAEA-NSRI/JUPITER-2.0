@@ -548,6 +548,13 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
         }
     }
 
+    if (direction_flag == 0)
+        vof_inlet_flux(flx, f, u, dt * dxi, 0, val, prm);
+    else if (direction_flag == 1)
+        vof_inlet_flux(fly, f, v, dt * dyi, 1, val, prm);
+    else if (direction_flag == 2)
+        vof_inlet_flux(flz, f, w, dt * dzi, 2, val, prm);
+
     // time integration
         
     type flw, fle, fls, fln, flb, flt;
@@ -596,7 +603,7 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&flw,&fle,j,fs_ibm,cdo,direction_flag);
                     }
-                    outflow_flux_direction_split(&flw,&fle,jx,nx,mpi,direction_flag);
+                    outflow_flux_direction_split_bc(&flw,&fle,jx,jy,jz,direction_flag,val,prm);
 
                     //ft=-(fle-flw)*dti + f[j]*(up-um)*dxi;
                     ft=-(fle-flw)*dti;
@@ -652,7 +659,7 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&fls,&fln, j,fs_ibm,cdo,direction_flag);
                     }
-                    outflow_flux_direction_split(&fls,&fln,jy,ny, mpi,direction_flag);
+                    outflow_flux_direction_split_bc(&fls,&fln,jx,jy,jz,direction_flag,val,prm);
 
                     //ft=-(fln-fls)*dti + f[j]*(vp-vm)*dyi;
                     ft=-(fln-fls)*dti;
@@ -706,7 +713,7 @@ int plic(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *n
                     if(flg->IBM == ON) {
                         //IBM_flux_corr_vof_direction_split(&flb,&flt, j,fs_ibm,cdo,direction_flag);
                     }
-                    outflow_flux_direction_split(&flb,&flt,jz,nz, mpi,direction_flag);
+                    outflow_flux_direction_split_bc(&flb,&flt,jx,jy,jz,direction_flag,val,prm);
 
                     //ft=-(flt-flb)*dti + f[j]*(wp-wm)*dzi;
                     ft=-(flt-flb)*dti;
