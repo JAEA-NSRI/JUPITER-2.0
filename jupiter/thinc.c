@@ -297,7 +297,7 @@ static void calc_surface_boundary_wlic_f(type *fm, type *fp, int icompo,
   calc_surface_boundary_thinc_f(NULL, fm, fp, NULL, icompo, sb, bnd_norm);
 }
 
-int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *nvz, type *u, type *v, type *w, type *lss, type *fs, type *fs_ibm, int icompo, type *bnd_norm_u, type *bnd_norm_v, type *bnd_norm_w, struct surface_boundary_data **surf_bnd_array, parameter *prm, int direction_flag) 
+int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *nvz, type *u, type *v, type *w, type *lss, type *fs, type *fs_ibm, int icompo, type *bnd_norm_u, type *bnd_norm_v, type *bnd_norm_w, struct surface_boundary_data **surf_bnd_array, parameter *prm, variable *val, int direction_flag)
 {
   flags  *flg=prm->flg;
   domain *cdo=prm->cdo;
@@ -563,7 +563,7 @@ int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *
               //IBM_flux_corr_vof_direction_split(&flw,&fle,j,fs_ibm,cdo,direction_flag);
             }
             //outflow_flux2(&flw,&fle,&fls,&fln,&flb,&flt, jx,jy,jz, nx,ny,nz, mpi,flg);
-            outflow_flux_direction_split(&flw,&fle,jx,nx,mpi,direction_flag);
+            outflow_flux_direction_split_bc(&flw,&fle,jx,jy,jz,direction_flag,val,prm);
 
             //ft = - ( (fle - flw)*dxi )*dti + f[j]*(up-um)*dxi;
             ft = - ( (fle - flw)*dxi )*dti;
@@ -600,7 +600,7 @@ int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *
               //IBM_flux_corr_vof_direction_split(&fls,&fln, j,fs_ibm,cdo,direction_flag);
             }
             //outflow_flux2(&flw,&fle,&fls,&fln,&flb,&flt, jx,jy,jz, nx,ny,nz, mpi,flg);
-            outflow_flux_direction_split(&fls,&fln,jy,ny, mpi,direction_flag);
+            outflow_flux_direction_split_bc(&fls,&fln,jx,jy,jz,direction_flag,val,prm);
 
             //ft = - ( (fln - fls)*dyi )*dti + f[j]*(vp-vm)*dyi;
             ft = - ( (fln - fls)*dyi )*dti;
@@ -637,7 +637,7 @@ int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *
               //IBM_flux_corr_vof_direction_split(&flb,&flt, j,fs_ibm,cdo,direction_flag);
             }
             //outflow_flux2(&flw,&fle,&fls,&fln,&flb,&flt, jx,jy,jz, nx,ny,nz, mpi,flg);
-            outflow_flux_direction_split(&flb,&flt,jz,nz, mpi,direction_flag);
+            outflow_flux_direction_split_bc(&flb,&flt,jx,jy,jz,direction_flag,val,prm);
 
             //ft = - ( (flt - flb)*dzi )*dti + f[j]*(wp-wm)*dzi;
             ft = - ( (flt - flb)*dzi )*dti;
@@ -665,19 +665,19 @@ int thinc(type *f, type *flx, type *fly, type *flz, type *nvx, type *nvy, type *
     plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
       val->surface_bnd, prm, val, order[0]);
-    bcf(f,prm);
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
       val->surface_bnd, prm, val, order[1]);
-    bcf(f,prm);
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     plic(f, flx, fly, flz, nvx, nvy, nvz, alpha, u, v, w, ls, fs, fs_ibm,
       icompo, ilayer, val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
       val->surface_bnd, prm, val, order[2]);
-    bcf(f,prm);
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
   }
 
 type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type *fs_ibm, int icompo, int ilayer, variable *val, parameter *prm)
@@ -707,6 +707,8 @@ type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type 
   }
 
  
+  bcf_VOF_component(f, icompo, ilayer, val, prm);
+
   // Fukuda 2023/10/10. Shuffling the order of the direction of advection. 
   if(cdo->icnt % 6 == 0)     {order[0]=0; order[1]=1; order[2]=2;}
   else if(cdo->icnt % 6 == 1){order[0]=2; order[1]=1; order[2]=0;}
@@ -739,38 +741,38 @@ type advection_vof(type *f, type *u, type *v, type *w, type *ls, type *fs, type 
 
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[0]); // VOF value update by flux along 1st-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[0]); // VOF value update by flux along 1st-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[1]); // VOF value update by flux along 2nd-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[1]); // VOF value update by flux along 2nd-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[2]); // VOF value update by flux along 3rd-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[2]); // VOF value update by flux along 3rd-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
   }else if(prm->flg->interface_capturing_scheme==THINC_WLIC || prm->flg->interface_capturing_scheme==THINC_AWLIC ){
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[0]); // VOF value update by flux along 1st-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[0]); // VOF value update by flux along 1st-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[1]); // VOF value update by flux along 2nd-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[1]); // VOF value update by flux along 2nd-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[2]); // VOF value update by flux along 3rd-direction. 
-    bcf(f,prm);
+              val->surface_bnd, prm, val, order[2]); // VOF value update by flux along 3rd-direction.
+    bcf_VOF_component(f, icompo, ilayer, val, prm);
 
   }
 
@@ -835,17 +837,17 @@ type advection_vof_fls(type *f, type *u, type *v, type *w, type *ls, type *fs, t
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[0]); // VOF value update by flux along 1st-direction. Fukuda 2023/10/7
+              val->surface_bnd, prm, val, order[0]); // VOF value update by flux along 1st-direction. Fukuda 2023/10/7
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[1]); // VOF value update by flux along 2nd-direction. Fukuda 2023/10/7
+              val->surface_bnd, prm, val, order[1]); // VOF value update by flux along 2nd-direction. Fukuda 2023/10/7
 
     normal_vector_ics(nvx, nvy, nvz, f, cdo, flg);
     thinc(f, flx,fly,flz, nvx,nvy,nvz, u,v,w, ls, fs, fs_ibm, icompo,
               val->bnd_norm_u, val->bnd_norm_v, val->bnd_norm_w,
-              val->surface_bnd, prm, order[2]); // VOF value update by flux along 3rd-direction. Fukuda 2023/10/7
+              val->surface_bnd, prm, val, order[2]); // VOF value update by flux along 3rd-direction. Fukuda 2023/10/7
 
 
   return 0.0;

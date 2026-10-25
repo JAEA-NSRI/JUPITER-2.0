@@ -1370,9 +1370,11 @@ bcfl_calc(type *f, type *fs_sum, component_data *icompo,
     } else {
       ratio = 0.0;
     }
-    //jj = jj - offset;
     base = &f[jj];
-    bcfl_inlet(base, &fs_sum[jj], offset, stencil_size + 1, ratio);
+    /* Upper-side callers pass stp - 1; lower-side callers pass stm.
+     * Fill ghosts only, without stepping past the lower allocation. */
+    bcfl_inlet(base, &fs_sum[jj], offset,
+               stencil_size + (offset > 0), ratio);
   } else {
     base = &f[jj];
     boundary_line_symmetry(base, offset, stencil_size);
@@ -1444,6 +1446,103 @@ bcfl_calc_layer(type *f_layer, type* f, type *fs_sum, component_data *icompo,
     base = &f_layer[jj];
     boundary_line_symmetry(base, offset, stencil_size);
 
+  }
+}
+
+/**
+ * Refresh a single advected liquid field between directional sweeps.
+ * Unlike bcf_VOF(), f already points at the selected component/layer.
+ * Preserve the existing layer inlet-selection rule when layers are used.
+ */
+type bcf_VOF_component(type *f, int icompo, int ilayer,
+                       variable *val, parameter *prm)
+{
+  domain *cdo = prm->cdo;
+  struct boundary_array *bnd[6] = {
+    &val->bnd_B, &val->bnd_T, &val->bnd_S,
+    &val->bnd_N, &val->bnd_W, &val->bnd_E,
+  };
+  int n[3] = {cdo->nx, cdo->ny, cdo->nz};
+  int nb[3] = {cdo->nbx, cdo->nby, cdo->nbz};
+  ptrdiff_t stride[3] = {1, cdo->mx, cdo->mxy};
+  component_data *comp = NULL;
+  type *fs = prm->flg->solute_diff == ON ? val->fs : val->fs_sum;
+  int layered = prm->flg->multi_layer == ON &&
+                prm->flg->multi_layer_no_coalescence == ON;
+
+  /* Communicate only this field, and fill non-inlet ghosts and corners. */
+  bcf(f, prm);
+  if (prm->flg->solute_diff != ON) {
+    comp = component_data_find_by_comp_index(&prm->comps_data_head, icompo);
+    CSVASSERT(comp);
+  }
+
+  for (int face = 0; face < 6; ++face) {
+    int axis = 2 - face / 2;
+    int a = axis == 0 ? 1 : 0;
+    int b = axis == 2 ? 1 : 2;
+    int upper = face % 2;
+    int stcl = upper ? cdo->stp - 1 : cdo->stm;
+    ptrdiff_t offset = upper ? stride[axis] : -stride[axis];
+
+    if (prm->mpi->nrk[face] != -1) continue;
+#pragma omp parallel for collapse(2)
+    for (int ib = 0; ib < n[b]; ++ib) {
+      for (int ia = 0; ia < n[a]; ++ia) {
+        int pos[3] = {cdo->stm, cdo->stm, cdo->stm};
+        int ba = ia + cdo->stmb, bb = ib + cdo->stmb;
+        pos[a] += ia;
+        pos[b] += ib;
+        if (upper) pos[axis] += n[axis] - 1;
+        if (layered) {
+          bcfl_calc_layer(f, val->fl, fs, comp, bnd[face]->fl,
+                           ba, bb, nb[a], nb[b], stcl, offset,
+                           pos[0], pos[1], pos[2], cdo->mx, cdo->my,
+                           cdo->mz, ilayer);
+        } else {
+          bcfl_calc(f, fs, comp, bnd[face]->fl,
+                     ba, bb, nb[a], nb[b], stcl, offset,
+                     pos[0], pos[1], pos[2], cdo->mx, cdo->my, cdo->mz);
+        }
+      }
+    }
+  }
+  return 0.0;
+}
+
+/* A prescribed inlet composition is a face value. Do not reconstruct a
+ * PLIC plane through its ghost cell and change the supplied mixture. */
+void vof_inlet_flux(type *flux, type *f, type *velocity, type scale,
+                     int axis, variable *val, parameter *prm)
+{
+  domain *cdo = prm->cdo;
+  struct boundary_array *bnd[6] = {
+    &val->bnd_B, &val->bnd_T, &val->bnd_S,
+    &val->bnd_N, &val->bnd_W, &val->bnd_E,
+  };
+  int n[3] = {cdo->nx, cdo->ny, cdo->nz};
+  int nb[3] = {cdo->nbx, cdo->nby, cdo->nbz};
+  ptrdiff_t stride[3] = {1, cdo->mx, cdo->mxy};
+  int a = axis == 0 ? 1 : 0, b = axis == 2 ? 1 : 2;
+
+  for (int upper = 0; upper < 2; ++upper) {
+    int face = 4 - 2 * axis + upper;
+    if (prm->mpi->nrk[face] != -1) continue;
+#pragma omp parallel for collapse(2)
+    for (int ib = 0; ib < n[b]; ++ib) {
+      for (int ia = 0; ia < n[a]; ++ia) {
+        ptrdiff_t bj = ia + cdo->stmb + (ib + cdo->stmb) * nb[a];
+        int p[3] = {cdo->stm, cdo->stm, cdo->stm};
+        ptrdiff_t j, donor;
+        p[a] += ia; p[b] += ib;
+        if (upper) p[axis] += n[axis];
+        j = calc_address(p[0], p[1], p[2], cdo->mx, cdo->my, cdo->mz);
+        if (bnd[face]->fl[bj]->cond != INLET) continue;
+        if (upper ? velocity[j] > 0.0 : velocity[j] < 0.0) continue;
+        donor = upper ? j : j - stride[axis];
+        flux[j] = clip(f[donor]) * velocity[j] * scale;
+      }
+    }
   }
 }
 
